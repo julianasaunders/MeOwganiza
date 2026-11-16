@@ -8,6 +8,11 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing GitHub Release tag to receive the build assets (optional)
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -65,26 +70,23 @@ jobs:
       - name: Build GUI and CLI
         run: |
           python -m PyInstaller --noconfirm --clean --onefile --name MeOwganiza --add-data "ui:ui" --paths src --collect-all webview --collect-all PyQt6 entry_gui.py
-          python -m PyInstaller --noconfirm --clean --onefile --name MeOwganizaCLI --add-data "ui:ui" --paths src meowganiza.py
-          chmod +x dist/MeOwganiza dist/MeOwganizaCLI
+          chmod +x dist/MeOwganiza
           mkdir -p dist/linux-package
           cp dist/MeOwganiza dist/linux-package/MeOwganiza
-          cp dist/MeOwganizaCLI dist/linux-package/MeOwganizaCLI
           tar -czf dist/MeOwganiza-linux-x86_64.tar.gz -C dist/linux-package .
 
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v4
         with:
           name: meowganiza-linux
-          path: |
-            dist/MeOwganiza
-            dist/MeOwganizaCLI
-            dist/MeOwganiza-linux-x86_64.tar.gz
+          path: dist/MeOwganiza-linux-x86_64.tar.gz
           retention-days: 30
 
   publish-release-assets:
     name: Attach installers to release
-    if: github.event_name == 'release' && github.event.action == 'published'
+    if: >-
+      (github.event_name == 'release' && github.event.action == 'published') ||
+      (github.event_name == 'workflow_dispatch' && inputs.release_tag != '')
     needs: [build-windows, build-linux]
     runs-on: ubuntu-latest
     steps:
@@ -96,8 +98,10 @@ jobs:
       - name: Upload assets to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ inputs.release_tag || github.event.release.tag_name }}
           files: |
             release-assets/meowganiza-windows/MeOwganiza.exe
             release-assets/meowganiza-windows/MeOwganizaCLI.exe
             release-assets/meowganiza-linux/MeOwganiza-linux-x86_64.tar.gz
           fail_on_unmatched_files: true
+          overwrite_files: true

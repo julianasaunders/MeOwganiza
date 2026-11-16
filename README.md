@@ -167,7 +167,7 @@ Acesse a **[página de downloads do MeOwganiza](https://julianasaunders.github.i
 | **Windows 10/11** | `MeOwganiza.exe` | Baixe e abra o executável. Não precisa instalar Python. |
 | **Linux x86_64** | `MeOwganiza-linux-x86_64.tar.gz` | Extraia, torne o arquivo executável com `chmod +x MeOwganiza` e execute `./MeOwganiza`. |
 
-O pacote Linux é gerado em Ubuntu 22.04 para x86_64. O executável e a CLI estão incluídos no arquivo `.tar.gz`.
+O pacote Linux é gerado em Ubuntu 22.04 para x86_64 e está incluído no arquivo `.tar.gz`.
 
 ### Requisitos para executar pelo código-fonte
 
