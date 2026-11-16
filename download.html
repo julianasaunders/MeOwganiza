@@ -36,7 +36,7 @@
   .file-note{display:block;margin-top:8px;text-align:center;color:#c2d1cc;font-size:10px}
   .source{display:inline-block;margin-top:20px;color:#e8eee9;font-size:13px;text-decoration:underline;text-decoration-color:#ffffff77;text-underline-offset:4px}
   .safe-note{margin:15px 0 0;color:#d0ded8;font-size:14px}
-  .cats{position:relative;width:min(1120px,100%);height:138px;flex:none;margin: auto auto 0;overflow:hidden;border-bottom:8px solid #65894e;background:linear-gradient(transparent 55%,#072f38a6)}
+  .cats{position:relative;width:100%;height:138px;flex:none;margin:auto auto 0;overflow:hidden;border-bottom:8px solid #65894e;background:linear-gradient(transparent 55%,#072f38a6)}
   .catstrip{position:absolute;left:50%;bottom:14px;width:320px;height:28px;margin-left:-160px;transform-origin:50% 100%;background:url("assets/gatos-8bit.png") 0 0 / 7680px 28px no-repeat;image-rendering:pixelated;animation:cats calc(3000ms * var(--slow)) steps(24) infinite;pointer-events:none;z-index:2}
   @keyframes cats{to{background-position:-7680px 0}}
   @media(prefers-reduced-motion:reduce){.catstrip,.sky-cat{animation:none!important}}
@@ -79,7 +79,11 @@
   <script>
     function fitCats() {
       const strip = document.querySelector(".catstrip");
-      if (strip) strip.style.transform = `scale(${Math.min(3.6, strip.parentElement.clientWidth / 326)})`;
+      if (!strip) return;
+      const scale = strip.parentElement.clientWidth / 320;
+      strip.style.transform = `scale(${scale})`;
+      const minHeight = window.matchMedia("(max-width: 640px)").matches ? 100 : 138;
+      strip.parentElement.style.height = `${Math.max(minHeight, 28 * scale + 22)}px`;
     }
     function seedSkyCats() {
       const sky = document.querySelector(".sky");
