@@ -81,6 +81,8 @@ O MeOwganiza separa **planejamento** e **execução**: primeiro mostra o que pre
 
 ## Requisitos
 
+> **Resumo:** o MeOwganiza deve analisar e planejar a organização de pastas (RF01–RF02), exibir uma prévia antes de agir (RF03), aplicar mudanças apenas mediante confirmação (RF04), registrar operações com relatórios e desfazer (RF05) e diagnosticar o sistema (RF06). Não funcionais: segurança por padrão (RNF01), sem sobrescrever/excluir arquivos (RNF02), multiplataforma com Python 3.10+ (RNF03), CLI sem dependências externas (RNF04) e registros locais para reversibilidade (RNF05).
+
 ### Requisitos funcionais
 
 | Código | Requisito |
