@@ -38,8 +38,8 @@ jobs:
       - name: Build GUI and CLI
         shell: pwsh
         run: |
-          python -m PyInstaller --noconfirm --onefile --noconsole --name MeOwganiza --add-data "ui;ui" --paths src entry_gui.py
-          python -m PyInstaller --noconfirm --onefile --name MeOwganizaCLI --add-data "ui;ui" --paths src meowganiza.py
+          python -m PyInstaller --noconfirm --onefile --noconsole --name MeOwganiza --add-data "ui;ui" --paths src --hidden-import meowganiza --hidden-import meowganiza.native --collect-submodules meowganiza entry_gui.py
+          python -m PyInstaller --noconfirm --onefile --name MeOwganizaCLI --add-data "ui;ui" --paths src --hidden-import meowganiza --hidden-import meowganiza.cli --collect-submodules meowganiza entry_cli.py
 
       - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
@@ -69,7 +69,7 @@ jobs:
 
       - name: Build GUI and CLI
         run: |
-          python -m PyInstaller --noconfirm --clean --onefile --name MeOwganiza --add-data "ui:ui" --paths src --collect-all webview --collect-all PyQt6 entry_gui.py
+          python -m PyInstaller --noconfirm --clean --onefile --name MeOwganiza --add-data "ui:ui" --paths src --hidden-import meowganiza --hidden-import meowganiza.native --collect-submodules meowganiza --collect-all webview --collect-all PyQt6 entry_gui.py
           chmod +x dist/MeOwganiza
           mkdir -p dist/linux-package
           cp dist/MeOwganiza dist/linux-package/MeOwganiza
