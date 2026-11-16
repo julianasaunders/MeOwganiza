@@ -1,20 +1,20 @@
-# CaosZero 2.0
+# MeOwganiza 2.0
 
 **Automatizador de tarefas com arquivos** — projeto integrador da disciplina de
 **Sistemas Operacionais**.
 
-O CaosZero organiza pastas por categoria, renomeia arquivos em massa, arquiva
+O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva
 itens antigos, gera relatórios e permite **desfazer** a última execução. A
 interface principal é um aplicativo nativo para Windows, que seleciona a
 pasta, analisa e aplica a organização diretamente no seu computador.
 
-[![CI](https://github.com/julianasaunders/caosZero/actions/workflows/ci.yml/badge.svg)](https://github.com/julianasaunders/caosZero/actions/workflows/ci.yml)
+[![CI](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml/badge.svg)](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
-[![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE) [![Demonstração](https://img.shields.io/badge/DEMO-online-blue.svg)](https://julianasaunders.github.io/caosZero/)
+[![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE) [![Demonstração](https://img.shields.io/badge/DEMO-online-blue.svg)](https://julianasaunders.github.io/MeOwganiza/)
 
-> **Demonstração online:** https://julianasaunders.github.io/caosZero/
+> **Demonstração online:** https://julianasaunders.github.io/MeOwganiza/
 
-> **Segurança em primeiro lugar:** por padrão o CaosZero apenas **simula** a
+> **Segurança em primeiro lugar:** por padrão o MeOwganiza apenas **simula** a
 > organização. Nenhum arquivo é alterado sem sua confirmação explícita.
 > Nenhum arquivo é excluído ou sobrescrito.
 
@@ -22,16 +22,16 @@ pasta, analisa e aplica a organização diretamente no seu computador.
 
 ## Interface gráfica (principal)
 
-> O CaosZero é, antes de tudo, um **aplicativo com interface gráfica**.
+> O MeOwganiza é, antes de tudo, um **aplicativo com interface gráfica**.
 > Você não precisa saber programar — basta abrir e clicar.
 
 ### Como usar (em 5 passos)
 
 | Passo | Ação | O que acontece |
 | :---: | --- | --- |
-| 1 | **Abrir** `CaosZero.exe` | A janela do app aparece |
+| 1 | **Abrir** `MeOwganiza.exe` | A janela do app aparece |
 | 2 | **Selecionar pasta** | Escolha a pasta que deseja organizar |
-| 3 | **Analisar** | O CaosZero planeja tudo e mostra a árvore **Antes/Depois** + log + estatísticas. **Nada é alterado.** |
+| 3 | **Analisar** | O MeOwganiza planeja tudo e mostra a árvore **Antes/Depois** + log + estatísticas. **Nada é alterado.** |
 | 4 | **Aplicar organização** | Botão flutuante com confirmação antes de mover qualquer arquivo |
 | 5 | **Desfazer** | Restaura a última execução com um clique |
 
@@ -47,7 +47,7 @@ pasta, analisa e aplica a organização diretamente no seu computador.
 | **Plano de revisão** | Revise antes de aplicar |
 | **Diagnóstico** | CPU, memória, disco, permissões |
 
-> **O executável está em** `dist/CaosZero.exe` (ou `Downloads/CaosZero.exe`).
+> **O executável está em** `dist/MeOwganiza.exe` (ou `Downloads/MeOwganiza.exe`).
 
 > **Também disponível** como página web em `ui/app.html`.
 
@@ -56,9 +56,9 @@ pasta, analisa e aplica a organização diretamente no seu computador.
 ## Demonstração
 
 > **Acesse a demonstração online:**
-> https://julianasaunders.github.io/caosZero/
+> https://julianasaunders.github.io/MeOwganiza/
 
-A demonstração apresenta o CaosZero 2.0, seus recursos, o fluxo de
+A demonstração apresenta o MeOwganiza 2.0, seus recursos, o fluxo de
 organização e os conceitos de Sistemas Operacionais aplicados.
 
 ## Sumário
@@ -109,14 +109,14 @@ organização e os conceitos de Sistemas Operacionais aplicados.
 
 ### Usar o aplicativo (usuário final)
 
-Baixe `CaosZero.exe` (em `dist/` ou `Downloads/`) e abra com duplo clique.
+Baixe `MeOwganiza.exe` (em `dist/` ou `Downloads/`) e abra com duplo clique.
 Não é necessário instalar Python.
 
 ### Usar do repositório (desenvolvimento)
 
 ```bash
-git clone https://github.com/julianasaunders/caosZero.git
-cd caosZero
+git clone https://github.com/julianasaunders/MeOwganiza.git
+cd MeOwganiza
 ```
 
 ### Ambiente virtual (recomendado para desenvolvimento)
@@ -131,7 +131,7 @@ python -m pip install -e .
 
 ## Como funciona
 
-O CaosZero separa **planejamento** e **execução**:
+O MeOwganiza separa **planejamento** e **execução**:
 
 1. **Planejar** — lê metadados, aplica filtros e calcula destinos sem tocar
   no disco. (`planner.py`)
@@ -142,7 +142,7 @@ O CaosZero separa **planejamento** e **execução**:
 4. **Relatar e desfazer** — gera MD/CSV/JSON e permite restaurar a execução
   anterior. (`reporter.py` · `journal.py`)
 
-Nenhum arquivo é sobrescrito: se o destino já existir, o CaosZero gera um
+Nenhum arquivo é sobrescrito: se o destino já existir, o MeOwganiza gera um
 nome único (`foto.jpg` → `foto (1).jpg`).
 
 ---
@@ -189,14 +189,14 @@ O projeto demonstra, de forma aplicada:
 A configuração é procurada nesta ordem:
 
 1. `--config CAMINHO`
-2. variável `CAOSZERO_CONFIG`
-3. `<CAOSZERO_HOME>/config.json`
-4. `./config/caoszero.example.json`
+2. variável `MEOWGANIZA_CONFIG`
+3. `<MEOWGANIZA_HOME>/config.json`
+4. `./config/meowganiza.example.json`
 
 O diretório de estado segue o padrão XDG no Linux/macOS e `%LOCALAPPDATA%`
-no Windows. A variável `CAOSZERO_HOME` tem precedência em todos os casos.
+no Windows. A variável `MEOWGANIZA_HOME` tem precedência em todos os casos.
 
-Variáveis de ambiente: `CAOSZERO_HOME`, `CAOSZERO_CONFIG`, `CAOSZERO_TARGET`.
+Variáveis de ambiente: `MEOWGANIZA_HOME`, `MEOWGANIZA_CONFIG`, `MEOWGANIZA_TARGET`.
 
 Exemplo de configuração:
 
@@ -214,7 +214,7 @@ Exemplo de configuração:
 }
 ```
 
-Consulte [`config/caoszero.example.json`](config/caoszero.example.json).
+Consulte [`config/meowganiza.example.json`](config/meowganiza.example.json).
 
 ---
 
@@ -236,9 +236,9 @@ python -m unittest tests.test_planner -v
 ## Estrutura do projeto
 
 ```text
-caosZero/
+MeOwganiza/
 ├── src/            # código-fonte
-│  └── caoszero/
+│  └── meowganiza/
 │    ├── cli.py         # interface do aplicativo
 │    ├── web.py         # servidor web local + API JSON
 │    ├── native.py        # aplicação nativa (pywebview)
@@ -258,7 +258,7 @@ caosZero/
 ├── docs/            # documentação do projeto
 ├── .github/          # CI, templates e CODEOWNERS
 ├── index.html         # página do projeto (GitHub Pages)
-├── caoszero.py         # atalho para executar sem instalar
+├── meowganiza.py         # atalho para executar sem instalar
 ├── pyproject.toml       # metadados e entrypoint
 ├── LICENSE
 ├── CODE_OF_CONDUCT.md
@@ -280,7 +280,7 @@ caosZero/
 | [`docs/TESTES.md`](docs/TESTES.md) | Estratégia e execução dos testes |
 | [`docs/RELEASE.md`](docs/RELEASE.md) | Checklist de release |
 | [`docs/DIVISAO-DE-TAREFAS.md`](docs/DIVISAO-DE-TAREFAS.md) | Divisão entre as integrantes |
-| [Wiki](https://github.com/julianasaunders/caosZero/wiki) | Páginas de apoio do projeto |
+| [Wiki](https://github.com/julianasaunders/MeOwganiza/wiki) | Páginas de apoio do projeto |
 
 ---
 

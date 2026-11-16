@@ -6,7 +6,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-LOGGER_NAME = "caoszero"
+LOGGER_NAME = "meowganiza"
 
 
 def configure_logging(state_dir: Path, verbose: bool = False) -> logging.Logger:
@@ -18,7 +18,7 @@ def configure_logging(state_dir: Path, verbose: bool = False) -> logging.Logger:
     state_dir = Path(state_dir).expanduser().resolve()
     logs_dir = state_dir / "logs"
     logs_dir.mkdir(parents=True, exist_ok=True)
-    log_path = logs_dir / "caoszero.log"
+    log_path = logs_dir / "meowganiza.log"
 
     logger = logging.getLogger(LOGGER_NAME)
     logger.setLevel(logging.DEBUG)

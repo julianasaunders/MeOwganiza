@@ -1,4 +1,4 @@
-"""Servidor web local do CaosZero.
+"""Servidor web local do MeOwganiza.
 
 Expõe a interface gráfica (pasta ``ui/``) e uma API JSON mínima para
 organizar, desfazer e diagnosticar pastas. Pensado para uso local: não tem
@@ -20,7 +20,7 @@ from urllib.parse import parse_qs, urlparse
 
 from .config import Config, load_config
 from .demo import criar_sandbox
-from .errors import CaosZeroError
+from .errors import MeOwganizaError
 from .executor import execute_plan, undo_run
 from .journal import Journal
 from .logging_setup import configure_logging
@@ -28,7 +28,7 @@ from .planner import PlanOptions, build_plan
 from .system_info import collect_system_info
 from .utils import parse_size
 
-LOGGER = logging.getLogger("caoszero.web")
+LOGGER = logging.getLogger("meowganiza.web")
 
 
 def _repo_root() -> Path:
@@ -43,7 +43,7 @@ def _ui_dir() -> Path:
 
 
 def _default_target(value) -> Path:
-    raw = value or os.environ.get("CAOSZERO_TARGET") or "."
+    raw = value or os.environ.get("MEOWGANIZA_TARGET") or "."
     return Path(str(raw)).expanduser()
 
 
@@ -99,7 +99,7 @@ def _plan_to_dict(plan) -> dict:
     }
 
 
-class CaosZeroHandler(SimpleHTTPRequestHandler):
+class MeOwganizaHandler(SimpleHTTPRequestHandler):
     """Handler que serve a UI e a API JSON."""
 
     def __init__(self, *args, **kwargs):
@@ -185,7 +185,7 @@ class CaosZeroHandler(SimpleHTTPRequestHandler):
             state_dir = _state_dir()
             try:
                 plan = build_plan(target, config=config, options=options, state_dir=state_dir)
-            except CaosZeroError as exc:
+            except MeOwganizaError as exc:
                 self._error(str(exc))
                 return
             except Exception as exc:  # noqa: BLE001
@@ -276,11 +276,11 @@ def run_web(host: str = "127.0.0.1", port: int = 8765, open_browser: bool = True
     """Sobe o servidor web e (opcionalmente) abre o navegador."""
     ui = _ui_dir()
     if not ui.exists():
-        raise CaosZeroError(f"Pasta de interface não encontrada: {ui}")
+        raise MeOwganizaError(f"Pasta de interface não encontrada: {ui}")
 
-    httpd = ThreadingHTTPServer((host, port), CaosZeroHandler)
+    httpd = ThreadingHTTPServer((host, port), MeOwganizaHandler)
     url = f"http://{host}:{port}/"
-    print(f"CaosZero web em {url}")
+    print(f"MeOwganiza web em {url}")
     print("Pressione Ctrl+C para encerrar.")
 
     if open_browser:

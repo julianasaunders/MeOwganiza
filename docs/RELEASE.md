@@ -29,13 +29,13 @@ Abrir pull request de `release/v2.0.0` para `main`, revisar e fazer merge.
 ```bash
 git checkout main
 git pull origin main
-git tag -a v2.0.0 -m "CaosZero 2.0.0"
+git tag -a v2.0.0 -m "MeOwganiza 2.0.0"
 git push origin v2.0.0
 ```
 
 Criar a release no GitHub com:
 
-- título `CaosZero 2.0.0`;
+- título `MeOwganiza 2.0.0`;
 - descrição baseada no `CHANGELOG.md`;
 - tag `v2.0.0`;
 - artefatos: código-fonte e, opcionalmente, pacote wheel.

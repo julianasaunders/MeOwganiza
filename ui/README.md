@@ -1,6 +1,6 @@
-# Interfaces do CaosZero (protótipos)
+# Interfaces do MeOwganiza (protótipos)
 
-Vinte e cinco layouts alternativos para a interface gráfica do CaosZero, inspirados
+Vinte e cinco layouts alternativos para a interface gráfica do MeOwganiza, inspirados
 na estética do CleanMyMac (hero roxo, botões em pílula, cartões arredondados,
 tipografia limpa), nas cores do Dark Dashboard e nos recursos do DropIt e do
 Kimi Work (perfis, associações, filtros, ações, prompt em linguagem natural,

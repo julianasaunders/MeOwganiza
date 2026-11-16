@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 import _bootstrap  # noqa: F401
-from caoszero.system_info import collect_system_info, render_text
+from meowganiza.system_info import collect_system_info, render_text
 
 
 class SystemInfoTests(unittest.TestCase):
@@ -21,7 +21,7 @@ class SystemInfoTests(unittest.TestCase):
     def test_render_texto(self):
         info = collect_system_info(Path.cwd())
         text = render_text(info)
-        self.assertIn("CaosZero — Diagnóstico do Sistema", text)
+        self.assertIn("MeOwganiza — Diagnóstico do Sistema", text)
         self.assertIn("PID", text)
         self.assertIn("Memória total", text)
         self.assertIn("Disco", text.replace("Armazenamento", "Disco"))

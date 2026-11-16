@@ -1,4 +1,4 @@
-"""Interface de linha de comando do CaosZero."""
+"""Interface de linha de comando do MeOwganiza."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ from pathlib import Path
 from . import __version__
 from .config import Config, default_config_path, default_state_dir, init_config, load_config
 from .demo import criar_sandbox
-from .errors import CaosZeroError
+from .errors import MeOwganizaError
 from .executor import execute_plan, undo_run
 from .journal import Journal
 from .logging_setup import close_logging, configure_logging
@@ -23,7 +23,7 @@ from .utils import human_size, parse_size, relative_label
 from .web import run_web
 
 DESCRIPTION = """\
-CaosZero — automatizador de tarefas com arquivos.
+MeOwganiza — automatizador de tarefas com arquivos.
 
 Organiza pastas por categoria, renomeia arquivos em massa, arquiva itens
 antigos, gera relatórios e permite desfazer a última execução.
@@ -34,14 +34,14 @@ para alterar os arquivos de verdade.
 
 EPILOG = """\
 exemplos:
-  python caoszero.py demo
-  python caoszero.py organize ./sandbox_teste
-  python caoszero.py organize ./Downloads --apply --report
-  python caoszero.py organize . --recursive --archive-old 180 --apply
-  python caoszero.py organize . --rename "arquivo-{seq:03d}{ext}" --apply
-  python caoszero.py undo --list
-  python caoszero.py undo --latest
-  python caoszero.py doctor
+  python meowganiza.py demo
+  python meowganiza.py organize ./sandbox_teste
+  python meowganiza.py organize ./Downloads --apply --report
+  python meowganiza.py organize . --recursive --archive-old 180 --apply
+  python meowganiza.py organize . --rename "arquivo-{seq:03d}{ext}" --apply
+  python meowganiza.py undo --list
+  python meowganiza.py undo --latest
+  python meowganiza.py doctor
 """
 
 
@@ -75,7 +75,7 @@ def _state() -> Path:
 
 
 def _default_target(value: str | None) -> Path:
-    raw = value or os.environ.get("CAOSZERO_TARGET") or "."
+    raw = value or os.environ.get("MEOWGANIZA_TARGET") or "."
     return Path(raw).expanduser()
 
 
@@ -91,14 +91,14 @@ def _report_path(value: str, run) -> Path:
 
 def _validate_organize_args(args: argparse.Namespace, config: Config) -> None:
     if args.rename_only and not args.rename:
-        raise CaosZeroError("--rename-only exige --rename com um padrão.")
+        raise MeOwganizaError("--rename-only exige --rename com um padrão.")
     if args.min_size is not None and args.max_size is not None and args.min_size > args.max_size:
-        raise CaosZeroError("--min-size não pode ser maior que --max-size.")
+        raise MeOwganizaError("--min-size não pode ser maior que --max-size.")
     if args.category and not any(
         name.lower() == args.category.lower() for name in config.categories
     ):
         available = ", ".join(config.categories)
-        raise CaosZeroError(
+        raise MeOwganizaError(
             f"Categoria desconhecida: {args.category}. Disponíveis: {available}."
         )
 
@@ -184,7 +184,7 @@ def cmd_organize(args: argparse.Namespace) -> int:
             f"Volume: {human_size(run.counts()['bytes'])}"
         )
         if result.moved:
-            print("  Para desfazer: python caoszero.py undo --latest")
+            print("  Para desfazer: python meowganiza.py undo --latest")
 
     if report_path:
         print(f"Relatório: {report_path}")
@@ -220,7 +220,7 @@ def cmd_undo(args: argparse.Namespace) -> int:
         print("Nenhuma execução com operações para desfazer.")
         return 0
     if run.dry_run:
-        raise CaosZeroError("Esta execução foi uma simulação e não pode ser desfeita.")
+        raise MeOwganizaError("Esta execução foi uma simulação e não pode ser desfeita.")
 
     done = [op for op in run.operations if op.status == Status.DONE]
     if not done:
@@ -294,11 +294,11 @@ def cmd_demo(args: argparse.Namespace) -> int:
     print(f"Ambiente de demonstração criado em: {root.resolve()}")
     print("")
     print("Próximos passos:")
-    print(f"  python caoszero.py organize {root}")
-    print(f"  python caoszero.py organize {root} --apply --report")
-    print(f"  python caoszero.py organize {root} --archive-old 180 --apply")
-    print(f"  python caoszero.py organize {root} --rename 'arquivo-{{seq:03d}}{{ext}}' --apply")
-    print(f"  python caoszero.py undo --latest")
+    print(f"  python meowganiza.py organize {root}")
+    print(f"  python meowganiza.py organize {root} --apply --report")
+    print(f"  python meowganiza.py organize {root} --archive-old 180 --apply")
+    print(f"  python meowganiza.py organize {root} --rename 'arquivo-{{seq:03d}}{{ext}}' --apply")
+    print(f"  python meowganiza.py undo --latest")
     return 0
 
 
@@ -309,9 +309,9 @@ def cmd_interactive(args: argparse.Namespace) -> int:
     journal = Journal(state_dir)
 
     print("=" * 50)
-    print(f"  CaosZero v{__version__} — modo interativo")
+    print(f"  MeOwganiza v{__version__} — modo interativo")
     print("=" * 50)
-    default = os.environ.get("CAOSZERO_TARGET") or os.getcwd()
+    default = os.environ.get("MEOWGANIZA_TARGET") or os.getcwd()
     try:
         raw_target = input(f"Diretório alvo [{default}]: ").strip()
     except (EOFError, KeyboardInterrupt):
@@ -339,7 +339,7 @@ def cmd_interactive(args: argparse.Namespace) -> int:
         if choice in {"1", "2"}:
             try:
                 plan = build_plan(target, config=config, options=PlanOptions(), state_dir=state_dir)
-            except CaosZeroError as exc:
+            except MeOwganizaError as exc:
                 print(f"Erro: {exc}")
                 continue
             _print_plan(plan)
@@ -403,12 +403,12 @@ def cmd_native(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="caoszero",
+        prog="meowganiza",
         description=DESCRIPTION,
         epilog=EPILOG,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument("--version", action="version", version=f"CaosZero {__version__}")
+    parser.add_argument("--version", action="version", version=f"MeOwganiza {__version__}")
     subparsers = parser.add_subparsers(dest="command", metavar="COMANDO")
 
     organize = subparsers.add_parser(
@@ -416,7 +416,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="planeja ou executa a organização de uma pasta",
         description="Organiza arquivos por categoria, renomeia, arquiva antigos e gera relatório.",
     )
-    organize.add_argument("target", nargs="?", help="diretório alvo (padrão: CAOSZERO_TARGET ou .)")
+    organize.add_argument("target", nargs="?", help="diretório alvo (padrão: MEOWGANIZA_TARGET ou .)")
     organize.add_argument("--apply", action="store_true", help="executa de verdade (padrão: simular)")
     organize.add_argument("-r", "--recursive", action="store_true", help="inclui subdiretórios")
     organize.add_argument("--hidden", action="store_true", help="inclui arquivos ocultos")
@@ -487,7 +487,7 @@ def build_parser() -> argparse.ArgumentParser:
     web = subparsers.add_parser(
         "web",
         help="abre a interface web local",
-        description="Sobe um servidor HTTP local com a interface gráfica do CaosZero.",
+        description="Sobe um servidor HTTP local com a interface gráfica do MeOwganiza.",
     )
     web.add_argument("--host", default="127.0.0.1", help="endereço de escuta (padrão: 127.0.0.1)")
     web.add_argument("--port", type=int, default=8765, help="porta (padrão: 8765)")
@@ -497,7 +497,7 @@ def build_parser() -> argparse.ArgumentParser:
     native = subparsers.add_parser(
         "native",
         help="abre a interface nativa (janela desktop)",
-        description="Janela desktop nativa com a interface web do CaosZero (WebView2).",
+        description="Janela desktop nativa com a interface web do MeOwganiza (WebView2).",
     )
     native.add_argument("--host", default="127.0.0.1", help="endereço de escuta (padrão: 127.0.0.1)")
     native.add_argument("--port", type=int, default=None, help="porta (padrão: automática)")
@@ -518,7 +518,7 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         return int(handler(args))
-    except CaosZeroError as exc:
+    except MeOwganizaError as exc:
         print(f"Erro: {exc}", file=sys.stderr)
         return 1
     except KeyboardInterrupt:

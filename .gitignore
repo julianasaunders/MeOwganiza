@@ -21,15 +21,15 @@ dist/
 .env
 .env.*
 !.env.example
-config/caoszero.local.json
+config/meowganiza.local.json
 
-# Estado local do CaosZero
+# Estado local do MeOwganiza
 sandbox_teste/
 sandbox/
 reports/
 relatorios/
 *.log
-caoszero.log*
+meowganiza.log*
 .state/
 state/
 

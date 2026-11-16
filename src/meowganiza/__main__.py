@@ -1,4 +1,4 @@
-"""Permite executar o pacote com ``python -m caoszero``."""
+"""Permite executar o pacote com ``python -m meowganiza``."""
 
 from .cli import main
 

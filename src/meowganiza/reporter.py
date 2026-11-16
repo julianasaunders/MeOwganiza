@@ -28,7 +28,7 @@ def build_markdown(run: Run) -> str:
     generated = datetime.now().replace(microsecond=0).isoformat(sep=" ")
 
     lines = [
-        "# Relatório CaosZero",
+        "# Relatório MeOwganiza",
         "",
         f"- **Execução:** `{run.id}`",
         f"- **Data de início:** {run.started_at}",
@@ -127,7 +127,7 @@ def build_markdown(run: Run) -> str:
             "",
             "---",
             "",
-            "*Relatório gerado automaticamente pelo CaosZero.*",
+            "*Relatório gerado automaticamente pelo MeOwganiza.*",
             "",
         ]
     )

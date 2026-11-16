@@ -91,7 +91,7 @@ def _prune_dirs(current: Path, dirs: list[str], options: PlanOptions, config: Co
             continue
         if not options.include_hidden and is_hidden(candidate):
             continue
-        # Não entra nas pastas que o próprio CaosZero criou.
+        # Não entra nas pastas que o próprio MeOwganiza criou.
         if current == target and (
             lowered in {item.lower() for item in config.categories}
             or lowered == config.archive_dir.lower()
@@ -139,9 +139,9 @@ def _skip_reason(
     if not path.is_file():
         return "não é um arquivo comum", 0.0
 
-    # Nunca mexe no diretório de estado do próprio CaosZero.
+    # Nunca mexe no diretório de estado do próprio MeOwganiza.
     if _norm(path) == _norm(state_dir) or _is_within(path, state_dir):
-        return "arquivo interno do CaosZero", 0.0
+        return "arquivo interno do MeOwganiza", 0.0
 
     name = path.name
     if not options.include_hidden and is_hidden(path):
@@ -240,7 +240,7 @@ def build_plan(
     if target_path == Path(target_path.anchor):
         raise PlanError("Recusado: organizar a raiz do sistema de arquivos é inseguro.")
     if _norm(target_path) == _norm(state_dir):
-        raise PlanError("O diretório de estado do CaosZero não pode ser o alvo da organização.")
+        raise PlanError("O diretório de estado do MeOwganiza não pode ser o alvo da organização.")
 
     plan = Plan(target=target_path)
     if not os.access(target_path, os.W_OK):

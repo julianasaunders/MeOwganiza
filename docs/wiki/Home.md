@@ -1,6 +1,6 @@
-# CaosZero 2.0
+# MeOwganiza 2.0
 
-Bem-vindo à wiki do **CaosZero 2.0**, um automatizador de tarefas com arquivos
+Bem-vindo à wiki do **MeOwganiza 2.0**, um automatizador de tarefas com arquivos
 desenvolvido para o projeto integrador de **Sistemas Operacionais** (tema 4.5).
 
 ## O que é
@@ -30,11 +30,11 @@ Uma CLI em Python que:
 
 ## Links
 
-- [Repositório](https://github.com/julianasaunders/caosZero)
-- [Issues](https://github.com/julianasaunders/caosZero/issues)
-- [Pull requests](https://github.com/julianasaunders/caosZero/pulls)
-- [Release v2.0.0](https://github.com/julianasaunders/caosZero/releases/tag/v2.0.0)
-- [Página do projeto](https://julianasaunders.github.io/caosZero/)
+- [Repositório](https://github.com/julianasaunders/MeOwganiza)
+- [Issues](https://github.com/julianasaunders/MeOwganiza/issues)
+- [Pull requests](https://github.com/julianasaunders/MeOwganiza/pulls)
+- [Release v2.0.0](https://github.com/julianasaunders/MeOwganiza/releases/tag/v2.0.0)
+- [Página do projeto](https://julianasaunders.github.io/MeOwganiza/)
 
 ## Equipe
 

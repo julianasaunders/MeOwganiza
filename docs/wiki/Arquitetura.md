@@ -43,6 +43,6 @@ Cada execução gera `<estado>/runs/<id>.json` com:
 ## Diagrama detalhado
 
 Consulte
-[ARQUITETURA.md](https://github.com/julianasaunders/caosZero/blob/main/docs/ARQUITETURA.md).
+[ARQUITETURA.md](https://github.com/julianasaunders/MeOwganiza/blob/main/docs/ARQUITETURA.md).
 
 Voltar para [Home](Home).

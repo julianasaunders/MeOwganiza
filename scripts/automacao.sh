@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# CaosZero — execução automatizada em Linux/macOS.
+# MeOwganiza — execução automatizada em Linux/macOS.
 #
 # Uso:
 #   ./scripts/automacao.sh                      # simula a organização de ~/Downloads
@@ -12,17 +12,17 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-PYTHON="${CAOSZERO_PYTHON:-python3}"
+PYTHON="${MEOWGANIZA_PYTHON:-python3}"
 
 if ! command -v "$PYTHON" >/dev/null 2>&1; then
     PYTHON="python"
 fi
 if ! command -v "$PYTHON" >/dev/null 2>&1; then
-    echo "Erro: Python 3 não encontrado. Instale o Python 3.10+ ou defina CAOSZERO_PYTHON." >&2
+    echo "Erro: Python 3 não encontrado. Instale o Python 3.10+ ou defina MEOWGANIZA_PYTHON." >&2
     exit 1
 fi
 
-TARGET="${CAOSZERO_TARGET:-}"
+TARGET="${MEOWGANIZA_TARGET:-}"
 APPLY=0
 REPORT_MODE=""
 DOCTOR=0
@@ -85,7 +85,7 @@ if [[ -z "$TARGET" ]]; then
     fi
 fi
 
-ARGS=("$ROOT_DIR/caoszero.py")
+ARGS=("$ROOT_DIR/meowganiza.py")
 if [[ $DOCTOR -eq 1 ]]; then
     ARGS+=(doctor "$TARGET")
 else
@@ -99,7 +99,7 @@ else
 fi
 
 echo "=============================================="
-echo "  CaosZero — automação de arquivos"
+echo "  MeOwganiza — automação de arquivos"
 echo "=============================================="
 echo "Python: $("$PYTHON" --version 2>&1)"
 echo "Alvo...: $TARGET"
@@ -110,4 +110,4 @@ echo ""
 
 echo ""
 echo "Execução finalizada. Consulte os relatórios em:"
-echo "  ${CAOSZERO_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/caoszero}/reports"
+echo "  ${MEOWGANIZA_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/meowganiza}/reports"

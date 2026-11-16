@@ -1,4 +1,4 @@
-# CaosZero — execução automatizada no Windows (PowerShell).
+# MeOwganiza — execução automatizada no Windows (PowerShell).
 #
 # Uso:
 #   .\scripts\automacao.ps1
@@ -6,7 +6,7 @@
 #   .\scripts\automacao.ps1 -Target "$HOME\Downloads" -Apply -Report
 #   .\scripts\automacao.ps1 -Doctor
 param(
-    [string]$Target = $env:CAOSZERO_TARGET,
+    [string]$Target = $env:MEOWGANIZA_TARGET,
     [switch]$Apply,
     [string]$Report,
     [switch]$Doctor
@@ -16,8 +16,8 @@ $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $PSScriptRoot
 
 function Find-Python {
-    if ($env:CAOSZERO_PYTHON) {
-        return @($env:CAOSZERO_PYTHON)
+    if ($env:MEOWGANIZA_PYTHON) {
+        return @($env:MEOWGANIZA_PYTHON)
     }
     $py = Get-Command py -ErrorAction SilentlyContinue
     if ($py) {
@@ -27,7 +27,7 @@ function Find-Python {
     if ($python) {
         return @($python.Source)
     }
-    throw "Python 3 não encontrado. Instale o Python 3.10+ ou defina CAOSZERO_PYTHON."
+    throw "Python 3 não encontrado. Instale o Python 3.10+ ou defina MEOWGANIZA_PYTHON."
 }
 
 $PythonCommand = Find-Python
@@ -48,9 +48,9 @@ if (-not $Target) {
 
 $Arguments = @()
 if ($Doctor) {
-    $Arguments = @("$Root\caoszero.py", "doctor", $Target)
+    $Arguments = @("$Root\meowganiza.py", "doctor", $Target)
 } else {
-    $Arguments = @("$Root\caoszero.py", "organize", $Target)
+    $Arguments = @("$Root\meowganiza.py", "organize", $Target)
     if ($Apply) {
         $Arguments += @("--apply", "--yes")
     }
@@ -60,7 +60,7 @@ if ($Doctor) {
 }
 
 Write-Host "=============================================="
-Write-Host "  CaosZero — automação de arquivos"
+Write-Host "  MeOwganiza — automação de arquivos"
 Write-Host "=============================================="
 Write-Host "Python: $(& $PythonExe @PythonPrefix --version 2>&1)"
 Write-Host "Alvo...: $Target"
@@ -71,7 +71,7 @@ Write-Host ""
 $ExitCode = $LASTEXITCODE
 
 Write-Host ""
-$StateDir = if ($env:CAOSZERO_HOME) { $env:CAOSZERO_HOME } else { Join-Path $env:LOCALAPPDATA "CaosZero" }
+$StateDir = if ($env:MEOWGANIZA_HOME) { $env:MEOWGANIZA_HOME } else { Join-Path $env:LOCALAPPDATA "MeOwganiza" }
 Write-Host "Execução finalizada. Consulte os relatórios em:"
 Write-Host "  $StateDir\reports"
 

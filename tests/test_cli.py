@@ -10,7 +10,7 @@ from pathlib import Path
 from unittest import mock
 
 import _bootstrap  # noqa: F401
-from caoszero.cli import main
+from meowganiza.cli import main
 
 
 class CliTests(unittest.TestCase):
@@ -21,7 +21,7 @@ class CliTests(unittest.TestCase):
         self.sandbox = self.base / "sandbox"
         self.env = mock.patch.dict(
             os.environ,
-            {"CAOSZERO_HOME": str(self.state)},
+            {"MEOWGANIZA_HOME": str(self.state)},
             clear=False,
         )
         self.env.start()
@@ -69,7 +69,7 @@ class CliTests(unittest.TestCase):
         self.assertTrue(report.exists())
         self.assertTrue((self.sandbox / "Documentos" / "relatorio_final.pdf").exists())
         self.assertTrue((self.sandbox / "Imagens" / "foto_ferias (1).jpg").exists())
-        self.assertIn("Relatório CaosZero", report.read_text(encoding="utf-8"))
+        self.assertIn("Relatório MeOwganiza", report.read_text(encoding="utf-8"))
 
     def test_undo_restaura(self):
         self.run_cli(["demo", str(self.sandbox)])

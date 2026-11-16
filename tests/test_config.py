@@ -8,14 +8,14 @@ from pathlib import Path
 from unittest import mock
 
 import _bootstrap  # noqa: F401
-from caoszero.config import (
+from meowganiza.config import (
     Config,
     config_from_dict,
     default_state_dir,
     init_config,
     load_config,
 )
-from caoszero.errors import ConfigError
+from meowganiza.errors import ConfigError
 
 
 class ConfigTests(unittest.TestCase):
@@ -83,7 +83,7 @@ class ConfigTests(unittest.TestCase):
 
     def test_state_dir_respeita_variavel_de_ambiente(self):
         with tempfile.TemporaryDirectory() as temporary:
-            with mock.patch.dict(os.environ, {"CAOSZERO_HOME": temporary}):
+            with mock.patch.dict(os.environ, {"MEOWGANIZA_HOME": temporary}):
                 self.assertEqual(default_state_dir(), Path(temporary).resolve())
 
     def test_init_config_nao_sobrescreve_sem_force(self):
