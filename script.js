@@ -1,4 +1,4 @@
-/* CaosZero 2.0 — interações da página */
+/* MeOwganiza 2.0 — interações da página */
 (function () {
   "use strict";
 
@@ -9,7 +9,7 @@
   const topbar = document.querySelector(".topbar");
 
   /* ---------- Tema ---------- */
-  const stored = localStorage.getItem("caoszero-theme");
+  const stored = localStorage.getItem("meowganiza-theme");
   if (stored === "light" || stored === "dark") {
     root.dataset.theme = stored;
   }
@@ -18,7 +18,7 @@
     themeButton.addEventListener("click", function () {
       const next = root.dataset.theme === "dark" ? "light" : "dark";
       root.dataset.theme = next;
-      localStorage.setItem("caoszero-theme", next);
+      localStorage.setItem("meowganiza-theme", next);
       themeButton.setAttribute(
         "aria-label",
         next === "dark" ? "Ativar tema claro" : "Ativar tema escuro"

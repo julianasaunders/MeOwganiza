@@ -5,10 +5,10 @@ import unittest
 from pathlib import Path
 
 import _bootstrap  # noqa: F401
-from caoszero.config import Config
-from caoszero.errors import PlanError
-from caoszero.models import Action
-from caoszero.planner import PlanOptions, build_plan
+from meowganiza.config import Config
+from meowganiza.errors import PlanError
+from meowganiza.models import Action
+from meowganiza.planner import PlanOptions, build_plan
 from helpers import make_file
 
 

@@ -7,12 +7,12 @@ import unittest
 from pathlib import Path
 
 import _bootstrap  # noqa: F401
-from caoszero.config import Config
-from caoszero.executor import execute_plan
-from caoszero.journal import Journal
-from caoszero.logging_setup import close_logging, configure_logging
-from caoszero.planner import PlanOptions, build_plan
-from caoszero.reporter import build_csv, build_markdown, write_report
+from meowganiza.config import Config
+from meowganiza.executor import execute_plan
+from meowganiza.journal import Journal
+from meowganiza.logging_setup import close_logging, configure_logging
+from meowganiza.planner import PlanOptions, build_plan
+from meowganiza.reporter import build_csv, build_markdown, write_report
 from helpers import make_file
 
 
@@ -37,7 +37,7 @@ class ReporterTests(unittest.TestCase):
 
     def test_markdown_contem_resumo_e_operacoes(self):
         content = build_markdown(self.run)
-        self.assertIn("# Relatório CaosZero", content)
+        self.assertIn("# Relatório MeOwganiza", content)
         self.assertIn("foto.jpg", content)
         self.assertIn("documento.pdf", content)
         self.assertIn("Resumo", content)
@@ -53,7 +53,7 @@ class ReporterTests(unittest.TestCase):
         path = Path(self.temporary.name) / "relatorio.md"
         written = write_report(self.run, path)
         self.assertEqual(written, path)
-        self.assertIn("Relatório CaosZero", path.read_text(encoding="utf-8"))
+        self.assertIn("Relatório MeOwganiza", path.read_text(encoding="utf-8"))
 
     def test_relatorio_csv(self):
         path = Path(self.temporary.name) / "relatorio.csv"

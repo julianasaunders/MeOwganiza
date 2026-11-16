@@ -6,7 +6,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-PYTHON="${CAOSZERO_PYTHON:-python3}"
+PYTHON="${MEOWGANIZA_PYTHON:-python3}"
 if ! command -v "$PYTHON" >/dev/null 2>&1; then
     PYTHON="python"
 fi
@@ -25,10 +25,10 @@ echo "==> Executando testes automatizados"
 echo "==> Smoke test da CLI"
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TMP_DIR"' EXIT
-export CAOSZERO_HOME="$TMP_DIR/estado"
-"$PYTHON" caoszero.py demo "$TMP_DIR/sandbox" >/dev/null
-"$PYTHON" caoszero.py organize "$TMP_DIR/sandbox" --apply --yes --report "$TMP_DIR/relatorio.md" >/dev/null
-"$PYTHON" caoszero.py doctor --json >/dev/null
+export MEOWGANIZA_HOME="$TMP_DIR/estado"
+"$PYTHON" meowganiza.py demo "$TMP_DIR/sandbox" >/dev/null
+"$PYTHON" meowganiza.py organize "$TMP_DIR/sandbox" --apply --yes --report "$TMP_DIR/relatorio.md" >/dev/null
+"$PYTHON" meowganiza.py doctor --json >/dev/null
 test -f "$TMP_DIR/relatorio.md"
 
 echo "==> Tudo certo."

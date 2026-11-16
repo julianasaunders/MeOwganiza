@@ -1,6 +1,6 @@
 # Guia de uso
 
-Cenários passo a passo para usar o CaosZero com segurança.
+Cenários passo a passo para usar o MeOwganiza com segurança.
 
 ## Antes de começar
 
@@ -9,12 +9,12 @@ Cenários passo a passo para usar o CaosZero com segurança.
 3. Confirme que a CLI responde:
 
 ```bash
-python caoszero.py --version
-python caoszero.py --help
+python meowganiza.py --version
+python meowganiza.py --help
 ```
 
-> Todos os exemplos usam `python caoszero.py`. Se você instalou o pacote, pode
-> trocar por `caoszero`.
+> Todos os exemplos usam `python meowganiza.py`. Se você instalou o pacote, pode
+> trocar por `meowganiza`.
 
 ---
 
@@ -23,7 +23,7 @@ python caoszero.py --help
 ### Passo 1: criar um sandbox
 
 ```bash
-python caoszero.py demo
+python meowganiza.py demo
 ```
 
 Isso cria `sandbox_teste/` com documentos, imagens, vídeos, arquivos antigos,
@@ -32,7 +32,7 @@ um arquivo oculto e uma colisão proposital.
 ### Passo 2: simular
 
 ```bash
-python caoszero.py organize sandbox_teste
+python meowganiza.py organize sandbox_teste
 ```
 
 Nada é alterado. Observe:
@@ -45,7 +45,7 @@ Nada é alterado. Observe:
 ### Passo 3: executar
 
 ```bash
-python caoszero.py organize sandbox_teste --apply --report
+python meowganiza.py organize sandbox_teste --apply --report
 ```
 
 A CLI pede confirmação. Use `--yes` para automação.
@@ -58,7 +58,7 @@ operações.
 ### Passo 5: desfazer
 
 ```bash
-python caoszero.py undo --latest
+python meowganiza.py undo --latest
 ```
 
 Os arquivos voltam para as posições originais.
@@ -69,19 +69,19 @@ Os arquivos voltam para as posições originais.
 
 ```bash
 # Simulação
-python caoszero.py organize ~/Downloads
+python meowganiza.py organize ~/Downloads
 
 # Execução com relatório automático
-python caoszero.py organize ~/Downloads --apply --report
+python meowganiza.py organize ~/Downloads --apply --report
 ```
 
-Se houver muitos arquivos, o plano pode levar alguns segundos. O CaosZero não
+Se houver muitos arquivos, o plano pode levar alguns segundos. O MeOwganiza não
 entra em subpastas por padrão.
 
 Para incluir subpastas:
 
 ```bash
-python caoszero.py organize ~/Downloads --recursive --apply
+python meowganiza.py organize ~/Downloads --recursive --apply
 ```
 
 ---
@@ -89,7 +89,7 @@ python caoszero.py organize ~/Downloads --recursive --apply
 ## Cenário 3 — Arquivar somente arquivos antigos
 
 ```bash
-python caoszero.py organize ~/Documentos --older-than 365 --archive-old 365 --apply
+python meowganiza.py organize ~/Documentos --older-than 365 --archive-old 365 --apply
 ```
 
 O resultado é:
@@ -109,7 +109,7 @@ Documentos/
 ## Cenário 4 — Renomear fotos em massa
 
 ```bash
-python caoszero.py organize ~/Fotos --rename "viagem-{seq:03d}{ext}" --rename-only
+python meowganiza.py organize ~/Fotos --rename "viagem-{seq:03d}{ext}" --rename-only
 ```
 
 Prévia:
@@ -121,7 +121,7 @@ Prévia:
 Para aplicar:
 
 ```bash
-python caoszero.py organize ~/Fotos --rename "viagem-{seq:03d}{ext}" --rename-only --apply
+python meowganiza.py organize ~/Fotos --rename "viagem-{seq:03d}{ext}" --rename-only --apply
 ```
 
 Tokens disponíveis:
@@ -142,13 +142,13 @@ Tokens disponíveis:
 
 ```bash
 # Somente PDFs
-python caoszero.py organize . --pattern "*.pdf"
+python meowganiza.py organize . --pattern "*.pdf"
 
 # Imagens entre 1 MB e 10 MB
-python caoszero.py organize ./midias --category Imagens --min-size 1MB --max-size 10MB
+python meowganiza.py organize ./midias --category Imagens --min-size 1MB --max-size 10MB
 
 # Arquivos grandes, com mais de 30 dias
-python caoszero.py organize . --min-size 100MB --older-than 30
+python meowganiza.py organize . --min-size 100MB --older-than 30
 ```
 
 ---
@@ -156,7 +156,7 @@ python caoszero.py organize . --min-size 100MB --older-than 30
 ## Cenário 6 — Relatórios para planilha
 
 ```bash
-python caoszero.py organize ./dados --apply --report relatorio.csv
+python meowganiza.py organize ./dados --apply --report relatorio.csv
 ```
 
 O CSV usa `;` como separador e UTF-8 com BOM, para abrir corretamente no Excel
@@ -165,13 +165,13 @@ em português.
 Para JSON:
 
 ```bash
-python caoszero.py organize ./dados --apply --report relatorio.json
+python meowganiza.py organize ./dados --apply --report relatorio.json
 ```
 
 Para integrar com outro programa:
 
 ```bash
-python caoszero.py organize ./dados --json > saida.json
+python meowganiza.py organize ./dados --json > saida.json
 ```
 
 ---
@@ -212,27 +212,27 @@ chmod +x scripts/*.sh
 Crie um arquivo:
 
 ```bash
-python caoszero.py config --init ./minha-config.json
+python meowganiza.py config --init ./minha-config.json
 ```
 
 Edite as categorias e use:
 
 ```bash
-python caoszero.py organize . --config ./minha-config.json
+python meowganiza.py organize . --config ./minha-config.json
 ```
 
 Ou defina permanentemente:
 
 ```bash
-export CAOSZERO_CONFIG=~/minha-config.json     # Linux/macOS
-$env:CAOSZERO_CONFIG = "$HOME\minha-config.json"  # PowerShell
+export MEOWGANIZA_CONFIG=~/minha-config.json     # Linux/macOS
+$env:MEOWGANIZA_CONFIG = "$HOME\minha-config.json"  # PowerShell
 ```
 
 ---
 
 ## Perguntas frequentes
 
-### O CaosZero apaga arquivos?
+### O MeOwganiza apaga arquivos?
 
 Não. Ele move, renomeia e arquiva. Arquivos ignorados permanecem onde estão.
 
@@ -248,7 +248,7 @@ manualmente. Use `undo --list` para ver as execuções disponíveis.
 ### O que é o diretório de estado?
 
 É onde ficam journal, logs e relatórios. No Linux/macOS:
-`~/.local/share/caoszero`; no Windows: `%LOCALAPPDATA%\CaosZero`.
+`~/.local/share/meowganiza`; no Windows: `%LOCALAPPDATA%\MeOwganiza`.
 
 ### Links simbólicos são seguidos?
 
@@ -257,7 +257,7 @@ executor.
 
 ### Posso organizar a raiz do sistema?
 
-Não. O CaosZero recusa explicitamente `/` e `C:\`.
+Não. O MeOwganiza recusa explicitamente `/` e `C:\`.
 
 ### Como limpar o estado?
 
@@ -265,8 +265,8 @@ Apague o diretório de estado. Isso remove journals e logs, mas **não** desfaz
 execuções já realizadas.
 
 ```bash
-rm -rf ~/.local/share/caoszero          # Linux/macOS
-Remove-Item -Recurse "$env:LOCALAPPDATA\CaosZero"  # Windows
+rm -rf ~/.local/share/meowganiza          # Linux/macOS
+Remove-Item -Recurse "$env:LOCALAPPDATA\MeOwganiza"  # Windows
 ```
 
 ---
@@ -277,7 +277,7 @@ Remove-Item -Recurse "$env:LOCALAPPDATA\CaosZero"  # Windows
 | --- | --- | --- |
 | `python` não encontrado | Python fora do PATH | Use `py -3` ou caminho completo |
 | `Permission denied` | Sem permissão na pasta | Ajuste permissões ou escolha outra pasta |
-| `JSON inválido` | Configuração malformada | Valide com `python caoszero.py config --show` |
+| `JSON inválido` | Configuração malformada | Valide com `python meowganiza.py config --show` |
 | Nada é organizado | Filtros muito restritivos | Remova `--pattern`, `--older-than` etc. |
 | Undo falha | Origem ocupada ou destino ausente | Verifique o journal e restaure manualmente |
 | Execução lenta | Muitos arquivos ou rede | Use uma pasta local e execute por partes |

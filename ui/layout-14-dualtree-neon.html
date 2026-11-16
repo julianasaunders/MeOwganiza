@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 14: Dual Tree Neon</title>
+<title>MeOwganiza — Layout 14: Dual Tree Neon</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -59,11 +59,11 @@ input[type=file]{display:none}
 <body>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="brand-mark">C0</div> caoszero / neon-dual</div>
+    <div class="brand"><div class="brand-mark">C0</div> meowganiza / neon-dual</div>
     <div class="status">online · v2.0.0</div>
   </div>
   <div class="hero">
-    <h1>caoszero <span class="accent">organize</span></h1>
+    <h1>meowganiza <span class="accent">organize</span></h1>
     <p>Arraste arquivos ou uma pasta. Veja a árvore antes e depois da organização.</p>
   </div>
   <div class="dropzone" id="dropzone">
@@ -86,14 +86,14 @@ input[type=file]{display:none}
   </div>
   <div class="progress"><div id="bar"></div></div>
   <div class="result" id="result"><strong id="rtitle">13 operações planejadas</strong> — Nenhum arquivo alterado.</div>
-  <div class="log" id="log"><div class="dim"># caoszero v2.0.0 — aguardando comando…</div></div>
+  <div class="log" id="log"><div class="dim"># meowganiza v2.0.0 — aguardando comando…</div></div>
   <div class="stats">
     <div class="stat"><div class="num">15</div><div class="lbl">arquivos</div></div>
     <div class="stat"><div class="num">13</div><div class="lbl">operações</div></div>
     <div class="stat"><div class="num">1</div><div class="lbl">ignorados</div></div>
     <div class="stat"><div class="num">379B</div><div class="lbl">tamanho</div></div>
   </div>
-  <div class="footer">caoszero 2.0</div>
+  <div class="footer">meowganiza 2.0</div>
 </div>
 <script>
 const CATS={'.pdf':'Documentos','.doc':'Documentos','.docx':'Documentos','.txt':'Documentos','.md':'Documentos','.rtf':'Documentos','.odt':'Documentos','.xls':'Planilhas','.xlsx':'Planilhas','.csv':'Planilhas','.ods':'Planilhas','.jpg':'Imagens','.jpeg':'Imagens','.png':'Imagens','.gif':'Imagens','.bmp':'Imagens','.svg':'Imagens','.webp':'Imagens','.heic':'Imagens','.tif':'Imagens','.tiff':'Imagens','.mp4':'Videos','.mkv':'Videos','.avi':'Videos','.mov':'Videos','.wmv':'Videos','.flv':'Videos','.webm':'Videos','.m4v':'Videos','.mp3':'Musicas','.wav':'Musicas','.flac':'Musicas','.aac':'Musicas','.ogg':'Musicas','.m4a':'Musicas','.zip':'Compactados','.rar':'Compactados','.7z':'Compactados','.tar':'Compactados','.gz':'Compactados','.tgz':'Compactados','.bz2':'Compactados','.xz':'Compactados','.exe':'Instaladores','.msi':'Instaladores','.deb':'Instaladores','.rpm':'Instaladores','.dmg':'Instaladores','.pkg':'Instaladores','.py':'Codigo','.js':'Codigo','.ts':'Codigo','.java':'Codigo','.c':'Codigo','.cpp':'Codigo','.cs':'Codigo','.go':'Codigo','.rs':'Codigo','.sh':'Codigo','.bat':'Codigo','.ps1':'Codigo','.html':'Codigo','.css':'Codigo','.json':'Codigo','.xml':'Codigo','.yml':'Codigo','.yaml':'Codigo'};
@@ -109,7 +109,7 @@ function buildTree(names){const root={};for(const rel of names){const parts=rel.
 function renderTree(root,ul,movedSet){ul.innerHTML='';const keys=Object.keys(root).sort((a,b)=>{const da=root[a].__dir?0:1,db=root[b].__dir?0:1;if(da!==db)return da-db;return a.localeCompare(b);});for(const k of keys){const n=root[k];const li=document.createElement('li');if(n.__dir){li.innerHTML='<span class="folder">📁 '+n.name+'/</span>';const sub=document.createElement('ul');li.appendChild(sub);renderTree(n.children,sub,movedSet);}else{const moved=movedSet&&movedSet.has(n.name);li.innerHTML='<span class="file">'+(moved?'→ ':'  ')+n.name+'</span>';if(moved)li.querySelector('.file').classList.add('moved');}ul.appendChild(li);}}
 function handleFiles(files){if(!files||!files.length)return;const count=document.getElementById('dzCount');count.style.display='block';count.textContent=files.length+' arquivo(s) selecionado(s)';const beforeNames=Array.from(files).map(f=>(f.webkitRelativePath&&f.webkitRelativePath.length)?f.webkitRelativePath:f.name);const beforeTree=buildTree(beforeNames);renderTree(beforeTree,document.getElementById('beforeTree'),null);const afterRoot={};for(const f of files){const name=f.name;const cat=categoryOf(name);if(!afterRoot[cat])afterRoot[cat]={__dir:true,name:cat,children:{}};afterRoot[cat].children[name]={__file:true,name};}renderTree(afterRoot,document.getElementById('afterTree'),new Set(Array.from(files).map(f=>f.name)));document.getElementById('treeGrid').style.display='grid';runScan(files.length);}
 function log(h){const l=document.getElementById('log');const d=document.createElement('div');d.innerHTML=h;l.appendChild(d);l.scrollTop=l.scrollHeight;}
-function runScan(n){const bar=document.getElementById('bar');const logEl=document.getElementById('log');logEl.innerHTML='';log('<span class="cmd">$ caoszero organize <arquivos></span>');const steps=[['20%','Arquivos analisados: '+(n||15)],['45%','Operações planejadas: 13 (379 B)'],['70%','<span class="ok">[MOVER]</span> backup_projeto.zip → Compactados/'],['88%','<span class="ok">[MOVER]</span> foto_ferias.jpg → Imagens/'],['100%','<span class="ok">SIMULAÇÃO concluída: 13 operações. Nenhum arquivo alterado.</span>']];let i=0;const t=setInterval(()=>{if(i>=steps.length){clearInterval(t);finish();return;}bar.style.width=steps[i][0];log(steps[i][1]);i++;},380);}
+function runScan(n){const bar=document.getElementById('bar');const logEl=document.getElementById('log');logEl.innerHTML='';log('<span class="cmd">$ meowganiza organize <arquivos></span>');const steps=[['20%','Arquivos analisados: '+(n||15)],['45%','Operações planejadas: 13 (379 B)'],['70%','<span class="ok">[MOVER]</span> backup_projeto.zip → Compactados/'],['88%','<span class="ok">[MOVER]</span> foto_ferias.jpg → Imagens/'],['100%','<span class="ok">SIMULAÇÃO concluída: 13 operações. Nenhum arquivo alterado.</span>']];let i=0;const t=setInterval(()=>{if(i>=steps.length){clearInterval(t);finish();return;}bar.style.width=steps[i][0];log(steps[i][1]);i++;},380);}
 function finish(){document.getElementById('result').classList.add('show');document.getElementById('rtitle').textContent='13 operações planejadas';}
 </script>
 </body>

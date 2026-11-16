@@ -3,7 +3,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(git rev-parse --show-toplevel)"
-PYTHON="${CAOSZERO_PYTHON:-python3}"
+PYTHON="${MEOWGANIZA_PYTHON:-python3}"
 if ! command -v "$PYTHON" >/dev/null 2>&1; then
     PYTHON="python"
 fi

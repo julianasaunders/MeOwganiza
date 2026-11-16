@@ -14,10 +14,10 @@ param(
 
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $PSScriptRoot
-$Python = if ($env:CAOSZERO_PYTHON) { $env:CAOSZERO_PYTHON } else { "python" }
-$Script = Join-Path $Root "caoszero.py"
+$Python = if ($env:MEOWGANIZA_PYTHON) { $env:MEOWGANIZA_PYTHON } else { "python" }
+$Script = Join-Path $Root "meowganiza.py"
 $ArgumentList = "`"$Script`" organize `"$Target`" --apply --yes --report auto"
-$TaskName = "CaosZero - Organizar $(Split-Path -Leaf $Target)"
+$TaskName = "MeOwganiza - Organizar $(Split-Path -Leaf $Target)"
 
 Write-Host "Tarefa....: $TaskName"
 Write-Host "Horário...: $Time (diariamente)"
@@ -35,6 +35,6 @@ $Trigger = New-ScheduledTaskTrigger -Daily -At $Time
 $Settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -DontStopOnIdleEnd
 $Principal = New-ScheduledTaskPrincipal -UserId "$env:USERDOMAIN\$env:USERNAME" -LogonType Interactive
 
-Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Settings $Settings -Principal $Principal -Description "Organização automática de arquivos com CaosZero" | Out-Null
+Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Settings $Settings -Principal $Principal -Description "Organização automática de arquivos com MeOwganiza" | Out-Null
 Write-Host ""
 Write-Host "Tarefa registrada. Verifique com: Get-ScheduledTask -TaskName '$TaskName'"

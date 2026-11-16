@@ -1,6 +1,6 @@
 # Guia de contribuição
 
-Obrigado por contribuir com o CaosZero. Este documento descreve o fluxo de
+Obrigado por contribuir com o MeOwganiza. Este documento descreve o fluxo de
 trabalho adotado pelo projeto.
 
 ## Código de conduta e segurança
@@ -21,8 +21,8 @@ trabalho adotado pelo projeto.
 ## Configuração inicial
 
 ```bash
-git clone https://github.com/julianasaunders/caosZero.git
-cd caosZero
+git clone https://github.com/julianasaunders/MeOwganiza.git
+cd MeOwganiza
 python -m venv .venv
 source .venv/bin/activate        # Linux/macOS
 # .\.venv\Scripts\Activate.ps1  # Windows

@@ -39,9 +39,9 @@ chmod +x scripts/*.sh
 
 | Variável | Efeito |
 | --- | --- |
-| `CAOSZERO_HOME` | Diretório de estado |
-| `CAOSZERO_CONFIG` | Configuração |
-| `CAOSZERO_TARGET` | Alvo padrão |
-| `CAOSZERO_PYTHON` | Interpretador |
+| `MEOWGANIZA_HOME` | Diretório de estado |
+| `MEOWGANIZA_CONFIG` | Configuração |
+| `MEOWGANIZA_TARGET` | Alvo padrão |
+| `MEOWGANIZA_PYTHON` | Interpretador |
 
 Voltar para [Home](Home).

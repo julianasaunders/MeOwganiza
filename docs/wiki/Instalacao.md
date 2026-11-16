@@ -9,16 +9,16 @@
 ## Opção 1 — direto do repositório
 
 ```bash
-git clone https://github.com/julianasaunders/caosZero.git
-cd caosZero
-python caoszero.py --version
+git clone https://github.com/julianasaunders/MeOwganiza.git
+cd MeOwganiza
+python meowganiza.py --version
 ```
 
 ## Opção 2 — instalar como pacote
 
 ```bash
 python -m pip install .
-caoszero --help
+meowganiza --help
 ```
 
 ## Opção 3 — ambiente virtual
@@ -44,8 +44,8 @@ python -m pip install -e .
 ## Verificar a instalação
 
 ```bash
-python caoszero.py --version
-python caoszero.py doctor
+python meowganiza.py --version
+python meowganiza.py doctor
 ```
 
 O diagnóstico mostra sistema, processo, CPU, memória, disco e permissões.

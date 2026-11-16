@@ -1,4 +1,4 @@
-"""Histórico (journal) das execuções do CaosZero.
+"""Histórico (journal) das execuções do MeOwganiza.
 
 Cada execução real vira um arquivo JSON em ``<estado>/runs``. O journal é a
 base do comando ``undo``: ele guarda a origem e o destino de cada operação.

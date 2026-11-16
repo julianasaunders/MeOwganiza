@@ -81,7 +81,7 @@ class SkippedFile:
 
 @dataclass
 class Run:
-    """Uma execução (real ou simulada) do CaosZero."""
+    """Uma execução (real ou simulada) do MeOwganiza."""
 
     id: str
     started_at: str

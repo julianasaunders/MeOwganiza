@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 8: Command Palette</title>
+<title>MeOwganiza — Layout 8: Command Palette</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -55,9 +55,9 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 <div class="wrap">
-  <div class="brand"><div class="brand-mark">C0</div> caoszero / command palette</div>
+  <div class="brand"><div class="brand-mark">C0</div> meowganiza / command palette</div>
   <div class="hero">
-    <h1>caoszero <span class="accent">organize</span></h1>
+    <h1>meowganiza <span class="accent">organize</span></h1>
     <p>Digite um comando ou escolha uma ação abaixo. Simulação por padrão.</p>
   </div>
 
@@ -94,7 +94,7 @@ a{color:inherit;text-decoration:none}
         <span class="kbd">m</span>
       </div>
     </div>
-    <div class="statusbar"><span><span class="dot"></span>caoszero v2.0.0 · 77 testes · 0 deps</span><span>Python 3.10+</span></div>
+    <div class="statusbar"><span><span class="dot"></span>meowganiza v2.0.0 · 77 testes · 0 deps</span><span>Python 3.10+</span></div>
   </div>
 
   <div class="card">
@@ -116,7 +116,7 @@ a{color:inherit;text-decoration:none}
     <div class="stat"><div class="num">100%</div><div class="lbl">reversível</div></div>
   </div>
 
-  <div class="footer"><div style="text-align:center;width:100%">caoszero 2.0</div></div>
+  <div class="footer"><div style="text-align:center;width:100%">meowganiza 2.0</div></div>
 </div>
 
 <script>
@@ -126,7 +126,7 @@ function log(h){const l=document.getElementById('log');const d=document.createEl
 function runScan(){
   const bar=document.getElementById('bar');const logEl=document.getElementById('log');
   logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero ' + cmd + ' ' + document.getElementById('path').value + '</span>');
+  log('<span class="cmd">$ meowganiza ' + cmd + ' ' + document.getElementById('path').value + '</span>');
   const steps=[['20%','Arquivos analisados: 15'],['50%','Operações planejadas: 13 (379 B)'],['75%','<span class="ok">[MOVER]</span> backup_projeto.zip → Compactados/'],['90%','<span class="ok">[MOVER]</span> foto_ferias.jpg → Imagens/'],['100%','<span class="ok">Concluído. Nenhum arquivo alterado (simulação).</span>']];
   let i=0;const t=setInterval(()=>{if(i>=steps.length){clearInterval(t);finish();return;}bar.style.width=steps[i][0];log(steps[i][1]);i++;},360);
 }

@@ -1,12 +1,12 @@
 name: Relatar um problema
-description: Informe um comportamento inesperado do CaosZero.
+description: Informe um comportamento inesperado do MeOwganiza.
 title: "[bug] "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Obrigado por ajudar a melhorar o CaosZero. Preencha as informações
+        Obrigado por ajudar a melhorar o MeOwganiza. Preencha as informações
         abaixo para que o problema possa ser reproduzido.
 
   - type: textarea
@@ -32,8 +32,8 @@ body:
       label: Passos para reproduzir
       description: Liste os comandos e ações na ordem.
       placeholder: |
-        1. python caoszero.py demo
-        2. python caoszero.py organize sandbox_teste --apply
+        1. python meowganiza.py demo
+        2. python meowganiza.py organize sandbox_teste --apply
         3. ...
     validations:
       required: true
@@ -41,7 +41,7 @@ body:
   - type: input
     id: versao
     attributes:
-      label: Versão do CaosZero
+      label: Versão do MeOwganiza
       placeholder: "2.0.0"
     validations:
       required: true

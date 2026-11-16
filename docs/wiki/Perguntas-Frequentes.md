@@ -1,6 +1,6 @@
 # Perguntas frequentes
 
-## O CaosZero apaga arquivos?
+## O MeOwganiza apaga arquivos?
 
 Não. Ele move, renomeia e arquiva. Arquivos ignorados permanecem onde estão.
 
@@ -11,8 +11,8 @@ Um nome único é gerado: `foto.jpg` → `foto (1).jpg`. Nada é sobrescrito.
 ## Como desfazer uma execução?
 
 ```bash
-python caoszero.py undo --list
-python caoszero.py undo --latest
+python meowganiza.py undo --list
+python meowganiza.py undo --latest
 ```
 
 ## Posso desfazer qualquer execução?
@@ -23,9 +23,9 @@ Desde que o journal exista e os arquivos não tenham sido movidos manualmente.
 
 | Sistema | Caminho |
 | --- | --- |
-| Linux/macOS | `~/.local/share/caoszero` |
-| Windows | `%LOCALAPPDATA%\CaosZero` |
-| Qualquer | `CAOSZERO_HOME` |
+| Linux/macOS | `~/.local/share/meowganiza` |
+| Windows | `%LOCALAPPDATA%\MeOwganiza` |
+| Qualquer | `MEOWGANIZA_HOME` |
 
 ## Links simbólicos são seguidos?
 
@@ -33,7 +33,7 @@ Não. São ignorados pelo planejador e recusados pelo executor.
 
 ## Posso organizar a raiz do sistema?
 
-Não. O CaosZero recusa `/` e `C:\`.
+Não. O MeOwganiza recusa `/` e `C:\`.
 
 ## Preciso instalar dependências?
 
@@ -48,6 +48,6 @@ python -m unittest discover -s tests -v
 ## Como contribuir?
 
 Leia o
-[CONTRIBUTING.md](https://github.com/julianasaunders/caosZero/blob/main/CONTRIBUTING.md).
+[CONTRIBUTING.md](https://github.com/julianasaunders/MeOwganiza/blob/main/CONTRIBUTING.md).
 
 Voltar para [Home](Home).

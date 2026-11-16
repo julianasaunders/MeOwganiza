@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 import _bootstrap  # noqa: F401
-from caoszero.utils import (
+from meowganiza.utils import (
     human_size,
     is_hidden,
     matches_any,

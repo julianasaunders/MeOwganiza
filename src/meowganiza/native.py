@@ -1,4 +1,4 @@
-"""Aplicação nativa do CaosZero (janela WebView2 no Windows).
+"""Aplicação nativa do MeOwganiza (janela WebView2 no Windows).
 
 Usa o mesmo layout web (ui/layout-12-dualtree-classic.html) e o mesmo
 servidor local (web.py), exibido em uma janela nativa via pywebview. As
@@ -12,7 +12,7 @@ import threading
 import time
 import webbrowser
 
-from .errors import CaosZeroError
+from .errors import MeOwganizaError
 from .web import run_web as _run_web_unused  # noqa: F401
 
 
@@ -41,17 +41,17 @@ def run_native(host: str = "127.0.0.1", port: int | None = None) -> int:
     try:
         import webview
     except ImportError as exc:
-        raise CaosZeroError(
+        raise MeOwganizaError(
             "pywebview não está instalado. Instale com: pip install pywebview"
         ) from exc
 
     if port is None:
         port = _free_port(host)
 
-    from .web import CaosZeroHandler
+    from .web import MeOwganizaHandler
     from http.server import ThreadingHTTPServer
 
-    httpd = ThreadingHTTPServer((host, port), CaosZeroHandler)
+    httpd = ThreadingHTTPServer((host, port), MeOwganizaHandler)
     thread = threading.Thread(target=httpd.serve_forever, daemon=True)
     thread.start()
 
@@ -65,7 +65,7 @@ def run_native(host: str = "127.0.0.1", port: int | None = None) -> int:
             time.sleep(0.1)
 
     window = webview.create_window(
-        "CaosZero 2.0",
+        "MeOwganiza 2.0",
         url,
         width=1180,
         height=820,

@@ -1,14 +1,14 @@
-"""Configuração do CaosZero.
+"""Configuração do MeOwganiza.
 
 A configuração é carregada, nesta ordem:
 
 1. caminho informado em ``--config``;
-2. variável de ambiente ``CAOSZERO_CONFIG``;
-3. ``<CAOSZERO_HOME>/config.json``;
+2. variável de ambiente ``MEOWGANIZA_CONFIG``;
+3. ``<MEOWGANIZA_HOME>/config.json``;
 4. valores padrão embutidos no código.
 
 O diretório de estado segue o padrão XDG no Linux/macOS e ``%LOCALAPPDATA%``
-no Windows. A variável ``CAOSZERO_HOME`` tem precedência em todos os casos.
+no Windows. A variável ``MEOWGANIZA_HOME`` tem precedência em todos os casos.
 """
 
 from __future__ import annotations
@@ -75,7 +75,7 @@ DEFAULT_IGNORE_NAMES = [
     ".DS_Store",
     "Thumbs.db",
     "desktop.ini",
-    "caoszero.log",
+    "meowganiza.log",
 ]
 
 DEFAULT_IGNORE_GLOBS = [
@@ -103,23 +103,23 @@ DEFAULT_IGNORE_DIRS = [
 
 def default_state_dir() -> Path:
     """Retorna o diretório de estado (logs, journal, relatórios)."""
-    override = os.environ.get("CAOSZERO_HOME")
+    override = os.environ.get("MEOWGANIZA_HOME")
     if override:
         return Path(override).expanduser().resolve()
 
     if os.name == "nt":
         base = os.environ.get("LOCALAPPDATA")
         root = Path(base) if base else Path.home() / "AppData" / "Local"
-        return root / "CaosZero"
+        return root / "MeOwganiza"
 
     xdg = os.environ.get("XDG_DATA_HOME")
     root = Path(xdg).expanduser() if xdg else Path.home() / ".local" / "share"
-    return root / "caoszero"
+    return root / "meowganiza"
 
 
 def default_config_path() -> Path:
     """Caminho usado por ``config --init`` e pela busca automática."""
-    override = os.environ.get("CAOSZERO_CONFIG")
+    override = os.environ.get("MEOWGANIZA_CONFIG")
     if override:
         return Path(override).expanduser().resolve()
     return default_state_dir() / "config.json"

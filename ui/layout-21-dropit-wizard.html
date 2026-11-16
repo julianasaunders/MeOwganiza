@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 21: DropIt Wizard</title>
+<title>MeOwganiza — Layout 21: DropIt Wizard</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -164,7 +164,7 @@ html[data-theme="light"] .card .help, html[data-theme="light"] .help{color:#1d1d
 <body>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="brand-mark">C0</div> caoszero / wizard</div>
+    <div class="brand"><div class="brand-mark">C0</div> meowganiza / wizard</div>
     <div style="display:flex;align-items:center;gap:10px">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema" title="Alternar tema"><ion-icon name="moon-outline" id="themeIcon"></ion-icon></button>
       <div class="status">online · v2.0.0</div>
@@ -181,7 +181,7 @@ html[data-theme="light"] .card .help, html[data-theme="light"] .help{color:#1d1d
   <!-- Step 1 -->
   <div class="card" id="step1">
     <h3><ion-icon name="folder-open-outline"></ion-icon> Passo 1 — Escolher a pasta</h3>
-    <p class="help">Informe a pasta que você quer organizar. O CaosZero só atua dentro dela.</p>
+    <p class="help">Informe a pasta que você quer organizar. O MeOwganiza só atua dentro dela.</p>
     <div class="pathbar">
       <input type="text" id="targetPath" placeholder="C:\Users\voce\Downloads" />
       <button type="button" onclick="pickFolder()">Selecionar</button>
@@ -232,7 +232,7 @@ html[data-theme="light"] .card .help, html[data-theme="light"] .help{color:#1d1d
     </div>
     <div class="progress"><div id="bar"></div></div>
     <div class="result" id="result"><span id="rtitle">0 operações planejadas</span></div>
-    <div class="log" id="log"><div class="dim"># caoszero v2.0.0 — aguardando comando…</div></div>
+    <div class="log" id="log"><div class="dim"># meowganiza v2.0.0 — aguardando comando…</div></div>
     <div class="stats">
       <div class="stat"><div class="num" id="stFiles">0</div><div class="lbl">arquivos</div></div>
       <div class="stat"><div class="num" id="stOps">0</div><div class="lbl">operações</div></div>
@@ -248,13 +248,13 @@ html[data-theme="light"] .card .help, html[data-theme="light"] .help{color:#1d1d
   <div class="card" id="step4" style="display:none">
     <h3><ion-icon name="checkmark-done-outline"></ion-icon> Passo 4 — Execução</h3>
     <p class="help">Aplicando as operações aprovadas. Cada passo é registrado no journal.</p>
-    <div class="log" id="log2"><div class="dim"># caoszero v2.0.0 — aguardando execução…</div></div>
+    <div class="log" id="log2"><div class="dim"># meowganiza v2.0.0 — aguardando execução…</div></div>
     <div style="margin-top:12px;text-align:center">
       <button class="dz-btn" onclick="goStep(1)" style="background:linear-gradient(135deg,#7c5cff,#3fd16f);color:#0b1020;border:0;padding:8px 16px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;font-family:inherit">Voltar ao início</button>
     </div>
   </div>
 
-  <div class="footer">caoszero ©</div>
+  <div class="footer">meowganiza ©</div>
 </div>
 
 <button class="fab" id="btnApply" type="button">✓ Aplicar organização</button>
@@ -302,7 +302,7 @@ async function scanFolder(){
   if (!target) { alert('Informe uma pasta.'); return; }
   state.target = target;
   const logEl=document.getElementById('log'); if(logEl) logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero organize "'+esc(target)+'"</span>');
+  log('<span class="cmd">$ meowganiza organize "'+esc(target)+'"</span>');
   log('<span class="dim"># analisando…</span>');
   try {
     const res = await fetch('/api/scan', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({target: target})});
@@ -374,7 +374,7 @@ function renderTree(root, ul, movedSet){
 
 function runApply(){
   const log2 = document.getElementById('log2');
-  if (log2) { log2.innerHTML=''; const d=document.createElement('div'); d.innerHTML='<span class="cmd">$ caoszero organize --apply</span>'; log2.appendChild(d); }
+  if (log2) { log2.innerHTML=''; const d=document.createElement('div'); d.innerHTML='<span class="cmd">$ meowganiza organize --apply</span>'; log2.appendChild(d); }
   const fab = document.getElementById('btnApply'); if (fab) fab.classList.add('show');
 }
 
@@ -383,7 +383,7 @@ async function applyOrg(){
   if (!target) { alert('Informe uma pasta.'); return; }
   document.getElementById('confirmModal').classList.remove('show');
   const logEl = document.getElementById('log'); logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero organize "'+esc(target)+'" --apply</span>');
+  log('<span class="cmd">$ meowganiza organize "'+esc(target)+'" --apply</span>');
   try {
     const res = await fetch('/api/apply', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({target: target, apply: true})});
     const data = await res.json();
@@ -391,7 +391,7 @@ async function applyOrg(){
     const r = document.getElementById('result'); r.classList.add('show');
     document.getElementById('rtitle').textContent = data.moved + ' arquivos organizados';
     log('<span class="ok">Execução concluída: '+data.moved+' movidos, '+data.failed+' falhas.</span>');
-    log('<span class="dim"># para desfazer: caoszero undo --latest</span>');
+    log('<span class="dim"># para desfazer: meowganiza undo --latest</span>');
     const fab = document.getElementById('btnApply'); if (fab) fab.classList.remove('show');
   } catch (e) {
     log('<span class="err">Erro: '+esc(String(e))+'</span>');
@@ -400,7 +400,7 @@ async function applyOrg(){
 
 async function undoLast(){
   const logEl = document.getElementById('log'); logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero undo --latest</span>');
+  log('<span class="cmd">$ meowganiza undo --latest</span>');
   try {
     const res = await fetch('/api/undo', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({latest: true})});
     const data = await res.json();
@@ -453,12 +453,12 @@ function toggleTheme(){
   const cur = document.documentElement.getAttribute('data-theme') || 'dark';
   const next = cur === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', next);
-  try { localStorage.setItem('caoszero-theme', next); } catch(e){}
+  try { localStorage.setItem('meowganiza-theme', next); } catch(e){}
   const icon = document.getElementById('themeIcon');
   if (icon) icon.setAttribute('name', next === 'dark' ? 'moon-outline' : 'sunny-outline');
 }
 // init theme on load
-(function(){ try { const s = localStorage.getItem('caoszero-theme') || 'dark'; document.documentElement.setAttribute('data-theme', s); const i = document.getElementById('themeIcon'); if (i) i.setAttribute('name', s === 'dark' ? 'moon-outline' : 'sunny-outline'); } catch(e){ document.documentElement.setAttribute('data-theme','dark'); } })();
+(function(){ try { const s = localStorage.getItem('meowganiza-theme') || 'dark'; document.documentElement.setAttribute('data-theme', s); const i = document.getElementById('themeIcon'); if (i) i.setAttribute('name', s === 'dark' ? 'moon-outline' : 'sunny-outline'); } catch(e){ document.documentElement.setAttribute('data-theme','dark'); } })();
 
 // wire toggle button
 (function(){ const btn = document.getElementById('themeToggle'); if (btn) btn.addEventListener('click', toggleTheme); })();

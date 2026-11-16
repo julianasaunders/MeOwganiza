@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 
 _SAMPLES: dict[str, bytes] = {
-    "relatorio_final.pdf": b"%PDF-1.4\n% CaosZero: relatorio de exemplo\n",
+    "relatorio_final.pdf": b"%PDF-1.4\n% MeOwganiza: relatorio de exemplo\n",
     "planilha_orcamento.xlsx": b"PK\x03\x04 planilha de exemplo",
     "foto_ferias.jpg": b"\xff\xd8\xff\xe0 imagem de exemplo",
     "captura_tela.png": b"\x89PNG\r\n\x1a\n imagem de exemplo",
@@ -16,7 +16,7 @@ _SAMPLES: dict[str, bytes] = {
     "backup_projeto.zip": b"PK\x03\x04 backup de exemplo",
     "instalador_app.exe": b"MZ instalador de exemplo",
     "script_automacao.py": b"print('exemplo')\n",
-    "notas.txt": "Anotações do projeto CaosZero.\n".encode("utf-8"),
+    "notas.txt": "Anotações do projeto MeOwganiza.\n".encode("utf-8"),
     "dados.csv": b"nome,tamanho\nfoto.jpg,2048\n",
     "arquivo_sem_extensao": b"sem extensao",
     "IMG_001.jpg": b"\xff\xd8\xff\xe0 foto para renomear",

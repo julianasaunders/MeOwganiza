@@ -34,6 +34,6 @@ jobs:
             gh release edit "$GITHUB_REF_NAME" --notes-file CHANGELOG.md
           else
             gh release create "$GITHUB_REF_NAME" \
-              --title "CaosZero ${GITHUB_REF_NAME#v}" \
+              --title "MeOwganiza ${GITHUB_REF_NAME#v}" \
               --notes-file CHANGELOG.md
           fi
