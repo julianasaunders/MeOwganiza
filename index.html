@@ -156,7 +156,7 @@
   .tree { display: flex; flex-direction: column; gap: 2px; padding: 16px; border-radius: 18px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); font-size: 13px; overflow: hidden; }
   .tree h4 { margin: 0 0 8px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); }
   .tl { display: flex; align-items: center; gap: 8px; height: 28px; padding: 0 8px; border-radius: 8px; white-space: nowrap; animation: enter calc(300ms * var(--slow)) var(--ease) calc(var(--d) * 30ms * var(--slow)) both; } .tl .i { width: 16px; height: 16px; } .tl em { margin-left: auto; font-style: normal; color: var(--mute); font-variant-numeric: tabular-nums; }
-  .tl.in { margin-left: 18px; color: var(--mute); } .tl.rm { background: rgba(255,90,90,.15); color: #ffb3b3; } .tl.new { background: rgba(52,199,89,.14); }
+  .tl.in { width: calc(100% - 18px); margin-left: 18px; color: var(--mute); } .tl.rm { background: rgba(255,90,90,.15); color: #ffb3b3; } .tl.new { background: rgba(52,199,89,.14); }
   .cmp .mid { display: grid; place-items: center; color: var(--mute); } .cmp .mid .i { width: 28px; height: 28px; animation: nudge calc(1600ms * var(--slow)) ease-in-out infinite; } @keyframes nudge { 50% { translate: 5px 0; } }
   .foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 28px 24px; }
 
