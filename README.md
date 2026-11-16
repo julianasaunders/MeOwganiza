@@ -168,6 +168,8 @@ Acesse a **[página de downloads do MeOwganiza](https://julianasaunders.github.i
 | **Windows 10/11** | `MeOwganiza.exe` | Baixe e abra o executável. Não precisa instalar Python. |
 | **Linux x86_64** | `MeOwganiza-linux-x86_64.tar.gz` | Extraia, torne o arquivo executável com `chmod +x MeOwganiza` e execute `./MeOwganiza`. |
 
+![Página de download do MeOwganiza para Windows e Linux](docs/images/pagina-de-download.png)
+
 O pacote Linux é gerado em Ubuntu 22.04 para x86_64 e está incluído no arquivo `.tar.gz`.
 
 ### Requisitos para executar pelo código-fonte
@@ -283,6 +285,30 @@ Os testes cobrem configuração, CLI, planejamento, execução, journal, desfaze
 ## Demonstração e deploy
 
 A página pública do projeto está em [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/). Ela apresenta o projeto e sua demonstração visual.
+
+### Demonstração visual
+
+**1. Escolha a pasta** que será organizada.
+
+![Tela inicial da demonstração, com a seleção da pasta para organizar](docs/images/selecao-da-pasta.png)
+
+**2. Mapa dos arquivos analisados.**
+
+![Mapa da pasta com arquivos agrupados por categoria](docs/images/mapa-de-arquivos.png)
+
+**3–4. Revise a prévia antes e depois da organização.**
+
+![Prévia dos arquivos antes da organização](docs/images/previa-antes.png)
+
+![Prévia de como os arquivos ficarão depois da organização](docs/images/previa-depois.png)
+
+**5. Acompanhe a organização em andamento.**
+
+![Progresso da organização dos arquivos](docs/images/organizacao-em-andamento.png)
+
+**6. Confira o resultado.**
+
+![Resumo da organização concluída](docs/images/organizacao-concluida.png)
 
 A interface web local também pode ser aberta com `python meowganiza.py web`; ela é servida no próprio computador, por padrão em `127.0.0.1:8765`.
 
