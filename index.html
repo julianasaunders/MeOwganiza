@@ -21,9 +21,6 @@
   @media (prefers-reduced-motion: reduce) { .enter, .rise, .pop { animation: none; } }
 
   .win { position: relative; width: min(1120px, 100%); height: 680px; margin: 0 auto; border-radius: 14px; overflow: hidden; display: grid; box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 40px 80px rgba(0,0,0,.45), 0 8px 24px rgba(0,0,0,.3); }
-  .lights { position: absolute; top: 18px; left: 18px; display: flex; gap: 8px; z-index: 3; }
-  .lights i { width: 12px; height: 12px; border-radius: 50%; background: #ff5f57; }
-  .lights i:nth-child(2) { background: #febc2e; } .lights i:nth-child(3) { background: #28c840; }
   .tile { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(145deg, var(--a), var(--b)); color: #fff; box-shadow: 0 6px 16px color-mix(in srgb, var(--b) 45%, transparent), inset 0 1px 0 rgba(255,255,255,.35); flex: none; }
   .tile .i { width: 22px; height: 22px; }
   .muted { color: rgba(255,255,255,.62); }
@@ -163,7 +160,7 @@
   /* 3 · Sunburst claro */
   .v3r { background: #f4f2ee; --fg:#1c1b22; --mute:#6b6876; --line:rgba(0,0,0,.1); --panel:#fff; --accent:#2f6bff; --on-accent:#fff; --solid:#fff; box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 40px 80px rgba(0,0,0,.35); }
   .v3r .ghost { box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06); } .v3r .cta { box-shadow: 0 6px 16px rgba(47,107,255,.35); } .v3r .opt, .v3r .live div, .v3r .task, .v3r .fcard, .v3r .dcard { box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 6px 18px rgba(0,0,0,.05); }
-  .v3r .lights { z-index: 3; } .v3r .seg { background: #e7e3dc; box-shadow: none; } .v3r .seg button[aria-pressed="true"] { background: #fff; color: #1c1b22; box-shadow: 0 1px 2px rgba(0,0,0,.14); } .v3r .ring::before { display: none; }
+  .v3r .seg { background: #e7e3dc; box-shadow: none; } .v3r .seg button[aria-pressed="true"] { background: #fff; color: #1c1b22; box-shadow: 0 1px 2px rgba(0,0,0,.14); } .v3r .ring::before { display: none; }
   .v3r .track i { background: #2f6bff; } .v3r .task .mini i { background: #2f6bff; } .v3r .ring .p { stroke: #2f6bff; filter: none; }
   .v3m { display: flex; flex-direction: column; gap: 16px; padding: 0 32px 24px; flex: 1; min-height: 0; } .v3m .tabs { align-self: center; }
   .v3body { display: grid; grid-template-columns: 1fr 320px; gap: 24px; flex: 1; min-height: 0; align-items: center; }
@@ -507,7 +504,6 @@ const ICON_PATHS = {
 };
 const icon = (name) => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON_PATHS[name]}"/></svg>`;
 const tile = (name, a, b) => `<span class="tile" style="--a:${a};--b:${b}">${icon(name)}</span>`;
-const lights = '<div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>';
 const number = new Intl.NumberFormat('pt-BR');
 
 function seeded(seed) {
@@ -631,7 +627,7 @@ function stepper(step) {
 }
 
 function shell(cls, side = '') {
-  return `<div class="win r2 ${cls}">${lights}${side}<div class="r2-col"><header class="r2-top"><ol class="stepper" id="stepper">${stepper(0)}</ol></header><section class="r2-flow enter" id="flow">${viewFor(0)}</section></div></div>`;
+  return `<div class="win r2 ${cls}">${side}<div class="r2-col"><header class="r2-top"><ol class="stepper" id="stepper">${stepper(0)}</ol></header><section class="r2-flow enter" id="flow">${viewFor(0)}</section></div></div>`;
 }
 
 function viewFor(step) {
@@ -1140,7 +1136,7 @@ const dockFor = (phase) => ({ preview: previewDock, apply: applyDock, done: done
 function shell4(cls) {
   state.step = 3; state.pinned = null; state.drawer = true;
   queueMicrotask(() => { variant().mount?.('preview'); refreshSummary(); });
-  return `<div class="win r2 ${cls}">${lights}<div class="r2-col"><header class="r2-top"><ol class="stepper" id="stepper">${stepper(3)}</ol></header><section class="r2-flow enter" id="flow">${viewFor(3)}</section></div></div>`;
+  return `<div class="win r2 ${cls}"><div class="r2-col"><header class="r2-top"><ol class="stepper" id="stepper">${stepper(3)}</ol></header><section class="r2-flow enter" id="flow">${viewFor(3)}</section></div></div>`;
 }
 
 /* lista em árvore (Agora / Depois) */
@@ -1583,7 +1579,7 @@ function sequence(spec) {
   variantObject.render = function render() {
     resetState(); state.drawer = true; state.pinned = null; state.step = 1; tickerLines.length = 0; customTiles = spec.tiles;
     queueMicrotask(() => { variant().mount?.('scan'); startScan(); });
-    return `<div class="win r2 r3 t9">${lights}<div class="r2-col"><header class="r2-top"><ol class="stepper" id="stepper">${stepper(1)}</ol></header><section class="r2-flow enter" id="flow">${viewFor(1)}</section></div></div>`;
+    return `<div class="win r2 r3 t9"><div class="r2-col"><header class="r2-top"><ol class="stepper" id="stepper">${stepper(1)}</ol></header><section class="r2-flow enter" id="flow">${viewFor(1)}</section></div></div>`;
   };
   return variantObject;
 }
@@ -1685,7 +1681,7 @@ function finalSequence(spec) {
   variantObject.render = function render() {
     resetState(); state.drawer = false; state.pinned = null; state.step = 5; state.mode = 'after'; state.arrive = true; tickerLines.length = 0; customTiles = cloudTiles;
     queueMicrotask(() => { variant().mount('done'); refreshSummary(); startCountUp(); });
-    return `<div class="win r2 r3 t9">${lights}<div class="r2-col"><header class="r2-top"><ol class="stepper" id="stepper">${stepper(5)}</ol></header><section class="r2-flow enter" id="flow">${viewFor(5)}</section></div></div>`;
+    return `<div class="win r2 r3 t9"><div class="r2-col"><header class="r2-top"><ol class="stepper" id="stepper">${stepper(5)}</ol></header><section class="r2-flow enter" id="flow">${viewFor(5)}</section></div></div>`;
   };
   return variantObject;
 }
