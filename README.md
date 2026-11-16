@@ -2,13 +2,15 @@
 
 > **Organizador seguro de arquivos** — projeto integrador da disciplina de **Sistemas Operacionais**.
 
-O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva itens antigos e gera relatórios. A interface principal é um aplicativo nativo para Windows; também há uma CLI multiplataforma e uma demonstração web.
+O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva itens antigos e gera relatórios. A interface principal é um aplicativo nativo para Windows; também há uma CLI multiplataforma e uma demonstração web. 📥 Download: [github.com/julianasaunders/MeOwganiza/releases](https://github.com/julianasaunders/MeOwganiza/releases)
 
 [![CI](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml/badge.svg)](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE)
 
 **🌐 Demonstração:** [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/)
+
+**📥 Download:** [github.com/julianasaunders/MeOwganiza/releases](https://github.com/julianasaunders/MeOwganiza/releases)
 
 | 🏷️ Item | 📋 Detalhe |
 | --- | --- |
