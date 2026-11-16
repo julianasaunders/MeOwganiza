@@ -313,7 +313,6 @@ MeOwganiza/
 | [`docs/GUIA-DE-USO.md`](docs/GUIA-DE-USO.md) | Guia de uso completo |
 | [`docs/TESTES.md`](docs/TESTES.md) | Estratégia e execução dos testes |
 | [`docs/RELEASE.md`](docs/RELEASE.md) | Checklist de release |
-| [`docs/DIVISAO-DE-TAREFAS.md`](docs/DIVISAO-DE-TAREFAS.md) | Divisão entre as integrantes |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Como contribuir |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Código de conduta |
 | [`SECURITY.md`](SECURITY.md) | Política de segurança |

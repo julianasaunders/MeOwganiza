@@ -142,7 +142,6 @@ consiga trabalhar de forma autônoma, com revisões cruzadas nos pontos crítico
   integração e wiki.
 - **Conjunto:** definição do escopo, revisão de PRs.
 
-O detalhamento está em [`DIVISAO-DE-TAREFAS.md`](DIVISAO-DE-TAREFAS.md).
 
 ## 11. Cronograma
 
