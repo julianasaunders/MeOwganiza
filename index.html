@@ -639,7 +639,7 @@ function go(step) {
   state.step = step;
   flowToken++;
   if (step < 5) state.undone = false;
-  if (step === 3) state.mode = 'before';
+  if (step === 2 || step === 3) state.mode = 'before';
   const flow = document.getElementById('flow');
   flow.innerHTML = viewFor(step);
   flow.classList.remove('enter');
