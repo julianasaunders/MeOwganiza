@@ -9,7 +9,12 @@
   *{box-sizing:border-box}
   body{margin:0;min-height:100vh;overflow-x:hidden;color:var(--cream);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -12%,#367782 0,#1a5966 32%,#104550 69%,#0a3741 100%)}
   .page{position:relative;min-height:100vh;isolation:isolate;display:flex;flex-direction:column;overflow:hidden}
-  .sky{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.35;background-image:radial-gradient(circle at 8% 15%,#e6d3a9 2px,transparent 2.7px),radial-gradient(circle at 17% 32%,#f5a49a 2px,transparent 2.8px),radial-gradient(circle at 31% 13%,#a9c77d 2px,transparent 2.8px),radial-gradient(circle at 49% 25%,#dbe2d4 2px,transparent 2.7px),radial-gradient(circle at 68% 13%,#c6d5cf 2px,transparent 2.8px),radial-gradient(circle at 83% 30%,#e3b76e 2px,transparent 2.8px),radial-gradient(circle at 92% 18%,#e9a49d 2px,transparent 2.8px);background-size:148px 115px}
+  .sky{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+  .sky-cat{position:absolute;width:calc(9px * var(--k));height:calc(8px * var(--k));margin:calc(-4px * var(--k)) 0 0 calc(-4.5px * var(--k));border-radius:50% 50% 46% 46%;background:var(--c);opacity:var(--alpha);filter:drop-shadow(0 0 3px color-mix(in srgb,var(--c) 55%,transparent));animation:sky-float calc(7s * var(--slow)) ease-in-out var(--float-delay) infinite,sky-twinkle calc(3200ms * var(--slow)) ease-in-out var(--twinkle-delay) infinite}
+  .sky-cat::before,.sky-cat::after{content:"";position:absolute;top:calc(-2.5px * var(--k));border-left:calc(2.5px * var(--k)) solid transparent;border-right:calc(2.5px * var(--k)) solid transparent;border-bottom:calc(4px * var(--k)) solid var(--c)}
+  .sky-cat::before{left:calc(-.5px * var(--k));transform:rotate(-10deg)}.sky-cat::after{right:calc(-.5px * var(--k));transform:rotate(10deg)}
+  @keyframes sky-float{50%{transform:translateY(-6px)}}
+  @keyframes sky-twinkle{50%{opacity:.2}}
   .topbar{height:58px;display:flex;align-items:center;justify-content:center;padding:10px 18px}
   .steps{display:flex;align-items:center;gap:10px;color:#d3dfda;font-size:12px}
   .step{display:flex;align-items:center;gap:7px;white-space:nowrap}.step b{width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#ffffff24;color:var(--cream);font-size:11px}.step.active{color:#fff}.step.active b{background:var(--cream);color:#174650}.connector{width:26px;height:1px;background:#ffffff45}
@@ -34,7 +39,7 @@
   .cats{position:relative;width:min(1120px,100%);height:138px;flex:none;margin: auto auto 0;overflow:hidden;border-bottom:8px solid #65894e;background:linear-gradient(transparent 55%,#072f38a6)}
   .catstrip{position:absolute;left:50%;bottom:14px;width:320px;height:28px;margin-left:-160px;transform-origin:50% 100%;background:url("assets/gatos-8bit.png") 0 0 / 7680px 28px no-repeat;image-rendering:pixelated;animation:cats calc(3000ms * var(--slow)) steps(24) infinite;pointer-events:none;z-index:2}
   @keyframes cats{to{background-position:-7680px 0}}
-  @media(prefers-reduced-motion:reduce){.catstrip{animation:none}}
+  @media(prefers-reduced-motion:reduce){.catstrip,.sky-cat{animation:none!important}}
   footer{position:absolute;right:16px;bottom:16px;color:#d0ddd7a8;font-size:10px;letter-spacing:.02em}
   @media(max-width:640px){.topbar{height:auto;min-height:56px}.steps{gap:6px;font-size:10px}.step{gap:4px}.step b{width:20px;height:20px}.connector{width:12px}main{padding:32px 0 22px}.cards{grid-template-columns:1fr;margin-top:22px}.cats{height:100px}footer{position:static;text-align:center;padding:9px 0 12px}.safe-note{max-width:360px}}
   @media(max-width:390px){.steps{gap:4px;font-size:9px}.step b{width:18px;height:18px}.connector{width:8px}h1{font-size:33px}}
@@ -76,8 +81,36 @@
       const strip = document.querySelector(".catstrip");
       if (strip) strip.style.transform = `scale(${Math.min(3.6, strip.parentElement.clientWidth / 326)})`;
     }
+    function seedSkyCats() {
+      const sky = document.querySelector(".sky");
+      const colors = ["#e6d3a9", "#f5a49a", "#a9c77d", "#dbe2d4", "#c6d5cf", "#e3b76e", "#b9a5d9"];
+      let seed = 7319;
+      const random = () => ((seed = (seed * 48271) % 2147483647) - 1) / 2147483646;
+      for (let i = 0; i < 140; i++) {
+        const band = i % 10;
+        let x = random() * 100;
+        let y;
+        if (band < 4) y = 3 + random() * 29;
+        else if (band < 8) y = 68 + random() * 29;
+        else {
+          x = random() < .5 ? random() * 14 : 86 + random() * 14;
+          y = 30 + random() * 38;
+        }
+        const cat = document.createElement("i");
+        cat.className = "sky-cat";
+        cat.style.left = `${x}%`;
+        cat.style.top = `${y}%`;
+        cat.style.setProperty("--c", colors[i % colors.length]);
+        cat.style.setProperty("--k", (.75 + random() * .6).toFixed(2));
+        cat.style.setProperty("--alpha", (.25 + random() * .22).toFixed(2));
+        cat.style.setProperty("--float-delay", `-${(random() * 7).toFixed(2)}s`);
+        cat.style.setProperty("--twinkle-delay", `-${(random() * 3.2).toFixed(2)}s`);
+        sky.appendChild(cat);
+      }
+    }
     window.addEventListener("resize", fitCats);
     fitCats();
+    seedSkyCats();
   </script>
   <footer>© MeOwganiza · 2026</footer>
 </div>
