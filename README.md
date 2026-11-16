@@ -2,7 +2,7 @@
 
 > **Organizador seguro de arquivos** — projeto integrador da disciplina de **Sistemas Operacionais**.
 
-O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva itens antigos e gera relatórios. A interface principal é um aplicativo nativo para Windows; também há uma CLI multiplataforma e uma demonstração web. 📥 Download: [julianasaunders.github.io/MeOwganiza/download.html](https://julianasaunders.github.io/MeOwganiza/download.html)
+O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva itens antigos e gera relatórios. A interface principal é um aplicativo nativo para Windows e Linux.
 
 [![CI](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml/badge.svg)](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -15,7 +15,7 @@ O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva 
 | 🏷️ Item | 📋 Detalhe |
 | --- | --- |
 | **Tipo** | Aplicativo local para organização de arquivos |
-| **Interfaces** | Aplicativo nativo para Windows, CLI multiplataforma e interface web local |
+| **Interfaces** | Aplicativo nativo para Windows, Linux e interface web local |
 | **Tecnologias** | Python, HTML, CSS e JavaScript |
 | **Requisito** | Python 3.10+ para executar pelo código-fonte |
 | **Segurança** | Simula primeiro; só aplica operações mediante confirmação |
@@ -83,8 +83,6 @@ O MeOwganiza separa **planejamento** e **execução**: primeiro mostra o que pre
 
 ## Requisitos
 
-> **Resumo:** o MeOwganiza deve analisar e planejar a organização de pastas (RF01–RF02), exibir uma prévia antes de agir (RF03), aplicar mudanças apenas mediante confirmação (RF04), registrar operações com relatórios e desfazer (RF05) e diagnosticar o sistema (RF06). Não funcionais: segurança por padrão (RNF01), sem sobrescrever/excluir arquivos (RNF02), multiplataforma com Python 3.10+ (RNF03), CLI sem dependências externas (RNF04) e registros locais para reversibilidade (RNF05).
-
 ### Requisitos funcionais
 
 | Código | Requisito |
@@ -130,6 +128,7 @@ Analisar arquivos ──► Planejar destinos e operações
                         Revisar a prévia
                               │
                        confirmação + --apply
+                              │
                               ▼
 Executar operações ──► Journal ──► Relatórios / desfazer
 ```
