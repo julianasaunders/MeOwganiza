@@ -579,7 +579,7 @@ const FOLDERS = [
 const OPTION_DEFS = [
   { id: 'dups', icon: 'copy', a: '#f8d6a2', b: '#d7bb94', title: 'Excluir duplicados', detail: () => `${TOTAL.dupN} arquivos · ${fmtMb(TOTAL.dupMb)} · mantém o mais antigo` },
   { id: 'corrupt', icon: 'alert', a: '#f39c97', b: '#cf6273', title: 'Excluir corrompidos', detail: () => `${TOTAL.corN} arquivos que não abrem` },
-  { id: 'app', icon: 'box', a: '#c08a62', b: '#9a6a44', title: 'Remover instaladores', detail: () => `${STATS.app.count} arquivos .dmg e .pkg · ${fmtMb(STATS.app.mb)}` },
+  { id: 'app', icon: 'box', a: '#c08a62', b: '#9a6a44', title: 'Manter instaladores', detail: () => `${STATS.app.count} arquivos .dmg e .pkg · ${fmtMb(STATS.app.mb)} mantidos` },
   { id: 'sort', icon: 'folder', a: '#7cc3c3', b: '#2f8a9c', title: 'Organizar em pastas', detail: () => `${summary().folders} pastas por tipo de arquivo` },
 ];
 const STEP_NAMES = ['pick', 'scan', 'map', 'preview', 'apply', 'done'];
@@ -591,13 +591,17 @@ const variant = () => VARIANTS[current];
 
 function resetState() {
   flowToken++;
-  state = { customFolders: [], keep: new Set(), by: 'type', litOrder: null, step: 0, folder: 'Downloads', opts: { dups: true, corrupt: true, app: false, sort: true }, skip: new Set(), drill: null, filter: 'all', tab: 'map', sel: null, mode: 'before', undone: false, lit: 0 };
+  state = { customFolders: [], keep: new Set(), by: 'type', litOrder: null, step: 0, folder: 'Downloads', opts: { dups: true, corrupt: true, app: true, sort: true }, skip: new Set(), drill: null, filter: 'all', tab: 'map', sel: null, mode: 'before', undone: false, lit: 0 };
+}
+
+function optionRemoves(id) {
+  return id === 'app' ? !state.opts.app : state.opts[id];
 }
 
 function isRemoved(file) {
   if (state.keep.has(file.id)) return false;
   const { opts } = state;
-  return (file.status === 'dup' && opts.dups) || (file.status === 'corrupt' && opts.corrupt) || (file.cat === 'app' && opts.app);
+  return (file.status === 'dup' && opts.dups) || (file.status === 'corrupt' && opts.corrupt) || (file.cat === 'app' && optionRemoves('app'));
 }
 
 function remaining(category) {
@@ -712,7 +716,7 @@ function buildTasks() {
   const tasks = [];
   if (opts.dups && TOTAL.dupN) tasks.push({ icon: 'copy', a: '#f8d6a2', b: '#d7bb94', label: `Enviando ${TOTAL.dupN} duplicados para a Lixeira` });
   if (opts.corrupt && TOTAL.corN) tasks.push({ icon: 'alert', a: '#f39c97', b: '#cf6273', label: `Isolando ${TOTAL.corN} arquivos corrompidos` });
-  if (opts.app) tasks.push({ icon: 'box', a: '#c08a62', b: '#9a6a44', label: `Removendo ${STATS.app.count} instaladores antigos` });
+  if (optionRemoves('app')) tasks.push({ icon: 'box', a: '#c08a62', b: '#9a6a44', label: `Removendo ${STATS.app.count} instaladores antigos` });
   if (opts.sort) {
     tasks.push({ icon: 'folder', a: '#7cc3c3', b: '#2f8a9c', label: `Criando ${s.folders} pastas` });
     tasks.push({ icon: 'sparkle', a: '#f2a7b5', b: '#e57f8f', label: `Movendo ${number.format(s.movedN)} arquivos` });
@@ -1150,7 +1154,7 @@ function treeHtml(phase) {
   const folders = state.opts.sort
     ? CATEGORIES.filter((category) => remaining(category).n > 0).map((category, index) => `<button class="tl new row ${cls}" data-row="${category.id}" data-focus="${category.id}" style="--d:${index}">${icon('folder')}${category.dest}<em>${remaining(category).n}</em></button>`).join('')
     : `<div class="tl ${cls}">${icon('folder')}${state.folder}<em>${s.keptN} soltos</em></div>`;
-  const subRows = TRASH_ROWS.filter(([key]) => state.opts[key]).map(([key, name, label, count], index) => `<button class="tl in rm row ${cls}" data-row="${key}" data-focus="trash" style="--d:${index + 10}">${icon(name)}${label}<em>${count()}</em></button>`).join('');
+  const subRows = TRASH_ROWS.filter(([key]) => optionRemoves(key)).map(([key, name, label, count], index) => `<button class="tl in rm row ${cls}" data-row="${key}" data-focus="trash" style="--d:${index + 10}">${icon(name)}${label}<em>${count()}</em></button>`).join('');
   const trash = s.removedN ? `<button class="tl rm row ${cls}" data-row="trash" data-focus="trash" style="--d:9">${icon('trash')}Lixeira<em>${s.removedN}</em></button>${subRows}` : '';
   return `<h4>Depois</h4>${folders}${trash}`;
 }
@@ -1158,7 +1162,7 @@ function treeHtml(phase) {
 /* movimentos da organização */
 function buildMoves() {
   const moves = [];
-  const trashMoves = TRASH_ROWS.filter(([key]) => state.opts[key]).map(([key, , label]) => ({ rowKey: key, tileKey: 'trash', label: `Lixeira (${label.toLowerCase()})`, files: FILES.filter((file) => isRemoved(file) && (key === 'dups' ? file.status === 'dup' : key === 'corrupt' ? file.status === 'corrupt' : file.cat === 'app' && file.status === 'ok')) })).filter((move) => move.files.length);
+  const trashMoves = TRASH_ROWS.filter(([key]) => optionRemoves(key)).map(([key, , label]) => ({ rowKey: key, tileKey: 'trash', label: `Lixeira (${label.toLowerCase()})`, files: FILES.filter((file) => isRemoved(file) && (key === 'dups' ? file.status === 'dup' : key === 'corrupt' ? file.status === 'corrupt' : file.cat === 'app' && file.status === 'ok')) })).filter((move) => move.files.length);
   if (trashMoves.length) trashMoves[trashMoves.length - 1].also = 'trash';
   moves.push(...trashMoves);
   if (state.opts.sort) CATEGORIES.forEach((category) => { const files = FILES.filter((file) => file.cat === category.id && !isRemoved(file)); if (files.length) moves.push({ rowKey: category.id, tileKey: category.id, label: category.dest, files }); });
