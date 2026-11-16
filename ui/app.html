@@ -149,7 +149,8 @@ body{position:relative;isolation:isolate}
 .pathbar button.primary,.plan-actions .approve,.modal .btn-confirm{background:linear-gradient(120deg,var(--cat-coral),var(--cat-leaf));color:#143b40}
 .dropzone{position:relative;overflow:hidden;background:#073741aa;border-color:#ffffff42;box-shadow:inset 0 1px 0 #ffffff10}
 .dropzone.dragover{border-color:var(--cat-leaf);background:#bfdc5a14}
-.dropzone .dz-icon{color:var(--cat-coral);filter:drop-shadow(0 0 10px #f39c9760)}
+.dropzone .dz-icon{display:grid;place-items:center;color:var(--cat-coral);filter:drop-shadow(0 0 10px #f39c9760)}
+.dropzone .cat-upload{width:40px;height:40px}
 .dropzone .dz-title{color:var(--cream)}.dropzone .dz-sub{color:#c6d8d2}
 .modebar button{background:#063c47;border-color:var(--cat-line);color:#c6d8d2}
 .modebar button.active{border-color:var(--cat-leaf);background:#bfdc5a18;color:var(--cat-leaf)}
@@ -208,7 +209,7 @@ html[data-theme="light"] button[style*="#1b1b1f"]{background:#f8f4eb!important;c
       <button type="button" class="primary" onclick="scanFolder()">Analisar</button>
     </div>
     <div class="dropzone" id="dropzone">
-      <div class="dz-icon"><ion-icon name="cloud-upload-outline"></ion-icon></div>
+      <div class="dz-icon"><svg class="cat-upload" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 28 13 8l15 11a31 31 0 0 1 8 0L51 8l3 20c5 6 6 13 2 20-4 8-12 12-24 12S12 56 8 48c-4-7-3-14 2-20Z" fill="currentColor"/><path d="M32 47V30m-8 8 8-8 8 8" fill="none" stroke="#0b414b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <p class="dz-title">Arraste arquivos ou uma pasta aqui</p>
       <p class="dz-sub">ou clique para selecionar</p>
       <input type="file" id="fileInput" multiple webkitdirectory style="display:none" />
