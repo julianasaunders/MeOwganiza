@@ -949,7 +949,8 @@ function arrangeStars(tile, box, positions, scatter) {
   if (!tile.size) while (size > 5 && Math.ceil(list.length / Math.max(1, Math.floor(inner.w / size))) * size > inner.h) size -= 0.5;
   const cols = Math.max(1, Math.floor(inner.w / size));
   const offset = tile.align === 'left' ? 0 : (inner.w - Math.min(cols, list.length) * size) / 2;
-  list.forEach((file, index) => positions.set(file.id, { x: inner.x + offset + (index % cols) * size + size / 2, y: inner.y + Math.floor(index / cols) * size + size / 2, s: size }));
+  const catTopOffset = document.querySelector('.t10') ? 6.5 * Math.max(0.62, Math.min(1, size / 10)) : size / 2;
+  list.forEach((file, index) => positions.set(file.id, { x: inner.x + offset + (index % cols) * size + size / 2, y: inner.y + Math.floor(index / cols) * size + catTopOffset, s: size }));
 }
 
 function syncTiles(container, tiles) {
