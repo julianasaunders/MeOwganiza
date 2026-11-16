@@ -120,12 +120,72 @@ html[data-theme="light"] .stepper .step.active{background:rgba(63,209,111,.15);c
 html[data-theme="light"] .stepper .step.done{color:#f39c97;border-color:rgba(124,92,255,.3)}
 html[data-theme="light"] button[style*="#1b1b1f"]{background:rgba(255,255,255,.85)!important;color:#6e6e73!important;border-color:rgba(124,92,255,.3)!important}
 html[data-theme="light"] button[style*="dashed"]{background:rgba(255,255,255,.85)!important;color:#6e6e73!important;border-color:rgba(124,92,255,.4)!important}
+
+/* Tema dos gatinhos: céu-teal, cartões de vidro e detalhes coral/folha. */
+:root{color-scheme:dark;--cream:#f8f2e7;--muted:#c6d8d2;--text:#f8f2e7;--purple:#f5a49a;--green:#bfdc5a;--cat-line:#ffffff2b;--cat-glass:#ffffff12;--cat-deep:#073741;--cat-mid:#124b58;--cat-coral:#f39c97;--cat-leaf:#bfdc5a}
+html,body{background:radial-gradient(ellipse at 50% -14%,#367782 0,#1a5966 32%,#104550 69%,#0a3741 100%);color:var(--cream)}
+body{position:relative;isolation:isolate}
+.cat-sky{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sky-cat{position:absolute;width:calc(9px * var(--cat-scale));height:calc(8px * var(--cat-scale));margin:calc(-4px * var(--cat-scale)) 0 0 calc(-4.5px * var(--cat-scale));border-radius:50% 50% 46% 46%;background:var(--cat-color);opacity:var(--cat-opacity);filter:drop-shadow(0 0 4px color-mix(in srgb,var(--cat-color) 55%,transparent));animation:cat-drift 7s ease-in-out var(--cat-delay) infinite}
+.sky-cat::before,.sky-cat::after{content:"";position:absolute;top:calc(-2.5px * var(--cat-scale));border-left:calc(2.5px * var(--cat-scale)) solid transparent;border-right:calc(2.5px * var(--cat-scale)) solid transparent;border-bottom:calc(4px * var(--cat-scale)) solid var(--cat-color)}
+.sky-cat::before{left:calc(-.5px * var(--cat-scale));transform:rotate(-10deg)}.sky-cat::after{right:calc(-.5px * var(--cat-scale));transform:rotate(10deg)}
+@keyframes cat-drift{50%{translate:0 -7px;opacity:.18}}
+.wrap{position:relative;z-index:1;display:flex;flex-direction:column;max-width:1020px;min-height:100vh;padding:24px 24px 118px}
+.top{border-bottom-color:var(--cat-line)}
+.brand{font-size:18px;letter-spacing:-.02em}
+.brand-mark{width:40px;height:40px;border-radius:13px;color:#0b414b;box-shadow:0 8px 20px #f39c9740,inset 0 1px 0 #ffffff75}
+.brand-mark svg{width:27px;height:27px;fill:currentColor}
+.brand-mark .whiskers{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+.brand-copy{display:grid;gap:2px}.brand-copy strong{font-size:17px}.brand-copy span{font-size:10px;font-weight:500;color:#c6d8d2;letter-spacing:.04em}
+.status{color:var(--cat-leaf)}.status::before{background:var(--cat-leaf);box-shadow:0 0 9px var(--cat-leaf)}
+.theme-toggle{border-color:var(--cat-coral);color:var(--cat-coral)}.theme-toggle:hover{background:#f39c9722}
+.step{background:#ffffff0c;border-color:var(--cat-line);backdrop-filter:blur(12px);color:#d4e2dd;border-radius:12px}
+.step.active{border-color:var(--cat-leaf);background:#bfdc5a18;color:var(--cat-leaf);box-shadow:inset 0 1px 0 #ffffff12}
+.step.done{border-color:#f39c9780;color:#ffd0c8}
+.card{background:#ffffff10;border-color:var(--cat-line);box-shadow:inset 0 1px 0 #ffffff16,0 18px 45px #032e3740;backdrop-filter:blur(16px)}
+.card h3{color:var(--cream)}.card .help{color:#c6d8d2}
+.pathbar input,.pathbar button,.rule-builder,.rule-builder select,.rule-builder input,.col,.log,.stat,.plan-item,.modal .btn-cancel{background:#063c47;border-color:var(--cat-line);color:var(--cream)}
+.pathbar button:hover{border-color:var(--cat-leaf)}
+.pathbar button.primary,.plan-actions .approve,.modal .btn-confirm{background:linear-gradient(120deg,var(--cat-coral),var(--cat-leaf));color:#143b40}
+.dropzone{position:relative;overflow:hidden;background:#073741aa;border-color:#ffffff42;box-shadow:inset 0 1px 0 #ffffff10}
+.dropzone.dragover{border-color:var(--cat-leaf);background:#bfdc5a14}
+.dropzone .dz-icon{color:var(--cat-coral);filter:drop-shadow(0 0 10px #f39c9760)}
+.dropzone .dz-title{color:var(--cream)}.dropzone .dz-sub{color:#c6d8d2}
+.modebar button{background:#063c47;border-color:var(--cat-line);color:#c6d8d2}
+.modebar button.active{border-color:var(--cat-leaf);background:#bfdc5a18;color:var(--cat-leaf)}
+.col.before h4,.col .folder,.plan-review h4{color:var(--cat-coral)}.col.after h4{color:var(--cat-leaf)}
+.col ul ul{border-left-color:#ffffff45}
+.log{background:#052f39;border-color:var(--cat-line)}.log .cmd{color:#f5b4ab}.log .err{color:#ffaaa1}.log .ok{color:var(--cat-leaf)}
+.stat{background:#063c47;border-color:var(--cat-line)}.stat .num,.result strong{color:var(--cat-leaf)}
+.result{background:#bfdc5a16;border-color:#bfdc5a55}
+.plan-review{background:#ffffff0d;border-color:#ffffff30}.plan-item{background:#063c47}.plan-item .tag{background:#f39c9728;color:#ffd0c8}
+.plan-actions .cancel{background:#063c47;border-color:var(--cat-line);color:var(--cream)}
+.fab{background:linear-gradient(120deg,var(--cat-coral),var(--cat-leaf));color:#143b40;box-shadow:0 10px 30px #032e3766}
+.modal{background:#104b58;border-color:var(--cat-line);box-shadow:0 24px 70px #001d25aa}.modal p{color:#d0ded8}
+.footer{margin-top:auto;position:relative;z-index:1;border-top-color:var(--cat-line);color:#c6d8d2}
+.cat-ground{position:fixed;left:0;right:0;bottom:0;height:96px;z-index:0;pointer-events:none;background:linear-gradient(180deg,transparent,#0a3741b8 70%);border-bottom:8px solid #65894e}
+.cat-parade{position:absolute;left:50%;bottom:4px;width:320px;height:28px;margin-left:-160px;transform:scale(2.4);transform-origin:50% 100%;background:url("./gatos-8bit.png") 0 0/7680px 28px no-repeat;image-rendering:pixelated;animation:cat-run 3s steps(24) infinite}
+@keyframes cat-run{to{background-position:-7680px 0}}
+button[style*="#1b1b1f"]{background:#063c47!important;color:var(--cream)!important;border-color:var(--cat-line)!important}
+html[data-theme="light"] body{background:radial-gradient(ellipse at 50% -14%,#f4dfd4 0,#e7f0e4 47%,#cfe2dc 100%);color:#18464f}
+html[data-theme="light"] .cat-sky{opacity:.2}html[data-theme="light"] .card{background:#ffffffc9;border-color:#124b5830;color:#18464f}
+html[data-theme="light"] .card h3,html[data-theme="light"] .dropzone .dz-title{color:#18464f}
+html[data-theme="light"] .card .help,html[data-theme="light"] .footer{color:#42636a}
+html[data-theme="light"] .pathbar input,html[data-theme="light"] .pathbar button,html[data-theme="light"] .rule-builder,html[data-theme="light"] .rule-builder select,html[data-theme="light"] .rule-builder input,html[data-theme="light"] .col,html[data-theme="light"] .log,html[data-theme="light"] .stat{background:#f8f4eb;color:#18464f;border-color:#124b5830}
+html[data-theme="light"] .dropzone{background:#ffffffa8;border-color:#124b5855}
+html[data-theme="light"] button[style*="#1b1b1f"]{background:#f8f4eb!important;color:#18464f!important;border-color:#124b5830!important}
+@media(prefers-reduced-motion:reduce){.sky-cat,.cat-parade{animation:none!important}}
+@media(max-width:640px){.wrap{padding:18px 18px 92px}.cat-ground{height:72px}.cat-parade{transform:scale(1.35)}}
 </style>
 </head>
 <body>
+<div class="cat-sky" id="catSky" aria-hidden="true"></div>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="brand-mark">𑄝</div> meowganiza / wizard</div>
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M10 27 13 7l16 12a31 31 0 0 1 10 0L55 7l-1 21c5 6 7 14 3 22-4 8-13 12-25 12S11 58 7 50c-4-8-2-16 3-23Z"/><ellipse cx="23" cy="37" rx="2.5" ry="3.5"/><ellipse cx="41" cy="37" rx="2.5" ry="3.5"/><path d="m29 44 3 2 3-2-3-3z"/><path d="M21 46 11 44m10 5-10 1m32-4 10-2m-10 5 10 1" class="whiskers"/></svg></div>
+      <div class="brand-copy"><strong>MeOwganiza</strong><span>Organização segura</span></div>
+    </div>
     <div style="display:flex;align-items:center;gap:10px">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema" title="Alternar tema"><ion-icon name="moon-outline" id="themeIcon"></ion-icon></button>
       <div class="status">online · v2.0.0</div>
@@ -214,6 +274,7 @@ html[data-theme="light"] button[style*="dashed"]{background:rgba(255,255,255,.85
   <div class="footer">meowganiza ©</div>
 </div>
 
+<div class="cat-ground" aria-hidden="true"><div class="cat-parade"></div></div>
 <button class="fab" id="btnApply" type="button">✓ Aplicar organização</button>
 
 <div class="modal-backdrop" id="confirmModal">
@@ -414,7 +475,27 @@ function toggleTheme(){
 (function(){ try { const s = localStorage.getItem('meowganiza-theme') || 'dark'; document.documentElement.setAttribute('data-theme', s); const i = document.getElementById('themeIcon'); if (i) i.setAttribute('name', s === 'dark' ? 'moon-outline' : 'sunny-outline'); } catch(e){ document.documentElement.setAttribute('data-theme','dark'); } })();
 const _tb = document.getElementById('themeToggle'); if (_tb) _tb.addEventListener('click', toggleTheme);
 
-window.addEventListener('pywebviewready', ()=>{ console.log('pywebview ready'); });
+  window.addEventListener('pywebviewready', ()=>{ console.log('pywebview ready'); });
+
+  function seedCatSky(){
+    const sky=document.getElementById('catSky');
+    if(!sky)return;
+    const colors=['#e6d3a9','#f5a49a','#bfdc5a','#dbe2d4','#7cc3c3','#e3b76e','#c6d5cf'];
+    let seed=7319;
+    const random=()=>((seed=(seed*48271)%2147483647)-1)/2147483646;
+    for(let i=0;i<76;i++){
+      const cat=document.createElement('i');
+      cat.className='sky-cat';
+      cat.style.left=`${random()*100}%`;
+      cat.style.top=`${random()*100}%`;
+      cat.style.setProperty('--cat-color',colors[i%colors.length]);
+      cat.style.setProperty('--cat-scale',(.72+random()*.58).toFixed(2));
+      cat.style.setProperty('--cat-opacity',(.22+random()*.3).toFixed(2));
+      cat.style.setProperty('--cat-delay',`-${(random()*7).toFixed(2)}s`);
+      sky.appendChild(cat);
+    }
+  }
+  seedCatSky();
 </script>
 </body>
 </html>
