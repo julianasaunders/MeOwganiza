@@ -975,7 +975,7 @@ function labelTop(tile, box) {
   const width = Math.max(40, tile.w / 100 * box.width - 24);
   const labelLines = Math.ceil((tile.label.length + 4) / Math.max(6, Math.floor(width / 8.4)));
   const subLines = Math.ceil(tile.sub.length / Math.max(6, Math.floor(width / 6.6)));
-  return 12 + labelLines * 18 + subLines * 16 + 8;
+  return 12 + labelLines * 18 + subLines * 16 + 18;
 }
 
 function avoidRects(box) {
