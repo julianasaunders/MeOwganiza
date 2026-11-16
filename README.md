@@ -1,172 +1,222 @@
-# MeOwganiza 2.0
+# 🐱 MeOwganiza 2.0
 
-**Automatizador de tarefas com arquivos** — projeto integrador da disciplina de
-**Sistemas Operacionais**.
+> **Organizador seguro de arquivos** — projeto integrador da disciplina de **Sistemas Operacionais**.
 
-O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva
-itens antigos, gera relatórios e permite **desfazer** a última execução. A
-interface principal é um aplicativo nativo para Windows, que seleciona a
-pasta, analisa e aplica a organização diretamente no seu computador.
+O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva itens antigos e gera relatórios. A interface principal é um aplicativo nativo para Windows; também há uma CLI multiplataforma e uma demonstração web.
 
 [![CI](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml/badge.svg)](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
-[![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE) [![Demonstração](https://img.shields.io/badge/DEMO-online-blue.svg)](https://julianasaunders.github.io/MeOwganiza/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE)
 
-> **Demonstração online:** https://julianasaunders.github.io/MeOwganiza/
+**🌐 Demonstração:** [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/)
 
-> **Segurança em primeiro lugar:** por padrão o MeOwganiza apenas **simula** a
-> organização. Nenhum arquivo é alterado sem sua confirmação explícita.
-> Nenhum arquivo é excluído ou sobrescrito.
-
----
-
-## Interface gráfica (principal)
-
-> O MeOwganiza é, antes de tudo, um **aplicativo com interface gráfica**.
-> Você não precisa saber programar — basta abrir e clicar.
-
-### Como usar (em 5 passos)
-
-| Passo | Ação | O que acontece |
-| :---: | --- | --- |
-| 1 | **Abrir** `MeOwganiza.exe` | A janela do app aparece |
-| 2 | **Selecionar pasta** | Escolha a pasta que deseja organizar |
-| 3 | **Analisar** | O MeOwganiza planeja tudo e mostra a árvore **Antes/Depois** + log + estatísticas. **Nada é alterado.** |
-| 4 | **Aplicar organização** | Botão flutuante com confirmação antes de mover qualquer arquivo |
-| 5 | **Desfazer** | Restaura a última execução com um clique |
-
-### Recursos da interface
-
-| Recurso | Descrição |
+| 🏷️ Item | 📋 Detalhe |
 | --- | --- |
-| **Selecionar pasta** | Seletor nativo de pastas do Windows |
-| **Analisar** | Planeja as operações e exibe a árvore "Antes/Depois" |
-| **Aplicar organização** | Botão flutuante com confirmação antes de mover |
-| **Desfazer** | Restaura a última execução |
-| **Modo claro/escuro** | Alternável pelo ícone de sol/lua no cabeçalho |
-| **Plano de revisão** | Revise antes de aplicar |
-| **Diagnóstico** | CPU, memória, disco, permissões |
-
-> **O executável está em** `dist/MeOwganiza.exe` (ou `Downloads/MeOwganiza.exe`).
-
-> **Também disponível** como página web em `ui/app.html`.
+| **Tipo** | Aplicativo local para organização de arquivos |
+| **Interfaces** | Aplicativo nativo para Windows, CLI multiplataforma e interface web local |
+| **Tecnologias** | Python, HTML, CSS e JavaScript |
+| **Requisito** | Python 3.10+ para executar pelo código-fonte |
+| **Segurança** | Simula primeiro; só aplica operações mediante confirmação |
+| **Licença** | MIT |
 
 ---
 
-## Demonstração
+## 🗺️ Índice
 
-> **Acesse a demonstração online:**
-> https://julianasaunders.github.io/MeOwganiza/
-
-A demonstração apresenta o MeOwganiza 2.0, seus recursos, o fluxo de
-organização e os conceitos de Sistemas Operacionais aplicados.
-
-## Sumário
-
-- [Interface gráfica (principal)](#interface-gráfica-principal)
-- [Demonstração](#demonstração)
-- [Funcionalidades](#funcionalidades)
-- [Instalação](#instalação)
-- [Como funciona](#como-funciona)
-- [Conceitos de Sistemas Operacionais](#conceitos-de-sistemas-operacionais)
-- [Automação e agendamento](#automação-e-agendamento)
-- [Configuração](#configuração)
-- [Testes](#testes)
-- [Estrutura do projeto](#estrutura-do-projeto)
-- [Documentação](#documentação)
-- [Comunidade e segurança](#comunidade-e-segurança)
-- [Equipe](#equipe)
-- [Licença](#licença)
+1. [Objetivo](#objetivo)
+2. [Problema](#problema)
+3. [Escopo e funcionalidades](#escopo-e-funcionalidades)
+4. [Requisitos](#requisitos)
+5. [Tecnologias](#tecnologias)
+6. [Arquitetura](#arquitetura)
+7. [Conceitos de Sistemas Operacionais](#conceitos-de-sistemas-operacionais)
+8. [Instalação e execução](#instalação-e-execução)
+9. [Automação e agendamento](#automação-e-agendamento)
+10. [Configuração](#configuração)
+11. [Dados e privacidade](#dados-e-privacidade)
+12. [Testes](#testes)
+13. [Demonstração e deploy](#demonstração-e-deploy)
+14. [Estrutura do projeto](#estrutura-do-projeto)
+15. [Documentação e contribuição](#documentação-e-contribuição)
+16. [Glossário](#glossário)
+17. [Equipe e licença](#equipe-e-licença)
 
 ---
 
-## Funcionalidades
+## Objetivo
 
-- **Organização por extensão** com categorias configuráveis.
-- **Simulação segura** por padrão — nada é alterado sem confirmação.
-- **Filtros**: glob, idade, tamanho, categoria, subdiretórios e ocultos.
-- **Renomeação em massa** com `{name}`, `{ext}`, `{seq}`, `{date}` e `{categoria}`.
-- **Arquivamento de antigos** em `Arquivo/AAAA/`.
-- **Journal em JSON** de cada execução.
-- **Undo** da última execução (ou de um ID específico).
-- **Relatórios** em Markdown, CSV e JSON.
-- **Diagnóstico do SO** (`doctor`): processo, CPU, memória, disco, permissões,
- variáveis de ambiente e limites de cgroup.
-- **Modo interativo** para uso guiado.
-- **Scripts** de automação para Bash e PowerShell.
-- **Sem dependências externas** para executar.
-- **Interface nativa** para Windows.
-- **Modo claro/escuro** alternável.
+Ajudar a organizar arquivos de forma clara e reversível e, ao mesmo tempo, demonstrar conceitos de Sistemas Operacionais aplicados a uma tarefa cotidiana.
 
----
+## Problema
 
-## Instalação
+Pastas com muitos arquivos podem ser difíceis de navegar e organizar manualmente. Automatizar essa tarefa sem uma prévia também pode causar movimentações inesperadas ou perda de dados.
 
-### Requisitos
+O MeOwganiza separa **planejamento** e **execução**: primeiro mostra o que pretende fazer; a pessoa revisa e confirma antes de qualquer alteração.
 
-- Python **3.10** ou superior (para desenvolvimento).
-- Windows, Linux ou macOS.
+## Escopo e funcionalidades
 
-### Usar o aplicativo (usuário final)
+| ✨ Recurso | 📋 O que faz |
+| --- | --- |
+| **Organização por categoria** | Agrupa arquivos por extensão, usando categorias configuráveis |
+| **Simulação e prévia** | Planeja as operações sem alterar arquivos |
+| **Filtros** | Filtra por padrão, idade, tamanho, categoria, subdiretórios e arquivos ocultos |
+| **Renomeação em massa** | Usa padrões com `{name}`, `{ext}`, `{seq}` e `{date}` |
+| **Arquivamento** | Move arquivos antigos para `Arquivo/AAAA/` quando solicitado |
+| **Relatórios** | Gera relatórios em Markdown, CSV ou JSON |
+| **Desfazer** | Usa o journal para restaurar uma execução anterior, quando possível |
+| **Diagnóstico** | Exibe informações de CPU, memória, disco, processo e permissões |
+| **Automação** | Inclui scripts e opções de agendamento para Linux/macOS e Windows |
+| **Interface gráfica** | Aplicativo nativo no Windows e interface web local |
+| **Tema** | Modo claro e escuro na interface gráfica |
 
-Baixe `MeOwganiza.exe` (em `dist/` ou `Downloads/`) e abra com duplo clique.
-Não é necessário instalar Python.
+### Segurança em primeiro lugar
 
-### Usar do repositório (desenvolvimento)
+- `organize` apenas simula por padrão; use `--apply` para executar.
+- Operações reais pedem confirmação, exceto quando `--yes` é informado.
+- Arquivos não são sobrescritos nem excluídos; colisões recebem um nome único.
+- As operações são registradas em journal e podem ser desfeitas conforme o estado dos arquivos.
+- O aplicativo funciona localmente e não envia os arquivos para um servidor.
+
+> A demonstração online é ilustrativa. Para organizar arquivos do computador, use o aplicativo ou a CLI local.
+
+## Requisitos
+
+### Requisitos funcionais
+
+| Código | Requisito |
+| --- | --- |
+| **RF01** | Analisar uma pasta e planejar a organização dos arquivos |
+| **RF02** | Permitir filtros, categorias e regras de renomeação configuráveis |
+| **RF03** | Exibir uma prévia antes de executar operações |
+| **RF04** | Aplicar operações somente mediante solicitação explícita |
+| **RF05** | Registrar operações, gerar relatórios e permitir desfazer uma execução |
+| **RF06** | Diagnosticar recursos e permissões relevantes do sistema |
+
+### Requisitos não funcionais
+
+| Código | Requisito |
+| --- | --- |
+| **RNF01** | Segurança por padrão: simular antes de aplicar |
+| **RNF02** | Não sobrescrever nem excluir arquivos |
+| **RNF03** | Executar a CLI em Windows, Linux e macOS com Python 3.10+ |
+| **RNF04** | Não exigir dependências externas para a CLI; `pywebview` é opcional para a janela nativa |
+| **RNF05** | Manter registros locais para apoiar a reversibilidade |
+
+## Tecnologias
+
+| 🔧 Tecnologia | 📝 Uso |
+| --- | --- |
+| **Python 3.10+** | CLI, planejamento, execução, relatórios e diagnóstico |
+| **HTML, CSS e JavaScript** | Interface web e conteúdo da interface gráfica |
+| **pywebview** | Dependência opcional da janela nativa do Windows |
+| **`unittest`** | Testes automatizados |
+| **GitHub Actions / GitHub Pages** | Integração contínua e demonstração do projeto |
+
+## Arquitetura
+
+O fluxo principal mantém o planejamento separado das alterações no disco:
+
+```text
+Selecionar uma pasta
+       │
+       ▼
+Analisar arquivos ──► Planejar destinos e operações
+                              │
+                              ▼
+                        Revisar a prévia
+                              │
+                       confirmação + --apply
+                              ▼
+Executar operações ──► Journal ──► Relatórios / desfazer
+```
+
+| Módulo | Responsabilidade |
+| --- | --- |
+| `planner.py` | Analisa arquivos e monta o plano sem executar mudanças |
+| `executor.py` | Executa o plano confirmado e registra as operações |
+| `journal.py` | Persiste o histórico necessário para consultar e desfazer execuções |
+| `reporter.py` | Gera relatórios Markdown, CSV e JSON |
+| `system_info.py` | Coleta informações do sistema operacional |
+| `web.py` / `native.py` | Disponibiliza as interfaces web local e nativa |
+
+## Conceitos de Sistemas Operacionais
+
+O projeto demonstra conceitos da disciplina por meio de operações reais em um diretório de teste:
+
+| Conceito | Onde aparece | Como observar |
+| --- | --- | --- |
+| **Sistema de arquivos** | `planner.py`, `executor.py` | Prévia de origem e destino |
+| **Chamadas de sistema** | `journal.py`, `reporter.py` | Journal e relatórios gerados |
+| **Processos e CPU** | `system_info.py` | PID, PPID, threads e núcleos |
+| **Memória e disco** | `system_info.py`, `planner.py` | Recursos disponíveis e espaço livre |
+| **Permissões** | `system_info.py`, `planner.py` | Permissões do diretório-alvo |
+| **Concorrência** | `utils.py`, `executor.py` | Resolução de colisões com nomes únicos |
+| **Automação** | `scripts/` | Cron e Agendador de Tarefas |
+| **Tolerância a falhas** | `journal.py`, `undo` | Recuperação de operações registradas |
+
+## Instalação e execução
+
+### Para quem vai usar o aplicativo
+
+Abra `dist/MeOwganiza.exe` (ou `Downloads/MeOwganiza.exe`, quando disponível). Não é necessário instalar Python para usar o executável.
+
+### Requisitos para executar pelo código-fonte
+
+- Python **3.10 ou superior**.
+- Windows, Linux ou macOS para a CLI.
+- Windows e `pywebview` para a interface nativa.
+
+### Preparar o ambiente
 
 ```bash
 git clone https://github.com/julianasaunders/MeOwganiza.git
 cd MeOwganiza
-```
-
-### Ambiente virtual (recomendado para desenvolvimento)
-
-```bash
 python -m venv .venv
 python -m pip install --upgrade pip
 python -m pip install -e .
 ```
 
----
+No Windows, ative o ambiente com `.\.venv\Scripts\Activate.ps1`; no Linux/macOS, use `source .venv/bin/activate`.
 
-## Como funciona
+### Comandos úteis
 
-O MeOwganiza separa **planejamento** e **execução**:
+```bash
+# Criar uma pasta de demonstração
+python meowganiza.py demo sandbox_teste
 
-1. **Planejar** — lê metadados, aplica filtros e calcula destinos sem tocar
-  no disco. (`planner.py`)
-2. **Confirmar** — mostra a prévia, avisos e pede confirmação antes de
-  executar. (interface web)
-3. **Executar** — move, renomeia ou arquiva e grava cada passo no journal.
-  (`executor.py`)
-4. **Relatar e desfazer** — gera MD/CSV/JSON e permite restaurar a execução
-  anterior. (`reporter.py` · `journal.py`)
+# Simular a organização (não altera arquivos)
+python meowganiza.py organize sandbox_teste
 
-Nenhum arquivo é sobrescrito: se o destino já existir, o MeOwganiza gera um
-nome único (`foto.jpg` → `foto (1).jpg`).
+# Aplicar depois de revisar e confirmar o plano
+python meowganiza.py organize sandbox_teste --apply
 
----
+# Desfazer a execução mais recente
+python meowganiza.py undo --latest
 
-## Conceitos de Sistemas Operacionais
+# Ver diagnóstico do sistema
+python meowganiza.py doctor
 
-O projeto demonstra, de forma aplicada:
+# Abrir o menu guiado
+python meowganiza.py interactive
 
-| Conceito | Onde aparece | Como demonstrar |
-| --- | --- | --- |
-| **Sistema de arquivos** | `planner.py`, `executor.py` | Prévia com origem e destino |
-| **Chamadas de sistema** | `journal.py`, `reporter.py` | Journal JSON gerado |
-| **Processos** | `system_info.py` | PID, PPID, threads |
-| **CPU** | `system_info.py` | Núcleos, load, cgroup |
-| **Memória** | `system_info.py` | Total, disponível, cgroup |
-| **Disco** | `system_info.py`, `planner.py` | Total, usado, livre |
-| **Permissões** | `system_info.py`, `planner.py` | Modo octal e simbólico |
-| **Concorrência** | `utils.py`, `executor.py` | Colisão resolvida com `(1)` |
-| **Automação** | `scripts/` | Cron e Agendador |
-| **Tolerância a falhas** | `journal.py`, `undo` | Restauração da execução |
+# Abrir a interface web local
+python meowganiza.py web
+```
 
----
+> Antes de usar `--apply` em uma pasta real, revise o plano e mantenha backups dos dados importantes.
+
+### Interface nativa
+
+Para instalar a dependência opcional e abrir a janela desktop:
+
+```bash
+python -m pip install -e ".[native]"
+python meowganiza.py native
+```
 
 ## Automação e agendamento
+
+Há scripts para executar tarefas e agendá-las nos sistemas suportados. Revise o alvo e teste primeiro sem `--apply`.
 
 ### Linux/macOS
 
@@ -182,123 +232,87 @@ O projeto demonstra, de forma aplicada:
 .\scripts\agendar_tarefa.ps1 -Target "$HOME\Downloads" -Time "09:00" -Register
 ```
 
----
-
 ## Configuração
 
-A configuração é procurada nesta ordem:
+A configuração é procurada nesta ordem: `--config CAMINHO`, `MEOWGANIZA_CONFIG`, `<MEOWGANIZA_HOME>/config.json` e `config/meowganiza.example.json`.
 
-1. `--config CAMINHO`
-2. variável `MEOWGANIZA_CONFIG`
-3. `<MEOWGANIZA_HOME>/config.json`
-4. `./config/meowganiza.example.json`
+| Variável | Finalidade |
+| --- | --- |
+| `MEOWGANIZA_HOME` | Define o diretório de estado, logs e journal |
+| `MEOWGANIZA_CONFIG` | Define o arquivo JSON de configuração |
+| `MEOWGANIZA_TARGET` | Define a pasta-alvo padrão |
 
-O diretório de estado segue o padrão XDG no Linux/macOS e `%LOCALAPPDATA%`
-no Windows. A variável `MEOWGANIZA_HOME` tem precedência em todos os casos.
+O diretório de estado segue o padrão XDG em Linux/macOS e `%LOCALAPPDATA%` no Windows. `MEOWGANIZA_HOME` permite defini-lo manualmente.
 
-Variáveis de ambiente: `MEOWGANIZA_HOME`, `MEOWGANIZA_CONFIG`, `MEOWGANIZA_TARGET`.
+Exemplo completo: [`config/meowganiza.example.json`](config/meowganiza.example.json).
 
-Exemplo de configuração:
+## Dados e privacidade
 
-```json
-{
- "categories": {
-  "Documentos": [".pdf", ".docx", ".txt", ".md"],
-  "Imagens": [".jpg", ".jpeg", ".png", ".gif", ".svg"],
-  "Videos": [".mp4", ".mkv", ".avi", ".mov"],
-  "Compactados": [".zip", ".tar.gz", ".rar", ".7z"]
- },
- "ignore_dirs": [".git", "node_modules", "__pycache__"],
- "max_depth": 5,
- "follow_symlinks": false
-}
-```
+O processamento é local: os arquivos analisados permanecem no computador. O estado, o journal e os relatórios são gravados localmente. A demonstração hospedada no GitHub Pages apresenta o projeto e não acessa pastas do seu computador.
 
-Consulte [`config/meowganiza.example.json`](config/meowganiza.example.json).
-
----
+A aplicação não faz chamadas de rede. Consulte [`SECURITY.md`](SECURITY.md) para garantias, limitações conhecidas e boas práticas.
 
 ## Testes
+
+Execute a suíte completa na raiz do repositório:
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-A suíte cobre configuração, utilitários, planejador, executor, journal, undo,
-relatórios, diagnóstico e a interface web.
+Os testes cobrem configuração, CLI, planejamento, execução, journal, desfazer, relatórios, diagnóstico e fluxos integrados.
 
-```bash
-python -m unittest tests.test_planner -v
-```
+## Demonstração e deploy
 
----
+A página pública do projeto está em [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/). Ela apresenta o projeto e sua demonstração visual.
+
+A interface web local também pode ser aberta com `python meowganiza.py web`; ela é servida no próprio computador, por padrão em `127.0.0.1:8765`.
 
 ## Estrutura do projeto
 
 ```text
 MeOwganiza/
-├── src/            # código-fonte
-│  └── meowganiza/
-│    ├── cli.py         # interface do aplicativo
-│    ├── web.py         # servidor web local + API JSON
-│    ├── native.py        # aplicação nativa (pywebview)
-│    ├── config.py        # configuração e diretórios padrão
-│    ├── planner.py       # planejamento (sem efeitos colaterais)
-│    ├── executor.py       # execução e undo
-│    ├── journal.py       # persistência das execuções
-│    ├── reporter.py       # relatórios MD/CSV/JSON
-│    ├── system_info.py     # diagnóstico do SO
-│    ├── models.py        # modelos de domínio
-│    ├── utils.py        # utilitários
-│    └── demo.py         # sandbox de demonstração
-├── ui/             # interfaces web (galeria + app.html)
-├── tests/           # testes automatizados
+├── src/meowganiza/   # CLI, planejamento, execução, journal e relatórios
+├── ui/               # interfaces web e galeria de layouts
+├── tests/            # testes automatizados
 ├── scripts/          # automação, agendamento e hooks
 ├── config/           # configuração de exemplo
-├── docs/            # documentação do projeto
-├── .github/          # CI, templates e CODEOWNERS
-├── index.html         # página do projeto (GitHub Pages)
-├── meowganiza.py         # atalho para executar sem instalar
-├── pyproject.toml       # metadados e entrypoint
+├── docs/             # documentação do projeto
+├── index.html        # página de apresentação (GitHub Pages)
+├── meowganiza.py     # atalho para executar pelo código-fonte
+├── pyproject.toml    # metadados e comandos instaláveis
 ├── LICENSE
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── SECURITY.md
 └── README.md
 ```
 
----
+## Documentação e contribuição
 
-## Documentação
-
-| Arquivo | Conteúdo |
+| 📄 Documento | 📋 Conteúdo |
 | --- | --- |
 | [`docs/PLANEJAMENTO.md`](docs/PLANEJAMENTO.md) | Escopo, backlog e divisão de tarefas |
 | [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) | Módulos e fluxo de dados |
-| [`docs/CONCEITOS-SO.md`](docs/CONCEITOS-SO.md) | Conceitos de SO aplicados ao código |
+| [`docs/CONCEITOS-SO.md`](docs/CONCEITOS-SO.md) | Conceitos de Sistemas Operacionais aplicados |
 | [`docs/GUIA-DE-USO.md`](docs/GUIA-DE-USO.md) | Guia de uso completo |
 | [`docs/TESTES.md`](docs/TESTES.md) | Estratégia e execução dos testes |
 | [`docs/RELEASE.md`](docs/RELEASE.md) | Checklist de release |
 | [`docs/DIVISAO-DE-TAREFAS.md`](docs/DIVISAO-DE-TAREFAS.md) | Divisão entre as integrantes |
-| [Wiki](https://github.com/julianasaunders/MeOwganiza/wiki) | Páginas de apoio do projeto |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | Como contribuir |
+| [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Código de conduta |
+| [`SECURITY.md`](SECURITY.md) | Política de segurança |
+| [Wiki do projeto](https://github.com/julianasaunders/MeOwganiza/wiki) | Instalação, arquitetura e perguntas frequentes |
 
----
+## Glossário
 
-## Comunidade e segurança
+| Termo | Significado |
+| --- | --- |
+| **Simulação** | Plano exibido sem alterar arquivos |
+| **Journal** | Registro local das operações de uma execução |
+| **Undo** | Tentativa segura de restaurar uma execução registrada |
+| **CLI** | Interface de linha de comando |
 
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) — branches, commits, PRs e revisão
-- [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) — convivência e colaboração
-- [`SECURITY.md`](SECURITY.md) — relato de vulnerabilidades e garantias
-
----
-
-## Equipe
+## Equipe e licença
 
 - **Juliana Saunders** — [@julianasaunders](https://github.com/julianasaunders)
 - **Jaquelline Feitoza** — [@jaquellinef](https://github.com/jaquellinef)
 
----
-
-## Licença
-
-Distribuído sob a licença **MIT**. Veja [`LICENSE`](LICENSE).
+Distribuído sob a licença **MIT**. Consulte [`LICENSE`](LICENSE).
