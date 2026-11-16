@@ -988,8 +988,11 @@ function avoidRects(box) {
 }
 
 function computeSky(mode, box) {
-  const tiles = (customTiles && customTiles(mode, box)) || skyTiles(mode, box.width / box.height);
-  const labelPad = tiles.reduce((max, tile) => Math.max(max, tile.pad?.top ?? labelTop(tile, box)), 0);
+  const tilesFor = (layoutMode) => (customTiles && customTiles(layoutMode, box)) || skyTiles(layoutMode, box.width / box.height);
+  const tiles = tilesFor(mode);
+  const peerMode = mode === 'type' ? 'folders' : mode === 'folders' ? 'type' : null;
+  const labelTiles = peerMode ? [...tiles, ...tilesFor(peerMode)] : tiles;
+  const labelPad = labelTiles.reduce((max, tile) => Math.max(max, tile.pad?.top ?? labelTop(tile, box)), 0);
   tiles.forEach((tile) => { if (!tile.pad || tile.pad.top === undefined) tile.pad = { ...tile.pad, top: labelPad }; });
   const positions = new Map();
   tiles.forEach((tile) => arrangeStars(tile, box, positions, mode === 'mess'));
