@@ -1,4 +1,4 @@
-name: Build Executável (Windows)
+name: Build Desktop (Windows + Linux)
 
 on:
   push:
@@ -13,30 +13,30 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    name: Build MeOwganiza.exe (Windows)
+  build-windows:
+    name: Build Windows executables
     runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar Python
+      - name: Configure Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Instalar dependências
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pywebview pyinstaller
+          python -m pip install "pywebview>=6.0" pyinstaller
 
-      - name: Build (console + GUI)
+      - name: Build GUI and CLI
         shell: pwsh
         run: |
-          python -m PyInstaller --onefile --name MeOwganizaCLI --add-data "ui;ui" --paths src entry.py
-          python -m PyInstaller --noconsole --onefile --name MeOwganiza --add-data "ui;ui" --paths src entry_gui.py
+          python -m PyInstaller --noconfirm --onefile --noconsole --name MeOwganiza --add-data "ui;ui" --paths src entry_gui.py
+          python -m PyInstaller --noconfirm --onefile --name MeOwganizaCLI --add-data "ui;ui" --paths src meowganiza.py
 
-      - name: Upload artefatos
+      - name: Upload Windows artifact
         uses: actions/upload-artifact@v4
         with:
           name: meowganiza-windows
@@ -45,10 +45,59 @@ jobs:
             dist/MeOwganizaCLI.exe
           retention-days: 30
 
-      - name: Anexar à release (se publicada)
-        if: github.event_name == 'release'
+  build-linux:
+    name: Build Linux executables
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "pywebview[qt]>=6.0" pyinstaller
+
+      - name: Build GUI and CLI
+        run: |
+          python -m PyInstaller --noconfirm --clean --onefile --name MeOwganiza --add-data "ui:ui" --paths src --collect-all webview --collect-all PyQt6 entry_gui.py
+          python -m PyInstaller --noconfirm --clean --onefile --name MeOwganizaCLI --add-data "ui:ui" --paths src meowganiza.py
+          chmod +x dist/MeOwganiza dist/MeOwganizaCLI
+          mkdir -p dist/linux-package
+          cp dist/MeOwganiza dist/linux-package/MeOwganiza
+          cp dist/MeOwganizaCLI dist/linux-package/MeOwganizaCLI
+          tar -czf dist/MeOwganiza-linux-x86_64.tar.gz -C dist/linux-package .
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: meowganiza-linux
+          path: |
+            dist/MeOwganiza
+            dist/MeOwganizaCLI
+            dist/MeOwganiza-linux-x86_64.tar.gz
+          retention-days: 30
+
+  publish-release-assets:
+    name: Attach installers to release
+    if: github.event_name == 'release' && github.event.action == 'published'
+    needs: [build-windows, build-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-assets
+
+      - name: Upload assets to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dist/MeOwganiza.exe
-            dist/MeOwganizaCLI.exe
+            release-assets/meowganiza-windows/MeOwganiza.exe
+            release-assets/meowganiza-windows/MeOwganizaCLI.exe
+            release-assets/meowganiza-linux/MeOwganiza-linux-x86_64.tar.gz
+          fail_on_unmatched_files: true

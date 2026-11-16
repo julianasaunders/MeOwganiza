@@ -33,6 +33,7 @@ meowganiza = "meowganiza.cli:main"
 
 [project.optional-dependencies]
 native = ["pywebview>=6.0"]
+native-linux = ["pywebview[qt]>=6.0"]
 
 [project.urls]
 Homepage = "https://github.com/julianasaunders/MeOwganiza"

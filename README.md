@@ -160,13 +160,21 @@ O projeto demonstra conceitos da disciplina por meio de operações reais em um 
 
 ### Para quem vai usar o aplicativo
 
-Abra `dist/MeOwganiza.exe` (ou `Downloads/MeOwganiza.exe`, quando disponível). Não é necessário instalar Python para usar o executável.
+Acesse a **[página de downloads do MeOwganiza](https://julianasaunders.github.io/MeOwganiza/download.html)** e escolha o pacote do seu sistema:
+
+| Sistema | Arquivo | Como abrir |
+| --- | --- | --- |
+| **Windows 10/11** | `MeOwganiza.exe` | Baixe e abra o executável. Não precisa instalar Python. |
+| **Linux x86_64** | `MeOwganiza-linux-x86_64.tar.gz` | Extraia, torne o arquivo executável com `chmod +x MeOwganiza` e execute `./MeOwganiza`. |
+
+O pacote Linux é gerado em Ubuntu 22.04 para x86_64. O executável e a CLI estão incluídos no arquivo `.tar.gz`.
 
 ### Requisitos para executar pelo código-fonte
 
 - Python **3.10 ou superior**.
 - Windows, Linux ou macOS para a CLI.
-- Windows e `pywebview` para a interface nativa.
+- Windows para o executável nativo `.exe`.
+- Linux x86_64 para o executável desktop Linux.
 
 ### Preparar o ambiente
 
@@ -209,10 +217,17 @@ python meowganiza.py web
 
 ### Interface nativa
 
-Para instalar a dependência opcional e abrir a janela desktop:
+Para executar a interface desktop pelo código-fonte, instale o backend de interface do seu sistema:
+
+```powershell
+# Windows
+python -m pip install -e ".[native]"
+python meowganiza.py native
+```
 
 ```bash
-python -m pip install -e ".[native]"
+# Linux (backend Qt/WebEngine)
+python -m pip install -e ".[native-linux]"
 python meowganiza.py native
 ```
 
