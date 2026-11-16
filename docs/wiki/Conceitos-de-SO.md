@@ -17,7 +17,7 @@
 
 ### Sistema de arquivos
 
-Arquivos, diretórios e metadados. O CaosZero lê `stat`, calcula destinos e usa
+Arquivos, diretórios e metadados. O MeOwganiza lê `stat`, calcula destinos e usa
 `rename`/`move` para reorganizar.
 
 ### Processos
@@ -41,6 +41,6 @@ Registrar a intenção antes de executar permite recuperação e undo, ideia
 semelhante à de sistemas de arquivos journaling.
 
 Detalhes em
-[CONCEITOS-SO.md](https://github.com/julianasaunders/caosZero/blob/main/docs/CONCEITOS-SO.md).
+[CONCEITOS-SO.md](https://github.com/julianasaunders/MeOwganiza/blob/main/docs/CONCEITOS-SO.md).
 
 Voltar para [Home](Home).

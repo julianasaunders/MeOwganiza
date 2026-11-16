@@ -1,4 +1,4 @@
-# Testes do CaosZero
+# Testes do MeOwganiza
 
 ## Estratégia
 
@@ -34,7 +34,7 @@ python -m unittest tests.test_planner.PlannerTests.test_categoriza_por_extensao 
 Nenhum teste toca arquivos reais do usuário. Todos usam:
 
 - `tempfile.TemporaryDirectory()` para pastas temporárias;
-- `CAOSZERO_HOME` apontando para um diretório temporário;
+- `MEOWGANIZA_HOME` apontando para um diretório temporário;
 - `unittest.mock` quando necessário;
 - `subprocess` apenas para testes da CLI.
 
@@ -120,7 +120,7 @@ demo → organize (simulação) → organize --apply → relatório
 
 Também cobre:
 
-- `CAOSZERO_HOME` e `CAOSZERO_TARGET`;
+- `MEOWGANIZA_HOME` e `MEOWGANIZA_TARGET`;
 - organização recursiva com arquivos antigos;
 - renomeação em massa com colisão;
 - relatórios MD, CSV e JSON;
@@ -145,7 +145,7 @@ Etapas:
 ## Como escrever novos testes
 
 1. Use `TemporaryDirectory` para qualquer teste com arquivos.
-2. Aponte `CAOSZERO_HOME` para o diretório temporário.
+2. Aponte `MEOWGANIZA_HOME` para o diretório temporário.
 3. Não dependa de ordem de execução entre testes.
 4. Prefira asserções sobre comportamento observável.
 5. Um teste deve falhar por um motivo claro.
@@ -158,8 +158,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from caoszero.config import Config
-from caoszero.planner import PlanOptions, build_plan
+from meowganiza.config import Config
+from meowganiza.planner import PlanOptions, build_plan
 
 
 class MeuTeste(unittest.TestCase):
@@ -186,7 +186,7 @@ class MeuTeste(unittest.TestCase):
 | `FileNotFoundError` | Um caminho esperado não existe |
 | `PermissionError` | O teste tentou escrever fora do diretório temporário |
 | `AssertionError` | O comportamento observado difere do esperado |
-| `ModuleNotFoundError: caoszero` | `_bootstrap.py` não foi carregado |
+| `ModuleNotFoundError: meowganiza` | `_bootstrap.py` não foi carregado |
 
 ## Checklist antes de abrir um PR
 

@@ -1,4 +1,4 @@
-"""Testes de integração do fluxo completo do CaosZero.
+"""Testes de integração do fluxo completo do MeOwganiza.
 
 Diferente dos testes unitários, aqui as camadas são exercitadas juntas sobre um
 sistema de arquivos real e temporário: planejamento, execução, journal,
@@ -17,14 +17,14 @@ from pathlib import Path
 from unittest import mock
 
 import _bootstrap  # noqa: F401
-from caoszero.cli import main
-from caoszero.config import Config
-from caoszero.demo import criar_sandbox
-from caoszero.executor import execute_plan, undo_run
-from caoszero.journal import Journal
-from caoszero.models import Status
-from caoszero.planner import PlanOptions, build_plan
-from caoszero.reporter import write_report
+from meowganiza.cli import main
+from meowganiza.config import Config
+from meowganiza.demo import criar_sandbox
+from meowganiza.executor import execute_plan, undo_run
+from meowganiza.journal import Journal
+from meowganiza.models import Status
+from meowganiza.planner import PlanOptions, build_plan
+from meowganiza.reporter import write_report
 from helpers import make_file
 
 
@@ -36,11 +36,11 @@ class IntegrationTests(unittest.TestCase):
         self.sandbox = self.base / "sandbox"
         self.env = mock.patch.dict(
             os.environ,
-            {"CAOSZERO_HOME": str(self.state)},
+            {"MEOWGANIZA_HOME": str(self.state)},
             clear=False,
         )
         self.env.start()
-        self.logger = __import__("logging").getLogger("caoszero.integration")
+        self.logger = __import__("logging").getLogger("meowganiza.integration")
         self.logger.addHandler(__import__("logging").NullHandler())
 
     def tearDown(self):
@@ -81,7 +81,7 @@ class IntegrationTests(unittest.TestCase):
 
         report = write_report(result.run, self.state / "reports" / "integracao.md")
         content = report.read_text(encoding="utf-8")
-        self.assertIn("# Relatório CaosZero", content)
+        self.assertIn("# Relatório MeOwganiza", content)
         self.assertIn("Execução real", content)
 
         undo = undo_run(result.run, journal, self.logger)
@@ -185,9 +185,9 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual(loaded.id, result.run.id)
         self.assertEqual(len(loaded.operations), len(result.run.operations))
 
-    def test_cli_respeita_caoszero_target(self):
+    def test_cli_respeita_meowganiza_target(self):
         criar_sandbox(self.sandbox)
-        with mock.patch.dict(os.environ, {"CAOSZERO_TARGET": str(self.sandbox)}):
+        with mock.patch.dict(os.environ, {"MEOWGANIZA_TARGET": str(self.sandbox)}):
             code, output, _ = self.run_cli(["organize", "--json"])
 
         self.assertEqual(code, 0)

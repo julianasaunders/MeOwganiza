@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 4: Gradient Glass</title>
+<title>MeOwganiza — Layout 4: Gradient Glass</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -57,7 +57,7 @@ nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px;f
 <body>
 <div class="wrap">
   <nav>
-    <div class="brand"><div class="brand-mark">C0</div> Caos<span style="opacity:.7">Zero</span></div>
+    <div class="brand"><div class="brand-mark">𑄝</div> MeOw<span style="opacity:.7">ganiza</span></div>
     <ul><li>Recursos</li><li>Como funciona</li><li>Conceitos</li><li>Comandos</li></ul>
     <a class="cta" href="#">Baixar</a>
   </nav>
@@ -65,8 +65,8 @@ nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px;f
   <section class="hero">
     <div>
       <p style="font-size:13px;font-weight:600;opacity:.85;letter-spacing:1.4px;text-transform:uppercase;margin:0 0 12px">Projeto integrador · Sistemas Operacionais · Tema 4.5</p>
-      <h1>Do caos ao zero.<br><span>Arquivos organizados,</span><br>com segurança.</h1>
-      <p>O CaosZero 2.0 planeja antes de agir, registra cada operação em um journal e desfaz tudo com um único comando. Sem exclusões, sem perdas.</p>
+      <h1>Do caos ao MeOwganiza.<br><span>Arquivos organizados,</span><br>com segurança.</h1>
+      <p>O MeOwganiza 2.0 planeja antes de agir, registra cada operação em um journal e desfaz tudo com um único comando. Sem exclusões, sem perdas.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" onclick="document.getElementById('path').focus()">Organizar agora</button>
         <button class="btn btn-glass">Como funciona</button>
@@ -92,7 +92,7 @@ nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px;f
     <div class="stat"><strong>100%</strong><span>reversível com undo</span></div>
   </div>
 
-  <h2 class="section-title">Tudo o que o CaosZero faz</h2>
+  <h2 class="section-title">Tudo o que o MeOwganiza faz</h2>
   <p class="section-sub">Uma única ferramenta, sem dependências, com foco em segurança e rastreabilidade.</p>
   <div class="strip">
     <div class="feat"><div class="ico">📂</div><h4>Organização por categoria</h4><p>Move arquivos para pastas por extensão.</p></div>
@@ -115,9 +115,9 @@ nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px;f
 
   <div style="margin-top:32px">
     <h2 class="section-title">Log de execução</h2>
-    <div class="log" id="log"><div style="opacity:.6">$ caoszero organize ~/Downloads</div><div style="opacity:.6">Aguardando análise…</div></div>
+    <div class="log" id="log"><div style="opacity:.6">$ meowganiza organize ~/Downloads</div><div style="opacity:.6">Aguardando análise…</div></div>
   </div>
-<div style="margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);font-size:11px;color:rgba(255,255,255,.6);text-align:center">caoszero 2.0</div>
+<div style="margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);font-size:11px;color:rgba(255,255,255,.6);text-align:center">meowganiza 2.0</div>
 </div>
 
 <script>
@@ -126,7 +126,7 @@ function log(h){const l=document.getElementById('log');const d=document.createEl
 function runScan(){
   const bar=document.getElementById('bar');const logEl=document.getElementById('log');
   logEl.innerHTML='';
-  log('<span style="opacity:.6">$ caoszero organize ' + document.getElementById('path').value + '</span>');
+  log('<span style="opacity:.6">$ meowganiza organize ' + document.getElementById('path').value + '</span>');
   const steps=[['15%','Arquivos analisados: 15'],['42%','Operações planejadas: 13 (379 B)'],['70%','<span style="color:#b9f0c0">[MOVER]</span> backup_projeto.zip → Compactados/'],['88%','<span style="color:#b9f0c0">[MOVER]</span> foto_ferias.jpg → Imagens/'],['100%','SIMULAÇÃO concluída: 13 operações. Nenhum arquivo alterado.']];
   let i=0;const t=setInterval(()=>{if(i>=steps.length){clearInterval(t);finish();return;}bar.style.width=steps[i][0];log(steps[i][1]);i++;},400);
 }

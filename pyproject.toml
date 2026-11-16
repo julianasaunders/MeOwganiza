@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "caoszero"
+name = "meowganiza"
 version = "2.0.0"
 description = "Automatizador de tarefas com arquivos para a disciplina de Sistemas Operacionais"
 readme = "README.md"
@@ -29,15 +29,15 @@ classifiers = [
 ]
 
 [project.scripts]
-caoszero = "caoszero.cli:main"
+meowganiza = "meowganiza.cli:main"
 
 [project.optional-dependencies]
 native = ["pywebview>=6.0"]
 
 [project.urls]
-Homepage = "https://github.com/julianasaunders/caosZero"
-Issues = "https://github.com/julianasaunders/caosZero/issues"
-Wiki = "https://github.com/julianasaunders/caosZero/wiki"
+Homepage = "https://github.com/julianasaunders/MeOwganiza"
+Issues = "https://github.com/julianasaunders/MeOwganiza/issues"
+Wiki = "https://github.com/julianasaunders/MeOwganiza/wiki"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

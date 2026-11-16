@@ -11,7 +11,7 @@
     "Codigo": [".py", ".js", ".ts", ".html", ".css", ".java", ".c", ".cpp", ".go", ".rs", ".sh", ".ps1", ".json", ".yml", ".yaml", ".sql"],
     "Outros": []
   },
-  "ignore_names": [".DS_Store", "Thumbs.db", "desktop.ini", "caoszero.log"],
+  "ignore_names": [".DS_Store", "Thumbs.db", "desktop.ini", "meowganiza.log"],
   "ignore_globs": ["*.tmp", "*.temp", "*.part", "*.partial", "*.crdownload", "~$*", ".~lock.*"],
   "ignore_dirs": [".git", ".hg", ".svn", "__pycache__", "node_modules", ".venv", "venv", "env"],
   "archive_dir": "Arquivo",

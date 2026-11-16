@@ -13,7 +13,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-PYTHON="${CAOSZERO_PYTHON:-$(command -v python3 || command -v python || true)}"
+PYTHON="${MEOWGANIZA_PYTHON:-$(command -v python3 || command -v python || true)}"
 TARGET="${1:-$HOME/Downloads}"
 INSTALL=0
 
@@ -31,11 +31,11 @@ if [[ ! -d "$TARGET" ]]; then
     exit 1
 fi
 
-STATE_DIR="${CAOSZERO_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/caoszero}"
+STATE_DIR="${MEOWGANIZA_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/meowganiza}"
 LOG_FILE="$STATE_DIR/logs/cron.log"
 mkdir -p "$STATE_DIR/logs"
 
-LINE="0 9 * * 1 \"$PYTHON\" \"$ROOT_DIR/caoszero.py\" organize \"$TARGET\" --apply --yes --report >> \"$LOG_FILE\" 2>&1"
+LINE="0 9 * * 1 \"$PYTHON\" \"$ROOT_DIR/meowganiza.py\" organize \"$TARGET\" --apply --yes --report >> \"$LOG_FILE\" 2>&1"
 
 echo "Linha de agendamento (toda segunda-feira às 09:00):"
 echo "$LINE"
@@ -47,9 +47,9 @@ if [[ $INSTALL -eq 0 ]]; then
     exit 0
 fi
 
-if crontab -l 2>/dev/null | grep -Fq "$ROOT_DIR/caoszero.py"; then
+if crontab -l 2>/dev/null | grep -Fq "$ROOT_DIR/meowganiza.py"; then
     echo ""
-    echo "Já existe um agendamento do CaosZero no crontab. Nada foi alterado."
+    echo "Já existe um agendamento do MeOwganiza no crontab. Nada foi alterado."
     exit 0
 fi
 

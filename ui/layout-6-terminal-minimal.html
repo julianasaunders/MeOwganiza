@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 6: Terminal Minimal</title>
+<title>MeOwganiza — Layout 6: Terminal Minimal</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -42,7 +42,7 @@ footer{padding:16px;text-align:center;color:#6e7681;font-size:11px}
 <body>
 <main>
   <div class="card">
-    <div class="brand"><div class="brand-mark">C0</div> caoszero/cli</div>
+    <div class="brand"><div class="brand-mark">𑄝</div> meowganiza/cli</div>
     <h1>organize --safe</h1>
     <p class="sub">uma pasta, um comando, zero perdas. simulação por padrão.</p>
     <div class="ring"><svg viewBox="0 0 110 110"><circle class="track" cx="55" cy="55" r="50"/><circle class="bar" id="bar" cx="55" cy="55" r="50"/></svg><div class="label" id="pct">0%</div></div>
@@ -58,10 +58,10 @@ footer{padding:16px;text-align:center;color:#6e7681;font-size:11px}
       <ul id="rlist"><li>backup_projeto.zip → Compactados/</li><li>foto_ferias.jpg → Imagens/</li><li>documento_antigo.pdf → Documentos/</li><li>+ 10 outras operações</li></ul>
       <p style="margin:8px 0 0;color:#8a93b0;font-size:11px">Nenhum arquivo alterado. Use "aplicar" para executar.</p>
     </div>
-    <div class="log" id="log"><div class="dim"># caoszero v2.0.0 — aguardando comando…</div></div>
+    <div class="log" id="log"><div class="dim"># meowganiza v2.0.0 — aguardando comando…</div></div>
   </div>
 </main>
-<footer><div style="text-align:center;width:100%">caoszero 2.0</div></footer>
+<footer><div style="text-align:center;width:100%">meowganiza 2.0</div></footer>
 <script>
 let mode='simular';
 function setMode(el,m){mode=m;document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');}
@@ -70,7 +70,7 @@ function run(){
   const btn=document.getElementById('btn');const bar=document.getElementById('bar');const pct=document.getElementById('pct');
   btn.disabled=true;btn.textContent='analisando…';
   const logEl=document.getElementById('log');logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero organize ' + document.getElementById('path').value + '</span>');
+  log('<span class="cmd">$ meowganiza organize ' + document.getElementById('path').value + '</span>');
   const steps=[['12%','Arquivos analisados: 15'],['38%','Operações planejadas: 13 (379 B)'],['62%','<span class="ok">[MOVER]</span> backup_projeto.zip → Compactados/'],['80%','<span class="ok">[MOVER]</span> foto_ferias.jpg → Imagens/'],['100%','<span class="ok">SIMULAÇÃO concluída: 13 operações. Nenhum arquivo alterado.</span>']];
   let v=0,i=0;const t=setInterval(()=>{v+=4;if(v>100)v=100;bar.style.strokeDashoffset=314-(314*v/100);pct.textContent=v+'%';if(i<steps.length&&v>=parseInt(steps[i][0])){log(steps[i][1]);i++;}if(v>=100){clearInterval(t);done();}},50);
 }

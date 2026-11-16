@@ -5,12 +5,12 @@ import unittest
 from pathlib import Path
 
 import _bootstrap  # noqa: F401
-from caoszero.config import Config
-from caoszero.executor import execute_plan, undo_run
-from caoszero.journal import Journal
-from caoszero.logging_setup import close_logging, configure_logging
-from caoszero.models import Status
-from caoszero.planner import PlanOptions, build_plan
+from meowganiza.config import Config
+from meowganiza.executor import execute_plan, undo_run
+from meowganiza.journal import Journal
+from meowganiza.logging_setup import close_logging, configure_logging
+from meowganiza.models import Status
+from meowganiza.planner import PlanOptions, build_plan
 from helpers import make_file
 
 

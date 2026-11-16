@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 12: Dual Tree Classic (melhorado)</title>
+<title>MeOwganiza — Layout 12: Dual Tree Classic (melhorado)</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
 document.getElementById('btnApply').addEventListener('click',()=>{ document.getElementById('confirmModal').classList.add('show'); });
@@ -12,7 +12,7 @@ document.getElementById('btnConfirmApply').addEventListener('click',()=>{
   document.getElementById('confirmModal').classList.remove('show');
   const logEl=document.getElementById('log');
   logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero organize <arquivos> --apply</span>');
+  log('<span class="cmd">$ meowganiza organize <arquivos> --apply</span>');
   const steps=[['20%','Aplicando 13 operações…'],['50%','<span class="ok">[OK]</span> backup_projeto.zip → Compactados/'],['75%','<span class="ok">[OK]</span> foto_ferias.jpg → Imagens/'],['100%','<span class="ok">Execução concluída: 13 movidas, 0 falhas.</span>']];
   const bar=document.getElementById('bar');
   let i=0;const t=setInterval(()=>{if(i>=steps.length){clearInterval(t);finishApply();return;}bar.style.width=steps[i][0];log(steps[i][1]);i++;},380);
@@ -21,7 +21,7 @@ function finishApply(){
   const r=document.getElementById('result');
   r.classList.add('show');
   document.getElementById('rtitle').textContent='13 arquivos organizados';
-  log('<span class="dim"># para desfazer: caoszero undo --latest</span>');
+  log('<span class="dim"># para desfazer: meowganiza undo --latest</span>');
 }
 </script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -124,11 +124,11 @@ input[type=file]{display:none}
 <body>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="brand-mark">C0</div> caoszero</div>
+    <div class="brand"><div class="brand-mark">𑄝</div> meowganiza</div>
     <div class="status" id="status">online · v2.0.0</div>
   </div>
   <div class="hero">
-    <h1>caoszero <span class="accent">organize</span></h1>
+    <h1>meowganiza <span class="accent">organize</span></h1>
     <p>Planeje, confirme e execute com segurança.</p>
   </div>
 
@@ -166,7 +166,7 @@ input[type=file]{display:none}
   <div class="result" id="result"><span id="rtitle">0 operações planejadas</span> — Nenhum arquivo alterado.</div>
 
   <div class="log-wrap" id="logWrap">
-    <div class="log" id="log" aria-live="polite"><div class="dim"># caoszero v2.0.0 — aguardando comando…</div></div>
+    <div class="log" id="log" aria-live="polite"><div class="dim"># meowganiza v2.0.0 — aguardando comando…</div></div>
   </div>
 
   <div class="stats" id="stats">
@@ -177,7 +177,7 @@ input[type=file]{display:none}
   </div>
 
 
-  <div class="footer">caoszero ©</div>
+  <div class="footer">meowganiza ©</div>
 </div>
 
 <script>
@@ -377,7 +377,7 @@ function reset(){
   document.getElementById('result').classList.remove('show');
   document.getElementById('beforeTree').innerHTML='';
   document.getElementById('afterTree').innerHTML='';
-  document.getElementById('log').innerHTML='<div class="dim"># caoszero v2.0.0 — aguardando comando…</div>';
+  document.getElementById('log').innerHTML='<div class="dim"># meowganiza v2.0.0 — aguardando comando…</div>';
   document.getElementById('bar').style.width='0%';
 }
 

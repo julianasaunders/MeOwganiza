@@ -41,13 +41,13 @@ jobs:
           else
             echo "tem_codigo=false" >> "$GITHUB_OUTPUT"
           fi
-          if [ -f src/caoszero/cli.py ]; then
+          if [ -f src/meowganiza/cli.py ]; then
             echo "tem_cli=true" >> "$GITHUB_OUTPUT"
           else
             echo "tem_cli=false" >> "$GITHUB_OUTPUT"
           fi
           echo "código: $([ -d src ] && [ -d tests ] && echo sim || echo não)"
-          echo "CLI: $([ -f src/caoszero/cli.py ] && echo sim || echo não)"
+          echo "CLI: $([ -f src/meowganiza/cli.py ] && echo sim || echo não)"
 
       - name: Compilar módulos
         if: steps.estrutura.outputs.tem_codigo == 'true'
@@ -61,10 +61,10 @@ jobs:
         if: steps.estrutura.outputs.tem_cli == 'true'
         shell: bash
         run: |
-          python caoszero.py demo sandbox_ci
-          python caoszero.py organize sandbox_ci --apply --yes --report relatorio-ci.md
-          python caoszero.py organize sandbox_ci --json > relatorio-ci.json
-          python caoszero.py doctor --json > doctor-ci.json
+          python meowganiza.py demo sandbox_ci
+          python meowganiza.py organize sandbox_ci --apply --yes --report relatorio-ci.md
+          python meowganiza.py organize sandbox_ci --json > relatorio-ci.json
+          python meowganiza.py doctor --json > doctor-ci.json
           test -f relatorio-ci.md
 
       - name: Guardar relatórios

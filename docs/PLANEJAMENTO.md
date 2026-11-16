@@ -1,8 +1,8 @@
-# Planejamento do CaosZero 2.0
+# Planejamento do MeOwganiza 2.0
 
 ## 1. Contexto
 
-O CaosZero nasceu como uma ideia simples: organizar arquivos acumulados em
+O MeOwganiza nasceu como uma ideia simples: organizar arquivos acumulados em
 pastas como `Downloads`, `Documentos` e `Desktop`. Para o projeto integrador de
 **Sistemas Operacionais**, essa ideia foi mantida e evoluída para uma aplicação
 de linha de comando capaz de **automatizar tarefas com arquivos** de forma

@@ -9,7 +9,7 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 
-- CLI `caoszero` com os comandos `organize`, `undo`, `doctor`, `config`,
+- CLI `meowganiza` com os comandos `organize`, `undo`, `doctor`, `config`,
   `demo` e `interactive`.
 - Organização de arquivos por extensão com categorias configuráveis.
 - Modo de simulação seguro por padrão; execução real apenas com `--apply`.
@@ -22,7 +22,7 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 - Relatórios em Markdown, CSV e JSON.
 - Diagnóstico de sistema (`doctor`) com processo, CPU, memória, disco,
   permissões, variáveis de ambiente e limites de cgroup.
-- Configuração via JSON, com exemplo em `config/caoszero.example.json`.
+- Configuração via JSON, com exemplo em `config/meowganiza.example.json`.
 - Scripts de automação para Bash e PowerShell.
 - Agendamento via `cron` e Agendador de Tarefas do Windows.
 - Hooks de `pre-commit` e `pre-push` com instaladores.
@@ -49,9 +49,9 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 
 ### Adicionado
 
-- Versão inicial do CaosZero com página web e script de organização.
+- Versão inicial do MeOwganiza com página web e script de organização.
 - Estrutura de pastas por categoria.
 - Scripts básicos para Linux/macOS e Windows.
 
-[2.0.0]: https://github.com/julianasaunders/caosZero/releases/tag/v2.0.0
-[1.0.0]: https://github.com/julianasaunders/caosZero/releases/tag/v1.0.0
+[2.0.0]: https://github.com/julianasaunders/MeOwganiza/releases/tag/v2.0.0
+[1.0.0]: https://github.com/julianasaunders/MeOwganiza/releases/tag/v1.0.0

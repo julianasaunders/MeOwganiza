@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-O CaosZero manipula arquivos do usuário: move, renomeia e arquiva. Por isso,
+O MeOwganiza manipula arquivos do usuário: move, renomeia e arquiva. Por isso,
 segurança e reversibilidade são requisitos centrais, não opcionais. Esta
 política descreve como relatar vulnerabilidades e quais garantias o projeto
 oferece.
@@ -31,7 +31,7 @@ derivadas. Quem reutilizar o código deve avaliar seus próprios riscos.
   - descrição objetiva do problema;
   - impacto potencial;
   - passos seguros para reproduzir;
-  - versão do CaosZero, do Python e do sistema operacional;
+  - versão do MeOwganiza, do Python e do sistema operacional;
   - sugestão de correção, se houver.
 
 ## O que evitar
@@ -46,7 +46,7 @@ derivadas. Quem reutilizar o código deve avaliar seus próprios riscos.
 
 ## Garantias de segurança do projeto
 
-O CaosZero foi projetado para reduzir o risco de perda de dados:
+O MeOwganiza foi projetado para reduzir o risco de perda de dados:
 
 - **Simulação por padrão:** `organize` não altera arquivos sem `--apply`.
 - **Confirmação:** operações reais pedem confirmação, exceto com `--yes`.
@@ -71,7 +71,7 @@ O CaosZero foi projetado para reduzir o risco de perda de dados:
   mudar. O executor revalida origem e destino, mas não há bloqueio de arquivo.
 - **Sem locking:** duas instâncias simultâneas no mesmo diretório podem competir.
   Recomenda-se uma instância por alvo ou agendamento sem sobreposição.
-- **Confiança no usuário:** o CaosZero roda com as permissões de quem o executa.
+- **Confiança no usuário:** o MeOwganiza roda com as permissões de quem o executa.
   Ele não eleva privilégios.
 - **Journal local:** o undo depende do journal e dos arquivos não terem sido
   movidos manualmente.
@@ -83,12 +83,12 @@ O CaosZero foi projetado para reduzir o risco de perda de dados:
 ## Boas práticas para uso seguro
 
 1. Execute primeiro sem `--apply` e revise o plano.
-2. Teste em uma pasta de demonstração (`python caoszero.py demo`).
+2. Teste em uma pasta de demonstração (`python meowganiza.py demo`).
 3. Mantenha backups de diretórios importantes.
 4. Não execute como administrador/root sem necessidade.
 5. Não aponte o alvo para a raiz do sistema ou para a pasta pessoal inteira.
 6. Verifique o journal após execuções automatizadas.
-7. Use `CAOSZERO_HOME` em um diretório com permissões adequadas.
+7. Use `MEOWGANIZA_HOME` em um diretório com permissões adequadas.
 8. Revise scripts de agendamento antes de registrá-los.
 
 ## Segredos e dados sensíveis

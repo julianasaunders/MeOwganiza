@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 7: Glass Terminal</title>
+<title>MeOwganiza — Layout 7: Glass Terminal</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -61,13 +61,13 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle
 <body>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="brand-mark">C0</div> caoszero<span style="color:#6e7681">/glass</span></div>
+    <div class="brand"><div class="brand-mark">𑄝</div> meowganiza<span style="color:#6e7681">/glass</span></div>
     <div class="status">online · v2.0.0</div>
   </div>
 
   <div class="hero">
     <div class="hero-left">
-      <h1>caoszero <span class="accent">organize</span><br>— sem perdas.</h1>
+      <h1>meowganiza <span class="accent">organize</span><br>— sem perdas.</h1>
       <p>CLI em Python que planeja, confirma, executa e desfaz. Sem dependências. Cada operação registrada no journal.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" onclick="document.getElementById('path').focus()">Organizar agora</button>
@@ -103,7 +103,7 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle
   <div class="grid2">
     <div class="glass">
       <h3 style="margin:0 0 12px;font-size:15px;font-weight:700">Execution log</h3>
-      <div class="log" id="log"><div class="dim"># caoszero v2.0.0 — aguardando comando…</div></div>
+      <div class="log" id="log"><div class="dim"># meowganiza v2.0.0 — aguardando comando…</div></div>
     </div>
     <div class="glass">
       <h3 style="margin:0 0 12px;font-size:15px;font-weight:700">Conceitos de SO</h3>
@@ -120,7 +120,7 @@ body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle
     </div>
   </div>
 
-  <div class="footer"><div style="text-align:center;width:100%">caoszero 2.0</div></div>
+  <div class="footer"><div style="text-align:center;width:100%">meowganiza 2.0</div></div>
 </div>
 
 <script>
@@ -129,7 +129,7 @@ function log(h){const l=document.getElementById('log');const d=document.createEl
 function runScan(){
   const bar=document.getElementById('bar');const logEl=document.getElementById('log');
   logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero organize ' + document.getElementById('path').value + '</span>');
+  log('<span class="cmd">$ meowganiza organize ' + document.getElementById('path').value + '</span>');
   const steps=[['15%','Arquivos analisados: 15'],['42%','Operações planejadas: 13 (379 B)'],['70%','<span class="ok">[MOVER]</span> backup_projeto.zip → Compactados/'],['88%','<span class="ok">[MOVER]</span> foto_ferias.jpg → Imagens/'],['100%','<span class="ok">SIMULAÇÃO concluída: 13 operações. Nenhum arquivo alterado.</span>']];
   let i=0;const t=setInterval(()=>{if(i>=steps.length){clearInterval(t);finish();return;}bar.style.width=steps[i][0];log(steps[i][1]);i++;},400);
 }

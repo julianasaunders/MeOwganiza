@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 17: DropIt + Kimi Hybrid</title>
+<title>MeOwganiza — Layout 17: DropIt + Kimi Hybrid</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -110,7 +110,7 @@ a{color:inherit;text-decoration:none}
 <body>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="brand-mark">C0</div> caoszero / hybrid</div>
+    <div class="brand"><div class="brand-mark">𑄝</div> meowganiza / hybrid</div>
     <div class="status">online · v2.0.0</div>
   </div>
 
@@ -198,7 +198,7 @@ a{color:inherit;text-decoration:none}
         </div>
         <div class="progress" style="margin-top:12px"><div id="bar"></div></div>
         <div class="result" id="result"><span id="rtitle">0 operações planejadas</span></div>
-        <div class="log" id="log"><div class="dim"># caoszero v2.0.0 — aguardando comando…</div></div>
+        <div class="log" id="log"><div class="dim"># meowganiza v2.0.0 — aguardando comando…</div></div>
         <div class="stats">
           <div class="stat"><div class="num" id="stFiles">0</div><div class="lbl">arquivos</div></div>
           <div class="stat"><div class="num" id="stOps">0</div><div class="lbl">operações</div></div>
@@ -209,7 +209,7 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 
-  <div class="footer">caoszero ©</div>
+  <div class="footer">meowganiza ©</div>
 </div>
 
 <button class="fab-apply" id="btnApply" type="button">✓ Aplicar organização</button>
@@ -253,7 +253,7 @@ async function scanFolder(){
   if (!target) { alert('Informe uma pasta.'); return; }
   state.target = target;
   const logEl = document.getElementById('log'); logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero organize "'+esc(target)+'"</span>');
+  log('<span class="cmd">$ meowganiza organize "'+esc(target)+'"</span>');
   log('<span class="dim"># analisando…</span>');
   document.getElementById('progressWrap') && (document.getElementById('bar').style.width='5%');
   try {
@@ -359,7 +359,7 @@ async function applyOrg(){
   if (!target) { alert('Informe uma pasta.'); return; }
   document.getElementById('confirmModal').classList.remove('show');
   const logEl = document.getElementById('log'); logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero organize "'+esc(target)+'" --apply</span>');
+  log('<span class="cmd">$ meowganiza organize "'+esc(target)+'" --apply</span>');
   try {
     const res = await fetch('/api/apply', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({target: target, apply: true})});
     const data = await res.json();
@@ -367,7 +367,7 @@ async function applyOrg(){
     const r = document.getElementById('result'); r.classList.add('show');
     document.getElementById('rtitle').textContent = data.moved + ' arquivos organizados';
     log('<span class="ok">Execução concluída: '+data.moved+' movidos, '+data.failed+' falhas.</span>');
-    log('<span class="dim"># para desfazer: caoszero undo --latest</span>');
+    log('<span class="dim"># para desfazer: meowganiza undo --latest</span>');
     const fab = document.getElementById('btnApply'); if (fab) fab.classList.remove('show');
   } catch (e) {
     log('<span class="err">Erro: '+esc(String(e))+'</span>');
@@ -376,7 +376,7 @@ async function applyOrg(){
 
 async function undoLast(){
   const logEl = document.getElementById('log'); logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero undo --latest</span>');
+  log('<span class="cmd">$ meowganiza undo --latest</span>');
   try {
     const res = await fetch('/api/undo', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({latest: true})});
     const data = await res.json();

@@ -171,9 +171,9 @@ def collect_system_info(target: Path | str = ".") -> dict[str, Any]:
         "SHELL",
         "LANG",
         "XDG_DATA_HOME",
-        "CAOSZERO_HOME",
-        "CAOSZERO_CONFIG",
-        "CAOSZERO_TARGET",
+        "MEOWGANIZA_HOME",
+        "MEOWGANIZA_CONFIG",
+        "MEOWGANIZA_TARGET",
         "TEMP",
         "TMPDIR",
     ]
@@ -241,7 +241,7 @@ def render_text(info: dict[str, Any]) -> str:
 
     lines = [
         "==============================================",
-        "  CaosZero — Diagnóstico do Sistema",
+        "  MeOwganiza — Diagnóstico do Sistema",
         "==============================================",
         "",
         "[Sistema operacional]",

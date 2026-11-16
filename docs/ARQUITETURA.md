@@ -1,8 +1,8 @@
-# Arquitetura do CaosZero
+# Arquitetura do MeOwganiza
 
 ## Visão geral
 
-O CaosZero é uma aplicação de linha de comando escrita em Python 3.10+, sem
+O MeOwganiza é uma aplicação de linha de comando escrita em Python 3.10+, sem
 dependências externas obrigatórias. A arquitetura separa **planejamento**,
 **execução** e **observação** para que a simulação seja confiável e o undo seja
 possível.
@@ -57,7 +57,7 @@ possível.
 | `journal.py` | Persistir e recuperar execuções | Escrita atômica |
 | `reporter.py` | Gerar MD, CSV e JSON | Escrita de relatório |
 | `system_info.py` | Coletar recursos do SO | Leitura do sistema |
-| `logging_setup.py` | Log rotativo em `caoszero.log` | Escrita de log |
+| `logging_setup.py` | Log rotativo em `meowganiza.log` | Escrita de log |
 | `utils.py` | Tamanhos, nomes, padrões, caminhos | Nenhum |
 | `demo.py` | Criar sandbox de demonstração | Escrita em pasta temporária |
 
@@ -189,7 +189,7 @@ o que foi planejado.
 
 ### Por que não sobrescrever arquivos?
 
-Sobrescrever é irreversível e pode destruir dados. O CaosZero sempre gera um
+Sobrescrever é irreversível e pode destruir dados. O MeOwganiza sempre gera um
 nome único (`arquivo (1).ext`) quando o destino já existe.
 
 ### Por que ignorar links simbólicos?
@@ -217,7 +217,7 @@ A validação é feita no planejador.
 
 ## Concorrência e integridade
 
-O CaosZero não usa locks de sistema de arquivos. Ele reduz riscos com:
+O MeOwganiza não usa locks de sistema de arquivos. Ele reduz riscos com:
 
 - verificação de existência antes de mover;
 - resolução de colisão no planejamento **e** na execução;

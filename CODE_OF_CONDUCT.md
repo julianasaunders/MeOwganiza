@@ -2,7 +2,7 @@
 
 ## Nosso compromisso
 
-O CaosZero é um projeto acadêmico da disciplina de Sistemas Operacionais. Queremos
+O MeOwganiza é um projeto acadêmico da disciplina de Sistemas Operacionais. Queremos
 que este repositório seja um ambiente respeitoso, acolhedor e produtivo para
 todas as pessoas que participarem, independentemente de nível de experiência,
 origem, identidade, aparência ou forma de contribuição.

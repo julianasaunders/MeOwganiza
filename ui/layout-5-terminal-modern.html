@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CaosZero — Layout 5: Terminal Modern</title>
+<title>MeOwganiza — Layout 5: Terminal Modern</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -58,18 +58,18 @@ a{color:inherit;text-decoration:none}
 <body>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="brand-mark">C0</div> caoszero<span style="color:#6e7681">/cli</span></div>
+    <div class="brand"><div class="brand-mark">𑄝</div> meowganiza<span style="color:#6e7681">/cli</span></div>
     <div class="status">online · v2.0.0 · python 3.10</div>
   </div>
 
   <div class="hero">
-    <h1>caoszero <span class="accent">organize</span> — sem perdas.</h1>
+    <h1>meowganiza <span class="accent">organize</span> — sem perdas.</h1>
     <p>CLI em Python que planeja, confirma, executa e desfaz. Sem dependências. Sem surpresas. Cada operação registrada no journal.</p>
   </div>
 
   <div class="cmdline">
     <span class="prompt">$</span>
-    <input id="path" value="caoszero organize ~/Downloads --apply --report" />
+    <input id="path" value="meowganiza organize ~/Downloads --apply --report" />
     <button onclick="runScan()">run</button>
   </div>
 
@@ -85,7 +85,7 @@ a{color:inherit;text-decoration:none}
       <h3>Execution log</h3>
       <div class="progress"><div id="bar"></div></div>
       <div class="log" id="log">
-        <div class="dim"># caoszero v2.0.0 — aguardando comando…</div>
+        <div class="dim"># meowganiza v2.0.0 — aguardando comando…</div>
       </div>
       <div class="result" id="result"><strong id="rtitle">13 operações planejadas</strong> — Nenhum arquivo alterado. Use --apply para executar.</div>
     </div>
@@ -114,7 +114,7 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 
-  <div class="footer"><div style="text-align:center;width:100%">caoszero 2.0</div></div>
+  <div class="footer"><div style="text-align:center;width:100%">meowganiza 2.0</div></div>
 </div>
 
 <script>
@@ -123,7 +123,7 @@ function log(h){const l=document.getElementById('log');const d=document.createEl
 function runScan(){
   const bar=document.getElementById('bar');const logEl=document.getElementById('log');
   logEl.innerHTML='';
-  log('<span class="cmd">$ caoszero organize ~/Downloads</span>');
+  log('<span class="cmd">$ meowganiza organize ~/Downloads</span>');
   const steps=[['15%','<span class="dim">Alvo: ~/Downloads</span>'],['35%','Arquivos analisados: 15'],['55%','Operações planejadas: 13 (379 B)'],['72%','<span class="ok">[MOVER]</span> backup_projeto.zip → Compactados/'],['86%','<span class="ok">[MOVER]</span> foto_ferias.jpg → Imagens/'],['100%','<span class="ok">SIMULAÇÃO concluída: 13 operações. Nenhum arquivo alterado.</span>']];
   let i=0;const t=setInterval(()=>{if(i>=steps.length){clearInterval(t);finish();return;}bar.style.width=steps[i][0];log(steps[i][1]);i++;},380);
 }
