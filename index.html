@@ -987,7 +987,8 @@ function avoidRects(box) {
 
 function computeSky(mode, box) {
   const tiles = (customTiles && customTiles(mode, box)) || skyTiles(mode, box.width / box.height);
-  tiles.forEach((tile) => { if (!tile.pad || tile.pad.top === undefined) tile.pad = { ...tile.pad, top: labelTop(tile, box) }; });
+  const labelPad = tiles.reduce((max, tile) => Math.max(max, tile.pad?.top ?? labelTop(tile, box)), 0);
+  tiles.forEach((tile) => { if (!tile.pad || tile.pad.top === undefined) tile.pad = { ...tile.pad, top: labelPad }; });
   const positions = new Map();
   tiles.forEach((tile) => arrangeStars(tile, box, positions, mode === 'mess'));
   return { tiles, positions };
