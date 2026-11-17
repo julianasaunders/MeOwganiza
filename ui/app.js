@@ -13,6 +13,45 @@
   var REAL_TARGET = null;
   var scanReady = false;
   var FOLDER_PATHS = {};
+  var isNative = !!(window.pywebview && window.pywebview.api);
+
+  /* ---------- barra de título da janela frameless ---------- */
+  var TITLEBAR_HTML =
+    '<header class="app-titlebar">' +
+      '<div class="tb-left">' +
+        '<span class="tb-logo" aria-hidden="true">🐱</span>' +
+        '<span class="tb-name">MeOwganiza 2.0</span>' +
+      '</div>' +
+      '<div class="tb-controls">' +
+        '<button type="button" class="tb-min" title="Minimizar" aria-label="Minimizar">' +
+          '<svg viewBox="0 0 12 12"><path d="M2 6h8"/></svg></button>' +
+        '<button type="button" class="tb-max" title="Maximizar" aria-label="Maximizar">' +
+          '<svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7" rx="1"/></svg></button>' +
+        '<button type="button" class="tb-close" title="Fechar" aria-label="Fechar">' +
+          '<svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7m0-7l-7 7"/></svg></button>' +
+      '</div>' +
+    '</header>';
+
+  function installTitlebar() {
+    var stage = document.getElementById('pv-stage');
+    var win = stage && stage.querySelector('.win');
+    if (!win) return;
+    if (isNative) document.body.classList.add('native-window');
+    var bar = win.querySelector('.app-titlebar');
+    if (!bar) {
+      win.insertAdjacentHTML('afterbegin', TITLEBAR_HTML);
+      bar = win.querySelector('.app-titlebar');
+    }
+    if (!bar || bar.dataset.wired) return;
+    bar.dataset.wired = '1';
+    var currentApi = function () { return window.pywebview && window.pywebview.api; };
+    var min = bar.querySelector('.tb-min');
+    var max = bar.querySelector('.tb-max');
+    var close = bar.querySelector('.tb-close');
+    if (min) min.addEventListener('click', function () { var a = currentApi(); if (a && a.minimize) a.minimize(); });
+    if (max) max.addEventListener('click', function () { var a = currentApi(); if (a && a.toggle_maximize) a.toggle_maximize(); });
+    if (close) close.addEventListener('click', function () { var a = currentApi(); if (a && a.close) a.close(); });
+  }
 
   /* Mapa das categorias do backend para os ids visuais da demonstração. */
   var BY_CATEGORY = {
@@ -256,4 +295,15 @@
       showError('Não foi possível abrir a pasta: ' + (error.message || error));
     }
   };
+
+  /* Instala a barra agora e reaplica sempre que a janela for remontada (go()). */
+  installTitlebar();
+  var stageEl = document.getElementById('pv-stage');
+  if (stageEl && window.MutationObserver) {
+    new MutationObserver(installTitlebar).observe(stageEl, { childList: true, subtree: false });
+  }
+  window.addEventListener('pywebviewready', function () {
+    isNative = true;
+    installTitlebar();
+  });
 })();

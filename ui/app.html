@@ -472,7 +472,31 @@
   @media (prefers-reduced-motion: reduce) { .pv-dock, .pv-dock[data-ready] .pv-highlight, .pv-card, .pv-handle { transition: none; } }
   /* No aplicativo real o harness de prévia não aparece: mantemos só a janela do design. */
   .pv-dock { display: none !important; }
-  #pv-stage { padding: 0; min-height: 100vh; display: grid; place-items: center; background: #1b1b1f; }
+  /* A janela é frameless: o conteúdo preenche tudo, sem fundo externo. */
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body { background: transparent; }
+  #pv-stage { padding: 0; height: 100vh; display: block; background: transparent; overflow: hidden; }
+  .win { width: 100%; height: 100%; border-radius: 0; box-shadow: none; margin: 0; display: flex; flex-direction: column; }
+  .win .r2-col { flex: 1 1 auto; min-height: 0; position: relative; }
+
+  /* Barra de título desenhada pela app (substitui a moldura do Windows). */
+  .app-titlebar {
+    -webkit-app-region: drag; app-region: drag;
+    flex: 0 0 40px; height: 40px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6px 0 14px; user-select: none; -webkit-user-select: none;
+    background: linear-gradient(180deg, #0d3f4a, #0a3741);
+    border-bottom: 1px solid rgba(255,255,255,.09); color: #e8f1ed;
+    font-size: 13px; z-index: 5;
+  }
+  .app-titlebar .tb-left { display: flex; align-items: center; gap: 9px; min-width: 0; }
+  .app-titlebar .tb-logo { width: 20px; height: 20px; flex: none; display: grid; place-items: center; border-radius: 6px; background: linear-gradient(145deg, #f29b96, #bfdc5a); color: #12333a; font-size: 12px; font-weight: 800; }
+  .app-titlebar .tb-name { font-weight: 600; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .app-titlebar .tb-controls { -webkit-app-region: no-drag; app-region: no-drag; display: flex; align-items: center; gap: 2px; }
+  .app-titlebar button { -webkit-app-region: no-drag; app-region: no-drag; width: 40px; height: 32px; display: grid; place-items: center; border-radius: 6px; color: #dfeae6; background: transparent; cursor: pointer; transition: background 120ms ease-out; }
+  .app-titlebar button:hover { background: rgba(255,255,255,.12); }
+  .app-titlebar button.tb-close:hover { background: #c8423f; color: #fff; }
+  .app-titlebar button svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+  body:not(.native-window) .app-titlebar { display: none; }
 </style>
 </head>
 <body>
