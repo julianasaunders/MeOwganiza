@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import subprocess
 import sys
 import threading
 import webbrowser
@@ -274,6 +275,23 @@ class MeOwganizaHandler(SimpleHTTPRequestHandler):
                 "undo_failed": result.undo_failed,
                 "operations": [op.to_dict() for op in result.run.operations],
             })
+            return
+
+        if path == "/api/open-folder":
+            target = _default_target(data.get("target"))
+            if not target.is_dir():
+                self._error(f"Pasta não encontrada: {target}")
+                return
+            try:
+                if sys.platform.startswith("win"):
+                    os.startfile(str(target))  # noqa: S606
+                elif sys.platform == "darwin":
+                    subprocess.Popen(["open", str(target)])
+                else:
+                    subprocess.Popen(["xdg-open", str(target)])
+                self._send_json({"opened": str(target)})
+            except Exception as exc:  # noqa: BLE001
+                self._error(f"Não foi possível abrir a pasta: {exc}", status=HTTPStatus.INTERNAL_SERVER_ERROR)
             return
 
         self._error(f"Endpoint desconhecido: {path}", status=HTTPStatus.NOT_FOUND)

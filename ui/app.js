@@ -235,4 +235,25 @@
     if (sky) placeSky('mess');
     later(1000, function () { state.undone = true; go(5); });
   };
+
+  /* "Ver na pasta": abre a pasta real no explorador de arquivos do sistema.
+     No demo (sem backend) mantém apenas a animação de texto original. */
+  var originalFlash = CLICK_HANDLERS.flash;
+  CLICK_HANDLERS.flash = async function (button) {
+    originalFlash(button);
+    if (!hasBackend()) return;
+    var label = String(button.dataset.flash || '');
+    if (label.indexOf('pasta') < 0 && label.indexOf('Finder') < 0) return;
+    try {
+      var response = await fetch('/api/open-folder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ target: targetPath() }),
+      });
+      var data = await response.json();
+      if (!response.ok || data.error) throw new Error(data.error || 'Não foi possível abrir a pasta');
+    } catch (error) {
+      showError('Não foi possível abrir a pasta: ' + (error.message || error));
+    }
+  };
 })();
