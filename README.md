@@ -317,7 +317,7 @@ A interface web local também pode ser aberta com `python meowganiza.py web`; el
 ```text
 MeOwganiza/
 ├── src/meowganiza/   # CLI, planejamento, execução, journal e relatórios
-├── ui/               # interfaces web e galeria de layouts
+├── ui/               # interface web local (HTML/CSS/JS)
 ├── tests/            # testes automatizados
 ├── scripts/          # automação, agendamento e hooks
 ├── config/           # configuração de exemplo

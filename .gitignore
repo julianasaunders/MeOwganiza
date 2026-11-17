@@ -26,6 +26,8 @@ config/meowganiza.local.json
 
 # Estado local do MeOwganiza
 sandbox_teste/
+sandbox_demo/
+sandbox_web/
 sandbox/
 reports/
 relatorios/

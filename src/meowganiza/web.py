@@ -130,9 +130,9 @@ class MeOwganizaHandler(SimpleHTTPRequestHandler):
         parsed = urlparse(self.path)
         path = parsed.path
         if path == "/" or path == "":
-            # redireciona para a galeria
+            # redireciona para a interface do aplicativo
             self.send_response(HTTPStatus.FOUND)
-            self.send_header("Location", "/index.html")
+            self.send_header("Location", "/app.html")
             self.end_headers()
             return
         if path == "/api/doctor":
@@ -143,6 +143,21 @@ class MeOwganizaHandler(SimpleHTTPRequestHandler):
                 self._send_json({"target": str(target), "info": info})
             except Exception as exc:  # noqa: BLE001
                 self._error(str(exc), status=HTTPStatus.INTERNAL_SERVER_ERROR)
+            return
+        if path == "/api/folders":
+            # Pastas reais do usuário, com nomes amigáveis usados na interface.
+            home = Path.home()
+            candidates = {
+                "Downloads": [home / "Downloads", home / "Download"],
+                "Desktop": [home / "Desktop"],
+                "Documentos": [home / "Documents", home / "Documentos"],
+                "Fotos": [home / "Pictures", home / "Fotos", home / "Photos"],
+            }
+            resolved = {}
+            for label, options in candidates.items():
+                existing = [str(candidate) for candidate in options if candidate.is_dir()]
+                resolved[label] = existing[0] if existing else str(options[0])
+            self._send_json({"folders": resolved, "home": str(home)})
             return
         # arquivos estáticos (ui/)
         super().do_GET()

@@ -1,7 +1,7 @@
 """Aplicativo desktop multiplataforma do MeOwganiza.
 
-Usa o mesmo layout web (ui/layout-12-dualtree-classic.html) e o mesmo
-servidor local (web.py), exibido em uma janela nativa via pywebview. No
+Usa a interface web (ui/app.html) e o mesmo servidor local (web.py),
+exibido em uma janela nativa via pywebview. No
 Windows usa o WebView2; no Linux, o backend Qt/WebEngine. As operações de
 arquivo são feitas pelo backend Python, através da API JSON.
 """

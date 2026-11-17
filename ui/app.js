@@ -12,6 +12,7 @@
 
   var REAL_TARGET = null;
   var scanReady = false;
+  var FOLDER_PATHS = {};
 
   /* Mapa das categorias do backend para os ids visuais da demonstração. */
   var BY_CATEGORY = {
@@ -68,6 +69,11 @@
     showError._timer = setTimeout(function () { if (note.parentNode) note.parentNode.removeChild(note); }, 6000);
   }
 
+  /* Sem backend (ex.: aberto direto como file://), mantém a demonstração visual. */
+  function hasBackend() {
+    return location.protocol !== 'file:';
+  }
+
   async function api(path, body) {
     var response = await fetch(path, {
       method: 'POST',
@@ -118,6 +124,7 @@
   }
 
   async function realScan() {
+    if (!hasBackend()) return false;
     try {
       var plan = await api('/api/scan', { target: targetPath() });
       hydrate(plan);
@@ -129,6 +136,7 @@
   }
 
   async function realApply() {
+    if (!hasBackend()) return;
     try {
       await api('/api/apply', { target: targetPath(), apply: true });
     } catch (error) {
@@ -137,6 +145,7 @@
   }
 
   async function realUndo() {
+    if (!hasBackend()) return true;
     try {
       var result = await api('/api/undo', { latest: true });
       if (result.undone) showError('Organização desfeita: ' + result.undone + ' arquivo(s) restaurado(s).');
@@ -200,12 +209,24 @@
   var originalFolder = CLICK_HANDLERS.folder;
   CLICK_HANDLERS.folder = function (button) {
     var name = button.dataset.folder;
-    REAL_TARGET = '~/' + name;
+    REAL_TARGET = FOLDER_PATHS[name] || ('~/' + name);
     scanReady = false;
     originalFolder(button);
   };
 
   CLICK_HANDLERS.pickfolder = pickRealFolder;
+
+  /* Carrega as pastas reais do usuário para que os atalhos funcionem no Windows. */
+  if (hasBackend()) {
+    fetch('/api/folders').then(function (response) { return response.json(); })
+      .then(function (data) {
+        if (data && data.folders) {
+          FOLDER_PATHS = data.folders;
+          if (!REAL_TARGET) REAL_TARGET = data.folders.Downloads;
+        }
+      })
+      .catch(function () { /* sem backend: mantém os caminhos padrão */ });
+  }
 
   CLICK_HANDLERS.undo = async function () {
     var ok = await realUndo();
