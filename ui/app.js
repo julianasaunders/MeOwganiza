@@ -19,7 +19,7 @@
   var TITLEBAR_HTML =
     '<header class="app-titlebar">' +
       '<div class="tb-left">' +
-        '<span class="tb-logo" aria-hidden="true">🐱</span>' +
+        '<span class="tb-logo" aria-hidden="true"><img src="./logo-gato.svg" alt="MeOwganiza"></span>' +
         '<span class="tb-name">MeOwganiza 2.0</span>' +
       '</div>' +
       '<div class="tb-controls">' +
