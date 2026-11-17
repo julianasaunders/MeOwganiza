@@ -226,13 +226,13 @@ em horários definidos, com contexto de usuário e ambiente próprios.
 
 - `scripts/agendar_cron.sh` registra uma entrada de crontab.
 - `scripts/agendar_tarefa.ps1` cria uma tarefa diária no Windows.
-- Ambos usam caminhos absolutos para Python e para o projeto.
-- Sem `--apply`/`-Register`, apenas mostram o que seria feito.
+- Ambos usam o caminho absoluto do projeto; o Python pode ser definido por `MEOWGANIZA_PYTHON`.
+- Sem `--install`/`-Register`, apenas mostram o que seria feito.
 
 ### Demonstração
 
 ```bash
-./scripts/agendar_cron.sh --target ~/Downloads --time 09:00
+./scripts/agendar_cron.sh ~/Downloads
 ```
 
 O script imprime a linha de crontab sem alterar nada.

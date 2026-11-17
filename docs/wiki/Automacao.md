@@ -14,8 +14,8 @@ chmod +x scripts/*.sh
 # Diagnóstico
 ./scripts/automacao.sh --target ~/Downloads --doctor
 
-# Agendar diariamente às 09:00
-./scripts/agendar_cron.sh --target ~/Downloads --time 09:00 --apply
+# Agendar toda segunda-feira às 09:00 (use --install para instalar no crontab)
+./scripts/agendar_cron.sh ~/Downloads --install
 ```
 
 ## Windows

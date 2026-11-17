@@ -242,7 +242,7 @@ Há scripts para executar tarefas e agendá-las nos sistemas suportados. Revise 
 
 ```bash
 ./scripts/automacao.sh --target ~/Downloads --apply --report
-./scripts/agendar_cron.sh --target ~/Downloads --time 09:00 --apply
+./scripts/agendar_cron.sh ~/Downloads --install
 ```
 
 ### Windows (PowerShell)

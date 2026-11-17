@@ -192,8 +192,8 @@ chmod +x scripts/*.sh
 # Executa
 ./scripts/automacao.sh --target ~/Downloads --apply --report
 
-# Agenda todos os dias às 09:00
-./scripts/agendar_cron.sh --target ~/Downloads --time 09:00 --apply
+# Agenda toda segunda-feira às 09:00 (use --install para instalar no crontab)
+./scripts/agendar_cron.sh ~/Downloads --install
 ```
 
 ### Windows
