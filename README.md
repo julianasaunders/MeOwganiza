@@ -10,7 +10,7 @@ O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva 
 
 **🌐 Demonstração:** [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/)
 
-**📥 Download:** [julianasaunders.github.io/MeOwganiza/download.html](https://julianasaunders.github.io/MeOwganiza/download.html)
+**📥 Download:** [julianasaunders.github.io/MeOwganiza/download.html](https://julianasaunders.github.io/MeOwganiza/download.html?v=2)
 
 | 🏷️ Item | 📋 Detalhe |
 | --- | --- |
@@ -161,7 +161,7 @@ O projeto demonstra conceitos da disciplina por meio de operações reais em um 
 
 ### Para quem vai usar o aplicativo
 
-Acesse a **[página de downloads do MeOwganiza](https://julianasaunders.github.io/MeOwganiza/download.html)** e escolha o pacote do seu sistema:
+Acesse a **[página de downloads do MeOwganiza](https://julianasaunders.github.io/MeOwganiza/download.html?v=2)** e escolha o pacote do seu sistema:
 
 | Sistema | Arquivo | Como abrir |
 | --- | --- | --- |
