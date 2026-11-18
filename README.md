@@ -167,11 +167,11 @@ Acesse a **[página de downloads do MeOwganiza](https://julianasaunders.github.i
 | --- | --- | --- |
 | **Windows 10/11** | `MeOwganiza.exe` | Baixe e abra o executável. Não precisa instalar Python. |
 | **Linux x86_64** | `MeOwganiza-linux-x86_64.tar.gz` | Extraia, torne o arquivo executável com `chmod +x MeOwganiza` e execute `./MeOwganiza`. |
-| **macOS 11+ (Apple Silicon)** | `MeOwganiza-macos-arm64.dmg` | Abra o `.dmg` e arraste o aplicativo para a pasta Aplicativos. |
+| **macOS 11+** | `MeOwganiza-macos-arm64.dmg` | Abra o `.dmg` e arraste o aplicativo para a pasta Aplicativos. |
 
 ![Página de download do MeOwganiza para Windows, Linux e Mac](docs/images/pagina-de-download.png)
 
-O pacote Linux é gerado em Ubuntu 22.04 para x86_64 e está incluído no arquivo `.tar.gz`. O pacote macOS é gerado para Apple Silicon (arm64) e distribuído em um arquivo `.dmg`.
+O pacote Linux é gerado em Ubuntu 22.04 para x86_64 e está incluído no arquivo `.tar.gz`. O pacote macOS é distribuído em um arquivo `.dmg`.
 
 ### Requisitos para executar pelo código-fonte
 
@@ -179,7 +179,7 @@ O pacote Linux é gerado em Ubuntu 22.04 para x86_64 e está incluído no arquiv
 - Windows, Linux ou macOS para a CLI.
 - Windows para o executável nativo `.exe`.
 - Linux x86_64 para o executável desktop Linux.
-- macOS 11+ (Apple Silicon) para o aplicativo desktop `.dmg`.
+- macOS 11+ para o aplicativo desktop `.dmg`.
 
 ### Preparar o ambiente
 
