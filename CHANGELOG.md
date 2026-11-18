@@ -5,6 +5,16 @@ Todas as mudanças relevantes deste projeto são documentadas neste arquivo.
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o
 versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 
+## [Não publicado]
+
+### Adicionado
+
+- Build e publicação do aplicativo desktop para macOS (Apple Silicon) como `.dmg`,
+  com geração automática do ícone `.icns` na integração contínua.
+- Card "Aplicativo para Mac" na página de downloads.
+- macOS na matriz de testes da integração contínua.
+- Extra de dependências `native-macos` para a interface nativa no macOS.
+
 ## [2.0.0] - 2026-11-02
 
 ### Adicionado

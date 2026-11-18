@@ -2,7 +2,7 @@
 
 > **Organizador seguro de arquivos** — projeto integrador da disciplina de **Sistemas Operacionais**.
 
-O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva itens antigos e gera relatórios. A interface principal é um aplicativo nativo para Windows e Linux.
+O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva itens antigos e gera relatórios. A interface principal é um aplicativo nativo para Windows, Linux e macOS.
 
 [![CI](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml/badge.svg)](https://github.com/julianasaunders/MeOwganiza/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -15,7 +15,7 @@ O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva 
 | 🏷️ Item | 📋 Detalhe |
 | --- | --- |
 | **Tipo** | Aplicativo local para organização de arquivos |
-| **Interfaces** | Aplicativo nativo para Windows, Linux e interface web local |
+| **Interfaces** | Aplicativo nativo para Windows, Linux e macOS, além da interface web local |
 | **Tecnologias** | Python, HTML, CSS e JavaScript |
 | **Requisito** | Python 3.10+ para executar pelo código-fonte |
 | **Segurança** | Simula primeiro; só aplica operações mediante confirmação |
@@ -110,7 +110,7 @@ O MeOwganiza separa **planejamento** e **execução**: primeiro mostra o que pre
 | --- | --- |
 | **Python 3.10+** | CLI, planejamento, execução, relatórios e diagnóstico |
 | **HTML, CSS e JavaScript** | Interface web e conteúdo da interface gráfica |
-| **pywebview** | Dependência opcional da janela nativa do Windows |
+| **pywebview** | Dependência opcional da janela nativa (Windows, Linux e macOS) |
 | **`unittest`** | Testes automatizados |
 | **GitHub Actions / GitHub Pages** | Integração contínua e demonstração do projeto |
 
@@ -167,10 +167,11 @@ Acesse a **[página de downloads do MeOwganiza](https://julianasaunders.github.i
 | --- | --- | --- |
 | **Windows 10/11** | `MeOwganiza.exe` | Baixe e abra o executável. Não precisa instalar Python. |
 | **Linux x86_64** | `MeOwganiza-linux-x86_64.tar.gz` | Extraia, torne o arquivo executável com `chmod +x MeOwganiza` e execute `./MeOwganiza`. |
+| **macOS 11+ (Apple Silicon)** | `MeOwganiza-macos-arm64.dmg` | Abra o `.dmg` e arraste o aplicativo para a pasta Aplicativos. |
 
-![Página de download do MeOwganiza para Windows e Linux](docs/images/pagina-de-download.png)
+![Página de download do MeOwganiza para Windows, Linux e Mac](docs/images/pagina-de-download.png)
 
-O pacote Linux é gerado em Ubuntu 22.04 para x86_64 e está incluído no arquivo `.tar.gz`.
+O pacote Linux é gerado em Ubuntu 22.04 para x86_64 e está incluído no arquivo `.tar.gz`. O pacote macOS é gerado para Apple Silicon (arm64) e distribuído em um arquivo `.dmg`.
 
 ### Requisitos para executar pelo código-fonte
 
@@ -178,6 +179,7 @@ O pacote Linux é gerado em Ubuntu 22.04 para x86_64 e está incluído no arquiv
 - Windows, Linux ou macOS para a CLI.
 - Windows para o executável nativo `.exe`.
 - Linux x86_64 para o executável desktop Linux.
+- macOS 11+ (Apple Silicon) para o aplicativo desktop `.dmg`.
 
 ### Preparar o ambiente
 
@@ -231,6 +233,12 @@ python meowganiza.py native
 ```bash
 # Linux (backend Qt/WebEngine)
 python -m pip install -e ".[native-linux]"
+python meowganiza.py native
+```
+
+```bash
+# macOS (backend nativo Cocoa/WebKit)
+python -m pip install -e ".[native-macos]"
 python meowganiza.py native
 ```
 
