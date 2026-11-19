@@ -1379,6 +1379,13 @@ function cloudTiles(mode, box) {
 /* peças das etapas */
 const headerWithCounters = () => `<div class="scan4" style="position:relative;z-index:2"><div><div class="muted">Farejando ${state.folder}</div><div class="bignum" style="font-size:56px" data-scan="pct">0%</div></div><div style="width:440px">${liveCounters()}</div></div>`;
 const folderChips = () => `<button class="pick-select rise" data-pickfolder>${tile('folder', '#7cc3c3', '#2f8a9c')}<span><b>${state.pickedFolder || 'Selecionar pasta'}</b><em>Clique para escolher ou arraste uma pasta aqui</em></span></button><input type="file" id="folder-input" webkitdirectory hidden>`;
+function syncPickAction() {
+  const button = document.getElementById('pick-action');
+  if (!button) return;
+  button.textContent = state.pickedFolder ? 'Organizar pasta' : 'Analisar';
+  if (state.pickedFolder) { button.setAttribute('data-go', '1'); button.removeAttribute('data-pickfolder'); }
+  else { button.setAttribute('data-pickfolder', ''); button.removeAttribute('data-go'); }
+}
 
 const cleanFolderName = (name) => String(name).replace(/[<>&"'`]/g, '').trim().slice(0, 40);
 function addCustomFolder(rawName) {
@@ -1387,6 +1394,7 @@ function addCustomFolder(rawName) {
   if (!FOLDERS.some((folder) => folder.id === name) && !state.customFolders.includes(name)) state.customFolders.push(name);
   state.folder = name;
   state.pickedFolder = name;
+  syncPickAction();
   const row = document.getElementById('folder-chips');
   if (row) row.innerHTML = folderChips();
   document.querySelectorAll('[data-pick-label]').forEach((node) => { node.textContent = name; });
@@ -1487,7 +1495,7 @@ const R5_VARIANTS = [
     winsWhen: 'O produto quer uma linguagem visual única do começo ao fim.',
     cost: 'A escolha da pasta mostra pouca informação.',
     views: {
-      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><p class="muted note rise" style="--d:3">Ou arraste uma pasta para cá. <span id="pick-note"></span></p><button class="cta rise" style="--d:4" data-go="1">Analisar <span data-pick-label></span></button></div></div>`,
+      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><p class="muted note rise" style="--d:3">Ou arraste uma pasta para cá. <span id="pick-note"></span></p><button id="pick-action" class="cta rise" style="--d:4" ${state.pickedFolder ? 'data-go="1"' : 'data-pickfolder'}>${state.pickedFolder ? 'Organizar pasta' : 'Analisar'}</button></div></div>`,
       scan: () => { state.litOrder = FILES.slice().sort((x, y) => x.sx - y.sx); return `<div class="scan5">${skyHtml({ cls: 'bleed bare', dim: true })}<div class="sweep" data-scan="sweep"></div>${headerWithCounters()}</div>`; },
       map: () => `<div class="m2">${mapHeader(hlChips())}<div class="cwrap">${skyHtml({ cls: 'free nofx center' })}</div>${mapDock()}</div>`,
     },
