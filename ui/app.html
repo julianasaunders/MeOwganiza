@@ -269,6 +269,7 @@
   @keyframes ripple { from { opacity: .5; scale: 1; } to { opacity: 0; scale: 1.12; } }
   .fcard.health { gap: 14px; } .meter { width: 100%; height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; } .meter i { display: block; height: 100%; border-radius: inherit; } .meter .hi { background: #ff5a5a; } .meter .mid { background: #ffb454; } .meter .lo { background: #6ee7a0; }
   .pick5 .hero { position: relative; z-index: 2; display: grid; justify-items: center; gap: 22px; text-align: center; padding: 0 32px; } .pick5 .hero p { margin: 0; }
+  .pick-select { display: flex; align-items: center; gap: 14px; width: min(380px, 100%); padding: 14px 18px; border-radius: 18px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); text-align: left; transition: background 160ms ease-out, transform 180ms var(--ease); } .pick-select:hover { background: color-mix(in srgb, var(--fg) 14%, transparent); transform: translateY(-2px); } .pick-select b { display: block; font-size: 15px; } .pick-select em { display: block; margin-top: 2px; font-style: normal; font-size: 12px; color: var(--mute); }
   .giant { margin: 0; font-size: 60px; letter-spacing: -.03em; line-height: 1.05; font-weight: 700; font-variant-numeric: tabular-nums; }
 
   /* análise */
@@ -718,7 +719,7 @@ const DEFAULT_VIEWS = {
     return `<div class="pick"><div class="rise"><h1 class="title">Qual pasta você quer organizar?</h1><p class="muted">Primeiro mostro o mapa e o que vai mudar. Nada some sem você confirmar.</p></div>
       <div class="folders">${FOLDERS.map((folder, index) => `<button class="fcard rise" style="--d:${index + 1}" data-folder="${folder.id}" aria-pressed="${folder.id === state.folder}">${tile(folder.icon, folder.a, folder.b)}<div><b>${folder.id}</b><span>${folder.hint}</span></div></button>`).join('')}
         <button class="fcard drop rise" style="--d:5" data-folder="Projetos" aria-pressed="false"><b>Outra pasta…</b><span>ou arraste uma pasta aqui</span></button></div>
-      <button class="cta rise" style="--d:6" data-go="1">Analisar <span data-pick-label>${state.folder}</span></button></div>`;
+      <button class="cta rise" style="--d:6" data-go="1">Analisar <span data-pick-label></span></button></div>`;
   },
   scan() {
     return `<div class="feed"><div class="rise"><div class="muted">Farejando ${state.folder}</div><div class="bignum" data-scan="pct">0%</div></div>
@@ -1377,11 +1378,7 @@ function cloudTiles(mode, box) {
 
 /* peças das etapas */
 const headerWithCounters = () => `<div class="scan4" style="position:relative;z-index:2"><div><div class="muted">Farejando ${state.folder}</div><div class="bignum" style="font-size:56px" data-scan="pct">0%</div></div><div style="width:440px">${liveCounters()}</div></div>`;
-const folderChips = () => [
-  ...FOLDERS.map((folder) => ({ name: folder.id, icon: folder.icon })),
-  ...state.customFolders.map((name) => ({ name, icon: 'folder' })),
-].map((folder) => `<button class="chip big" data-folder="${folder.name}" aria-pressed="${folder.name === state.folder}">${icon(folder.icon)}${folder.name}</button>`).join('')
-  + `<button class="chip big add" data-pickfolder>${icon('folder')}Outra pasta…</button><input type="file" id="folder-input" webkitdirectory hidden>`;
+const folderChips = () => `<button class="pick-select rise" data-pickfolder>${tile('folder', '#7cc3c3', '#2f8a9c')}<span><b>Selecionar pasta</b><em>Clique para escolher ou arraste uma pasta aqui</em></span></button><input type="file" id="folder-input" webkitdirectory hidden>`;
 
 const cleanFolderName = (name) => String(name).replace(/[<>&"'`]/g, '').trim().slice(0, 40);
 function addCustomFolder(rawName) {
@@ -1489,7 +1486,7 @@ const R5_VARIANTS = [
     winsWhen: 'O produto quer uma linguagem visual única do começo ao fim.',
     cost: 'A escolha da pasta mostra pouca informação.',
     views: {
-      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><button class="cta rise" style="--d:3" data-go="1">Analisar <span data-pick-label>${state.folder}</span></button><p class="muted note rise" style="--d:4">Ou arraste uma pasta para cá. <span id="pick-note"></span></p></div></div>`,
+      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><button class="cta rise" style="--d:3" data-go="1">Analisar <span data-pick-label></span></button><p class="muted note rise" style="--d:4">Ou arraste uma pasta para cá. <span id="pick-note"></span></p></div></div>`,
       scan: () => { state.litOrder = FILES.slice().sort((x, y) => x.sx - y.sx); return `<div class="scan5">${skyHtml({ cls: 'bleed bare', dim: true })}<div class="sweep" data-scan="sweep"></div>${headerWithCounters()}</div>`; },
       map: () => `<div class="m2">${mapHeader(hlChips())}<div class="cwrap">${skyHtml({ cls: 'free nofx center' })}</div>${mapDock()}</div>`,
     },
@@ -1504,7 +1501,7 @@ const R5_VARIANTS = [
     views: {
       pick: () => `<div class="pick"><div class="rise"><h1 class="title">Qual pasta precisa de ajuda?</h1><p class="muted">Eu já medi o quanto cada uma está bagunçada.</p></div>
         <div class="folders big">${FOLDERS.map((folder, index) => { const score = MESS_SCORE[folder.id]; return `<button class="fcard health thumbcard rise" style="--d:${index + 1}" data-folder="${folder.id}" aria-pressed="${folder.id === state.folder}"><div class="thumb dots">${miniDots(folderSeed[folder.id], DOT_COUNT[folder.id])}</div><div><b>${folder.id}</b><span>${score}% bagunçada</span></div><div class="meter"><i class="${score > 60 ? 'hi' : score > 35 ? 'mid' : 'lo'}" style="width:${score}%"></i></div></button>`; }).join('')}</div>
-        <button class="cta rise" style="--d:5" data-go="1">Analisar <span data-pick-label>${state.folder}</span></button></div>`,
+        <button class="cta rise" style="--d:5" data-go="1">Analisar <span data-pick-label></span></button></div>`,
       scan: ringScanView,
       map: () => `<div class="m2">${mapHeader(hlChips())}<div class="cwrap">${skyHtml({ cls: 'free nofx center' })}<aside class="queue"><div class="qbody" id="queue-body">${queueBody()}</div></aside></div>${mapDock()}</div>`,
     },
