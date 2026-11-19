@@ -1458,7 +1458,7 @@ const R5_VARIANTS = [
     winsWhen: 'O produto quer uma linguagem visual única do começo ao fim.',
     cost: 'A escolha da pasta mostra pouca informação.',
     views: {
-      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><button class="cta rise" style="--d:3" data-go="1">Analisar <span data-pick-label></span></button><p class="muted note rise" style="--d:4">Ou arraste uma pasta para cá. <span id="pick-note"></span></p></div></div>`,
+      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><p class="muted note rise" style="--d:3">Ou arraste uma pasta para cá. <span id="pick-note"></span></p><button class="cta rise" style="--d:4" data-go="1">Analisar <span data-pick-label></span></button></div></div>`,
       scan: () => { state.litOrder = FILES.slice().sort((x, y) => x.sx - y.sx); return `<div class="scan5">${skyHtml({ cls: 'bleed bare', dim: true })}<div class="sweep" data-scan="sweep"></div>${headerWithCounters()}</div>`; },
       map: () => `<div class="m2">${mapHeader(hlChips())}<div class="cwrap">${skyHtml({ cls: 'free nofx center' })}</div>${mapDock()}</div>`,
     },
