@@ -282,7 +282,7 @@
     originalFlash(button);
     if (!hasBackend()) return;
     var label = String(button.dataset.flash || '');
-    if (label.indexOf('pasta') < 0 && label.indexOf('Finder') < 0) return;
+    if (label.indexOf('pasta') < 0 && label.indexOf('Finder') < 0 && label !== 'Abrindo…') return;
     try {
       var response = await fetch('/api/open-folder', {
         method: 'POST',
