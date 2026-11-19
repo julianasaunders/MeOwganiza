@@ -8,7 +8,7 @@ O MeOwganiza organiza pastas por categoria, renomeia arquivos em massa, arquiva 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green.svg)](LICENSE)
 
-**🌐 Demonstração:** [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/)
+**🌐 Demonstração:** [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/?v=1)
 
 **📥 Download:** [julianasaunders.github.io/MeOwganiza/download.html](https://julianasaunders.github.io/MeOwganiza/download.html?v=2)
 

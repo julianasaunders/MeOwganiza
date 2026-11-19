@@ -269,7 +269,6 @@
   @keyframes ripple { from { opacity: .5; scale: 1; } to { opacity: 0; scale: 1.12; } }
   .fcard.health { gap: 14px; } .meter { width: 100%; height: 6px; border-radius: 99px; background: var(--line); overflow: hidden; } .meter i { display: block; height: 100%; border-radius: inherit; } .meter .hi { background: #ff5a5a; } .meter .mid { background: #ffb454; } .meter .lo { background: #6ee7a0; }
   .pick5 .hero { position: relative; z-index: 2; display: grid; justify-items: center; gap: 22px; text-align: center; padding: 0 32px; } .pick5 .hero p { margin: 0; }
-  .pick-select { display: flex; align-items: center; gap: 14px; width: min(380px, 100%); padding: 14px 18px; border-radius: 18px; background: var(--panel); box-shadow: inset 0 0 0 1px var(--line); text-align: left; transition: background 160ms ease-out, transform 180ms var(--ease); } .pick-select:hover { background: color-mix(in srgb, var(--fg) 14%, transparent); transform: translateY(-2px); } .pick-select b { display: block; font-size: 15px; } .pick-select em { display: block; margin-top: 2px; font-style: normal; font-size: 12px; color: var(--mute); }
   .giant { margin: 0; font-size: 60px; letter-spacing: -.03em; line-height: 1.05; font-weight: 700; font-variant-numeric: tabular-nums; }
 
   /* análise */
@@ -592,7 +591,7 @@ const variant = () => VARIANTS[current];
 
 function resetState() {
   flowToken++;
-  state = { customFolders: [], pickedFolder: null, keep: new Set(), by: 'type', litOrder: null, step: 0, folder: 'Downloads', opts: { dups: true, corrupt: true, app: true, sort: true }, skip: new Set(), drill: null, filter: 'all', tab: 'map', sel: null, mode: 'before', undone: false, lit: 0 };
+  state = { customFolders: [], keep: new Set(), by: 'type', litOrder: null, step: 0, folder: 'Downloads', opts: { dups: true, corrupt: true, app: true, sort: true }, skip: new Set(), drill: null, filter: 'all', tab: 'map', sel: null, mode: 'before', undone: false, lit: 0 };
 }
 
 function optionRemoves(id) {
@@ -691,7 +690,7 @@ const DEFAULT_VIEWS = {
     return `<div class="pick"><div class="rise"><h1 class="title">Qual pasta você quer organizar?</h1><p class="muted">Primeiro mostro o mapa e o que vai mudar. Nada some sem você confirmar.</p></div>
       <div class="folders">${FOLDERS.map((folder, index) => `<button class="fcard rise" style="--d:${index + 1}" data-folder="${folder.id}" aria-pressed="${folder.id === state.folder}">${tile(folder.icon, folder.a, folder.b)}<div><b>${folder.id}</b><span>${folder.hint}</span></div></button>`).join('')}
         <button class="fcard drop rise" style="--d:5" data-folder="Projetos" aria-pressed="false"><b>Outra pasta…</b><span>ou arraste uma pasta aqui</span></button></div>
-      <button class="cta rise" style="--d:6" data-go="1">Analisar <span data-pick-label></span></button></div>`;
+      <button class="cta rise" style="--d:6" data-go="1">Analisar <span data-pick-label>${state.folder}</span></button></div>`;
   },
   scan() {
     return `<div class="feed"><div class="rise"><div class="muted">Farejando ${state.folder}</div><div class="bignum" data-scan="pct">0%</div></div>
@@ -734,7 +733,7 @@ function doneView() {
   return `<div class="done2"><div class="badge">${icon('check')}</div>
     <div class="rise"><div class="muted">${state.folder} arrumada</div><div class="bigres" data-count data-to="${s.freedMb}" data-fmt="mb">0 MB</div><div class="muted">liberados</div></div>
     <div class="res-stats rise" style="--d:2"><div><b data-count data-to="${s.movedN}" data-fmt="int">0</b><span>arquivos organizados</span></div><div><b data-count data-to="${s.folders}" data-fmt="int">0</b><span>pastas novas</span></div><div><b data-count data-to="${s.removedN}" data-fmt="int">0</b><span>itens removidos</span></div></div>
-    <div class="row rise" style="--d:3"><button class="cta" data-flash="Abrindo…">Ver na pasta</button><button class="ghost" data-undo>${icon('undo')} Desfazer tudo</button><button class="ghost" data-go="0">Outra pasta</button></div>
+    <div class="row rise" style="--d:3"><button class="cta" data-flash="Abrindo no Finder…">Ver na pasta</button><button class="ghost" data-undo>${icon('undo')} Desfazer tudo</button><button class="ghost" data-go="0">Outra pasta</button></div>
     <p class="muted note">Dá para desfazer por 30 dias.</p></div>`;
 }
 
@@ -1130,7 +1129,7 @@ const sectionBar = (kicker, title, right = '') => `<div class="bar2 rise"><div><
 const dockBar = (left, right) => `<div class="dock4"><div class="group">${left}</div><div class="group">${right}</div></div>`;
 const previewDock = () => dockBar(optionChips(), `${summaryInline()}<button class="cta" data-go="4" data-need-work>Organizar agora</button>`);
 const applyDock = () => dockBar('<span class="muted" id="move-label">Preparando…</span>', '<div class="track" style="width:260px"><i id="move-bar"></i></div>');
-const doneDock = () => { const s = summary(); return dockBar(`<span class="badge small">${icon('check')}</span><div><b>Organizado</b><div class="muted" style="font-size:13px">${number.format(s.movedN)} arquivos em ${s.folders} pastas · ${fmtMb(s.freedMb)} liberados</div></div>`, `<button class="cta" data-flash="Abrindo…">Ver na pasta</button><button class="ghost" data-go="3">${icon('undo')} Desfazer</button>`); };
+const doneDock = () => { const s = summary(); return dockBar(`<span class="badge small">${icon('check')}</span><div><b>Organizado</b><div class="muted" style="font-size:13px">${number.format(s.movedN)} arquivos em ${s.folders} pastas · ${fmtMb(s.freedMb)} liberados</div></div>`, `<button class="cta" data-flash="Abrindo no Finder…">Ver na pasta</button><button class="ghost" data-go="3">${icon('undo')} Desfazer</button>`); };
 const headerFor = (phase, extra = '') => ({
   preview: () => sectionBar('Prévia', 'Antes e depois', `${extra}${segControl()}`),
   apply: () => sectionBar('Arrumando', state.folder, '<div class="bignum" style="font-size:40px" data-apply="pct">0%</div>'),
@@ -1350,7 +1349,11 @@ function cloudTiles(mode, box) {
 
 /* peças das etapas */
 const headerWithCounters = () => `<div class="scan4" style="position:relative;z-index:2"><div><div class="muted">Farejando ${state.folder}</div><div class="bignum" style="font-size:56px" data-scan="pct">0%</div></div><div style="width:440px">${liveCounters()}</div></div>`;
-const folderChips = () => `<button class="pick-select rise" data-pickfolder>${tile('folder', '#7cc3c3', '#2f8a9c')}<span><b>${state.pickedFolder || 'Selecionar pasta'}</b><em>Clique para escolher ou arraste uma pasta aqui</em></span></button><input type="file" id="folder-input" webkitdirectory hidden>`;
+const folderChips = () => [
+  ...FOLDERS.map((folder) => ({ name: folder.id, icon: folder.icon })),
+  ...state.customFolders.map((name) => ({ name, icon: 'folder' })),
+].map((folder) => `<button class="chip big" data-folder="${folder.name}" aria-pressed="${folder.name === state.folder}">${icon(folder.icon)}${folder.name}</button>`).join('')
+  + `<button class="chip big add" data-pickfolder>${icon('folder')}Outra pasta…</button><input type="file" id="folder-input" webkitdirectory hidden>`;
 
 const cleanFolderName = (name) => String(name).replace(/[<>&"'`]/g, '').trim().slice(0, 40);
 function addCustomFolder(rawName) {
@@ -1358,7 +1361,6 @@ function addCustomFolder(rawName) {
   if (!name) return;
   if (!FOLDERS.some((folder) => folder.id === name) && !state.customFolders.includes(name)) state.customFolders.push(name);
   state.folder = name;
-  state.pickedFolder = name;
   const row = document.getElementById('folder-chips');
   if (row) row.innerHTML = folderChips();
   document.querySelectorAll('[data-pick-label]').forEach((node) => { node.textContent = name; });
@@ -1459,7 +1461,7 @@ const R5_VARIANTS = [
     winsWhen: 'O produto quer uma linguagem visual única do começo ao fim.',
     cost: 'A escolha da pasta mostra pouca informação.',
     views: {
-      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><p class="muted note rise" style="--d:3">Ou arraste uma pasta para cá. <span id="pick-note"></span></p><button class="cta rise" style="--d:4" data-go="1">Analisar <span data-pick-label></span></button></div></div>`,
+      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><button class="cta rise" style="--d:3" data-go="1">Analisar <span data-pick-label>${state.folder}</span></button><p class="muted note rise" style="--d:4">Ou arraste uma pasta para cá. <span id="pick-note"></span></p></div></div>`,
       scan: () => { state.litOrder = FILES.slice().sort((x, y) => x.sx - y.sx); return `<div class="scan5">${skyHtml({ cls: 'bleed bare', dim: true })}<div class="sweep" data-scan="sweep"></div>${headerWithCounters()}</div>`; },
       map: () => `<div class="m2">${mapHeader(hlChips())}<div class="cwrap">${skyHtml({ cls: 'free nofx center' })}</div>${mapDock()}</div>`,
     },
@@ -1474,7 +1476,7 @@ const R5_VARIANTS = [
     views: {
       pick: () => `<div class="pick"><div class="rise"><h1 class="title">Qual pasta precisa de ajuda?</h1><p class="muted">Eu já medi o quanto cada uma está bagunçada.</p></div>
         <div class="folders big">${FOLDERS.map((folder, index) => { const score = MESS_SCORE[folder.id]; return `<button class="fcard health thumbcard rise" style="--d:${index + 1}" data-folder="${folder.id}" aria-pressed="${folder.id === state.folder}"><div class="thumb dots">${miniDots(folderSeed[folder.id], DOT_COUNT[folder.id])}</div><div><b>${folder.id}</b><span>${score}% bagunçada</span></div><div class="meter"><i class="${score > 60 ? 'hi' : score > 35 ? 'mid' : 'lo'}" style="width:${score}%"></i></div></button>`; }).join('')}</div>
-        <button class="cta rise" style="--d:5" data-go="1">Analisar <span data-pick-label></span></button></div>`,
+        <button class="cta rise" style="--d:5" data-go="1">Analisar <span data-pick-label>${state.folder}</span></button></div>`,
       scan: ringScanView,
       map: () => `<div class="m2">${mapHeader(hlChips())}<div class="cwrap">${skyHtml({ cls: 'free nofx center' })}<aside class="queue"><div class="qbody" id="queue-body">${queueBody()}</div></aside></div>${mapDock()}</div>`,
     },
@@ -1626,7 +1628,7 @@ const CHOSEN = R5_VARIANTS[0];
 const SCORE_BEFORE = 32; const SCORE_AFTER = 96;
 
 const finalNumbers = (s, delay = 2) => `<div class="res-stats rise" style="--d:${delay}"><div><b data-count data-to="${s.movedN}" data-fmt="int">0</b><span>arquivos organizados</span></div><div><b data-count data-to="${s.folders}" data-fmt="int">0</b><span>pastas novas</span></div><div><b data-count data-to="${s.removedN}" data-fmt="int">0</b><span>itens removidos</span></div></div>`;
-const finalButtons = (extra = '') => `<button class="cta" data-flash="Abrindo…">Ver na pasta</button>${extra}<button class="ghost" data-undo>${icon('undo')} Desfazer</button>`;
+const finalButtons = (extra = '') => `<button class="cta" data-flash="Abrindo no Finder…">Ver na pasta</button>${extra}<button class="ghost" data-undo>${icon('undo')} Desfazer</button>`;
 const finalSky = (cls = '') => skyHtml({ cls: `free nofx center ${cls}` });
 const scoreBars = () => `<div class="scorebars rise" style="--d:3"><div><span>Antes</span><span class="bar before"><i data-w="${SCORE_BEFORE}"></i></span><b>${SCORE_BEFORE}%</b></div><div><span>Depois</span><span class="bar"><i data-w="${SCORE_AFTER}"></i></span><b>${SCORE_AFTER}%</b></div></div>`;
 const bigNumber = (s, cls = 'bigres') => `<div class="${cls}" data-count data-to="${s.freedMb}" data-fmt="mb">0 MB</div>`;
@@ -1647,7 +1649,7 @@ const finalB = () => {
       <div class="ncard rise" style="--d:1">${tile('rules', '#f2a7b5', '#e57f8f')}<div><b>Manter organizada</b><span>Arrumar ${state.folder} toda segunda. Você revisa antes de mover.</span></div><button data-auto aria-pressed="${Boolean(state.auto)}" aria-label="Organizar toda segunda"><span class="sw"></span></button></div>
       <div class="ncard rise" style="--d:2">${tile('trash', '#f39c97', '#cf6273')}<div><b>Lixeira</b><span>${s.removedN} itens ficam lá por 30 dias.</span></div><button class="ghost sm" data-flash="Abrindo a Lixeira…">Ver itens</button></div>
       <div class="ncard rise" style="--d:3">${tile('folder', '#f2a7b5', '#e57f8f')}<div><b>Desktop</b><span>41% bagunçada. É a próxima da fila.</span></div><button class="ghost sm" data-pickgo="Desktop">Analisar</button></div>
-    </div></div>${dockBar('<span class="muted">Dá para desfazer por 30 dias.</span>', `<button class="cta" data-flash="Abrindo…">Ver na pasta</button><button class="ghost" data-undo>${icon('undo')} Desfazer</button>`)}</div>`;
+    </div></div>${dockBar('<span class="muted">Dá para desfazer por 30 dias.</span>', `<button class="cta" data-flash="Abrindo no Finder…">Ver na pasta</button><button class="ghost" data-undo>${icon('undo')} Desfazer</button>`)}</div>`;
 };
 
 /* 3 · celebração */
