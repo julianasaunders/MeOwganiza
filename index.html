@@ -592,7 +592,7 @@ const variant = () => VARIANTS[current];
 
 function resetState() {
   flowToken++;
-  state = { customFolders: [], keep: new Set(), by: 'type', litOrder: null, step: 0, folder: 'Downloads', opts: { dups: true, corrupt: true, app: true, sort: true }, skip: new Set(), drill: null, filter: 'all', tab: 'map', sel: null, mode: 'before', undone: false, lit: 0 };
+  state = { customFolders: [], pickedFolder: null, keep: new Set(), by: 'type', litOrder: null, step: 0, folder: 'Downloads', opts: { dups: true, corrupt: true, app: true, sort: true }, skip: new Set(), drill: null, filter: 'all', tab: 'map', sel: null, mode: 'before', undone: false, lit: 0 };
 }
 
 function optionRemoves(id) {
@@ -1350,7 +1350,7 @@ function cloudTiles(mode, box) {
 
 /* peças das etapas */
 const headerWithCounters = () => `<div class="scan4" style="position:relative;z-index:2"><div><div class="muted">Farejando ${state.folder}</div><div class="bignum" style="font-size:56px" data-scan="pct">0%</div></div><div style="width:440px">${liveCounters()}</div></div>`;
-const folderChips = () => `<button class="pick-select rise" data-pickfolder>${tile('folder', '#7cc3c3', '#2f8a9c')}<span><b>Selecionar pasta</b><em>Clique para escolher ou arraste uma pasta aqui</em></span></button><input type="file" id="folder-input" webkitdirectory hidden>`;
+const folderChips = () => `<button class="pick-select rise" data-pickfolder>${tile('folder', '#7cc3c3', '#2f8a9c')}<span><b>${state.pickedFolder || 'Selecionar pasta'}</b><em>Clique para escolher ou arraste uma pasta aqui</em></span></button><input type="file" id="folder-input" webkitdirectory hidden>`;
 
 const cleanFolderName = (name) => String(name).replace(/[<>&"'`]/g, '').trim().slice(0, 40);
 function addCustomFolder(rawName) {
@@ -1358,6 +1358,7 @@ function addCustomFolder(rawName) {
   if (!name) return;
   if (!FOLDERS.some((folder) => folder.id === name) && !state.customFolders.includes(name)) state.customFolders.push(name);
   state.folder = name;
+  state.pickedFolder = name;
   const row = document.getElementById('folder-chips');
   if (row) row.innerHTML = folderChips();
   document.querySelectorAll('[data-pick-label]').forEach((node) => { node.textContent = name; });

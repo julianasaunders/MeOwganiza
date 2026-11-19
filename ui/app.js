@@ -209,6 +209,7 @@
     REAL_TARGET = path;
     scanReady = false;
     state.folder = basename(path);
+    state.pickedFolder = state.folder;
     document.querySelectorAll('[data-pick-label]').forEach(function (node) { node.textContent = state.folder; });
     var chips = document.getElementById('folder-chips');
     if (chips) chips.innerHTML = folderChips();
