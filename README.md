@@ -16,7 +16,7 @@ Por isso o MeOwganiza separa **planejamento** e **execução**: primeiro mostra 
 
 ## 🎬 Demonstração
 
-<video src="docs/images/demo.mp4" controls muted loop playsinline width="820"></video>
+[![Demonstração do MeOwganiza](docs/images/demo.gif)](docs/images/demo.mp4)
 
 **🌐 [Demonstração online](https://julianasaunders.github.io/MeOwganiza/)** · **📥 [Download](https://julianasaunders.github.io/MeOwganiza/download.html)** · **📖 [Guia de uso](docs/GUIA-DE-USO.md)**
 

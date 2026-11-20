@@ -4,7 +4,7 @@
 
 ## Visão geral
 
-<video src="images/demo.mp4" controls muted loop playsinline width="820"></video>
+[![Demonstração do MeOwganiza](images/demo.gif)](images/demo.mp4)
 
 ## Página pública
 
