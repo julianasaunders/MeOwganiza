@@ -10,7 +10,7 @@ externas. A pirâmide é dividida em:
 | Unitários | `test_config`, `test_utils`, `test_planner`, `test_executor`, `test_reporter`, `test_system_info` | Validar cada módulo isoladamente |
 | Ponta a ponta | `test_cli` | Validar a CLI como um usuário faria |
 | Integração | `test_integration` | Validar o fluxo completo com filesystem real |
-| CI | `.github/workflows/ci.yml` | Executar em Ubuntu e Windows |
+| CI | `.github/workflows/ci.yml` | Executar em Ubuntu, Windows e macOS |
 
 ## Como executar
 
@@ -134,6 +134,7 @@ O workflow `.github/workflows/ci.yml` roda em matriz:
 | --- | --- |
 | Ubuntu | 3.10 e 3.12 |
 | Windows | 3.10 e 3.12 |
+| macOS | 3.10 e 3.12 |
 
 Etapas:
 

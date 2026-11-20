@@ -3,14 +3,15 @@
 ## Visão geral
 
 O MeOwganiza é uma aplicação de linha de comando escrita em Python 3.10+, sem
-dependências externas obrigatórias. A arquitetura separa **planejamento**,
-**execução** e **observação** para que a simulação seja confiável e o undo seja
-possível.
+dependências externas obrigatórias, com interfaces web local e nativa
+opcional. A arquitetura separa **planejamento**, **execução** e **observação**
+para que a simulação seja confiável e o undo seja possível.
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
 │                         CLI (argparse)                      │
 │  organize │ undo │ doctor │ config │ demo │ interactive     │
+│  web      │ native                                          │
 └───────┬───────────────┬──────────────┬──────────────────────┘
         │               │              │
         ▼               ▼              ▼
@@ -60,6 +61,8 @@ possível.
 | `logging_setup.py` | Log rotativo em `meowganiza.log` | Escrita de log |
 | `utils.py` | Tamanhos, nomes, padrões, caminhos | Nenhum |
 | `demo.py` | Criar sandbox de demonstração | Escrita em pasta temporária |
+| `web.py` | Servir a interface web local em `127.0.0.1:8765` | Escuta em porta local |
+| `native.py` | Abrir a interface em janela nativa (`pywebview`) | Abre janela |
 
 ## Fluxo de dados
 
@@ -234,4 +237,4 @@ alvo ou usar um agendador que evite sobreposição.
 - Detecção de arquivos ocultos em POSIX e Windows.
 - Sanitização de nomes reservados do Windows (`CON`, `NUL`, `COM1` etc.).
 - Diagnóstico de memória específico por plataforma.
-- CI em Ubuntu e Windows.
+- CI em Ubuntu, Windows e macOS.

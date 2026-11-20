@@ -45,6 +45,10 @@ por uma pessoa quanto por um agendador de tarefas.
 
 ## 4. Escopo
 
+> **Atualização de escopo:** após o planejamento inicial, a interface gráfica
+> nativa e o empacotamento em instaladores (`.exe`, `.tar.gz` e `.dmg`) foram
+> incluídos no entregável final para Windows, Linux e macOS.
+
 ### Dentro do escopo (MVP)
 
 - CLI Python 3.10+ sem dependências externas obrigatórias.
@@ -60,7 +64,7 @@ por uma pessoa quanto por um agendador de tarefas.
 
 ### Fora do escopo
 
-- Interface gráfica desktop ou aplicativo mobile.
+- Aplicativo mobile.
 - Sincronização em nuvem.
 - Deduplicação por hash de conteúdo.
 - Banco de dados externo.
@@ -161,13 +165,13 @@ consiga trabalhar de forma autônoma, com revisões cruzadas nos pontos crítico
 | Colisão de nomes | Médio | Sufixos únicos e verificação antes de mover |
 | Permissão negada | Médio | Diagnóstico e mensagens claras |
 | Falta de espaço | Médio | Checagem de espaço livre antes da execução |
-| Diferenças entre SOs | Médio | CI em Ubuntu e Windows |
+| Diferenças entre SOs | Médio | CI em Ubuntu, Windows e macOS |
 | Prazo curto | Alto | MVP priorizado e escopo congelado |
 
 ## 13. Critérios de sucesso
 
 - A aplicação executa o fluxo completo em uma pasta de demonstração.
-- Todos os testes passam em Windows e Linux.
+- Todos os testes passam em Windows, Linux e macOS.
 - O `undo` restaura os arquivos de uma execução real.
 - A documentação permite que uma pessoa externa reproduza o projeto.
 
@@ -176,4 +180,4 @@ consiga trabalhar de forma autônoma, com revisões cruzadas nos pontos crítico
 - Python 3.10 ou superior disponível no ambiente.
 - O usuário tem permissão de leitura e escrita na pasta alvo.
 - O projeto é avaliado como trabalho acadêmico, sem necessidade de assinatura
-  digital ou empacotamento em instalador.
+  digital (os instaladores são distribuídos sem assinatura).

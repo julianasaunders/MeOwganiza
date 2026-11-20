@@ -5,22 +5,12 @@ Todas as mudanças relevantes deste projeto são documentadas neste arquivo.
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o
 versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 
-## [Não publicado]
-
-### Adicionado
-
-- Build e publicação do aplicativo desktop para macOS (Apple Silicon) como `.dmg`,
-  com geração automática do ícone `.icns` na integração contínua.
-- Card "Aplicativo para Mac" na página de downloads.
-- macOS na matriz de testes da integração contínua.
-- Extra de dependências `native-macos` para a interface nativa no macOS.
-
 ## [2.0.0] - 2026-11-02
 
 ### Adicionado
 
 - CLI `meowganiza` com os comandos `organize`, `undo`, `doctor`, `config`,
-  `demo` e `interactive`.
+  `demo`, `interactive`, `web` e `native`.
 - Organização de arquivos por extensão com categorias configuráveis.
 - Modo de simulação seguro por padrão; execução real apenas com `--apply`.
 - Filtros por padrão glob, idade, tamanho, categoria, subdiretórios e ocultos.
@@ -36,7 +26,11 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 - Scripts de automação para Bash e PowerShell.
 - Agendamento via `cron` e Agendador de Tarefas do Windows.
 - Hooks de `pre-commit` e `pre-push` com instaladores.
-- Integração contínua em Ubuntu e Windows, Python 3.10 e 3.12.
+- Integração contínua em Ubuntu, Windows e macOS, Python 3.10 e 3.12.
+- Build e publicação do aplicativo desktop para macOS (Apple Silicon) como
+  `.dmg`, com geração automática do ícone `.icns` na integração contínua.
+- Card "Aplicativo para Mac" na página de downloads.
+- Extra de dependências `native-macos` para a interface nativa no macOS.
 - 77 testes automatizados (unitários, ponta a ponta e integração).
 - Documentação técnica, wiki e página web no GitHub Pages.
 
@@ -54,6 +48,8 @@ versionamento segue [SemVer](https://semver.org/lang/pt-BR/).
 - Sanitização de nomes reservados do Windows (`CON`, `NUL`, `COM1` etc.).
 - Detecção de arquivos ocultos em POSIX e Windows.
 - Preservação do diretório de estado durante a varredura recursiva.
+- Alinhamento da documentação com as plataformas suportadas e correção do link
+  de dúvidas nos templates de issue.
 
 ## [1.0.0] - 2026-10-20
 

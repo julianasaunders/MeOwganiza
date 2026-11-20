@@ -68,7 +68,7 @@ O MeOwganiza separa **planejamento** e **execução**: primeiro mostra o que pre
 | **Desfazer** | Usa o journal para restaurar uma execução anterior, quando possível |
 | **Diagnóstico** | Exibe informações de CPU, memória, disco, processo e permissões |
 | **Automação** | Inclui scripts e opções de agendamento para Linux/macOS e Windows |
-| **Interface gráfica** | Aplicativo nativo no Windows e interface web local |
+| **Interface gráfica** | Aplicativo nativo para Windows, Linux e macOS, além da interface web local |
 | **Tema** | Modo claro e escuro na interface gráfica |
 
 ### Segurança em primeiro lugar
