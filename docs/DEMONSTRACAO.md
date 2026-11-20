@@ -14,7 +14,7 @@ A página do projeto está em [julianasaunders.github.io/MeOwganiza](https://jul
 
 **1. Escolha a pasta** que será organizada.
 
-![Tela inicial da demonstração, com a seleção da pasta para organizar](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/selecao-da-pasta.png?v=3)
+![Tela inicial da demonstração, com a seleção da pasta para organizar](images/selecao-da-pasta-v2.png)
 
 **2. Mapa dos arquivos analisados.**
 
