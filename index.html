@@ -733,7 +733,7 @@ function doneView() {
   return `<div class="done2"><div class="badge">${icon('check')}</div>
     <div class="rise"><div class="muted">${state.folder} arrumada</div><div class="bigres" data-count data-to="${s.freedMb}" data-fmt="mb">0 MB</div><div class="muted">liberados</div></div>
     <div class="res-stats rise" style="--d:2"><div><b data-count data-to="${s.movedN}" data-fmt="int">0</b><span>arquivos organizados</span></div><div><b data-count data-to="${s.folders}" data-fmt="int">0</b><span>pastas novas</span></div><div><b data-count data-to="${s.removedN}" data-fmt="int">0</b><span>itens removidos</span></div></div>
-    <div class="row rise" style="--d:3"><button class="cta" data-flash="Abrindo no Finder…">Ver na pasta</button><button class="ghost" data-undo>${icon('undo')} Desfazer tudo</button><button class="ghost" data-go="0">Outra pasta</button></div>
+    <div class="row rise" style="--d:3"><button class="cta" data-flash="Abrindo…">Ver na pasta</button><button class="ghost" data-undo>${icon('undo')} Desfazer tudo</button><button class="ghost" data-go="0">Outra pasta</button></div>
     <p class="muted note">Dá para desfazer por 30 dias.</p></div>`;
 }
 
@@ -1129,7 +1129,7 @@ const sectionBar = (kicker, title, right = '') => `<div class="bar2 rise"><div><
 const dockBar = (left, right) => `<div class="dock4"><div class="group">${left}</div><div class="group">${right}</div></div>`;
 const previewDock = () => dockBar(optionChips(), `${summaryInline()}<button class="cta" data-go="4" data-need-work>Organizar agora</button>`);
 const applyDock = () => dockBar('<span class="muted" id="move-label">Preparando…</span>', '<div class="track" style="width:260px"><i id="move-bar"></i></div>');
-const doneDock = () => { const s = summary(); return dockBar(`<span class="badge small">${icon('check')}</span><div><b>Organizado</b><div class="muted" style="font-size:13px">${number.format(s.movedN)} arquivos em ${s.folders} pastas · ${fmtMb(s.freedMb)} liberados</div></div>`, `<button class="cta" data-flash="Abrindo no Finder…">Ver na pasta</button><button class="ghost" data-go="3">${icon('undo')} Desfazer</button>`); };
+const doneDock = () => { const s = summary(); return dockBar(`<span class="badge small">${icon('check')}</span><div><b>Organizado</b><div class="muted" style="font-size:13px">${number.format(s.movedN)} arquivos em ${s.folders} pastas · ${fmtMb(s.freedMb)} liberados</div></div>`, `<button class="cta" data-flash="Abrindo…">Ver na pasta</button><button class="ghost" data-go="3">${icon('undo')} Desfazer</button>`); };
 const headerFor = (phase, extra = '') => ({
   preview: () => sectionBar('Prévia', 'Antes e depois', `${extra}${segControl()}`),
   apply: () => sectionBar('Arrumando', state.folder, '<div class="bignum" style="font-size:40px" data-apply="pct">0%</div>'),
@@ -1461,7 +1461,7 @@ const R5_VARIANTS = [
     winsWhen: 'O produto quer uma linguagem visual única do começo ao fim.',
     cost: 'A escolha da pasta mostra pouca informação.',
     views: {
-      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><button class="cta rise" style="--d:3" data-go="1">Analisar <span data-pick-label>${state.folder}</span></button><p class="muted note rise" style="--d:4">Ou arraste uma pasta para cá. <span id="pick-note"></span></p></div></div>`,
+      pick: () => `<div class="pick5">${skyHtml({ cls: 'bleed ambient faint bare' })}<div class="catstrip" data-avoid aria-hidden="true"></div><div class="hero" data-avoid><h1 class="giant rise">Qual pasta os gatinhos vão arrumar?</h1><p class="muted rise" style="--d:1">Escolha uma pasta e eles arrumam para você.</p><div class="row rise" id="folder-chips" style="--d:2">${folderChips()}</div><p class="muted note rise" style="--d:3">Ou arraste uma pasta para cá. <span id="pick-note"></span></p><button class="cta rise" style="--d:4" data-go="1">Analisar <span data-pick-label>${state.folder}</span></button></div></div>`,
       scan: () => { state.litOrder = FILES.slice().sort((x, y) => x.sx - y.sx); return `<div class="scan5">${skyHtml({ cls: 'bleed bare', dim: true })}<div class="sweep" data-scan="sweep"></div>${headerWithCounters()}</div>`; },
       map: () => `<div class="m2">${mapHeader(hlChips())}<div class="cwrap">${skyHtml({ cls: 'free nofx center' })}</div>${mapDock()}</div>`,
     },
@@ -1628,7 +1628,7 @@ const CHOSEN = R5_VARIANTS[0];
 const SCORE_BEFORE = 32; const SCORE_AFTER = 96;
 
 const finalNumbers = (s, delay = 2) => `<div class="res-stats rise" style="--d:${delay}"><div><b data-count data-to="${s.movedN}" data-fmt="int">0</b><span>arquivos organizados</span></div><div><b data-count data-to="${s.folders}" data-fmt="int">0</b><span>pastas novas</span></div><div><b data-count data-to="${s.removedN}" data-fmt="int">0</b><span>itens removidos</span></div></div>`;
-const finalButtons = (extra = '') => `<button class="cta" data-flash="Abrindo no Finder…">Ver na pasta</button>${extra}<button class="ghost" data-undo>${icon('undo')} Desfazer</button>`;
+const finalButtons = (extra = '') => `<button class="cta" data-flash="Abrindo…">Ver na pasta</button>${extra}<button class="ghost" data-undo>${icon('undo')} Desfazer</button>`;
 const finalSky = (cls = '') => skyHtml({ cls: `free nofx center ${cls}` });
 const scoreBars = () => `<div class="scorebars rise" style="--d:3"><div><span>Antes</span><span class="bar before"><i data-w="${SCORE_BEFORE}"></i></span><b>${SCORE_BEFORE}%</b></div><div><span>Depois</span><span class="bar"><i data-w="${SCORE_AFTER}"></i></span><b>${SCORE_AFTER}%</b></div></div>`;
 const bigNumber = (s, cls = 'bigres') => `<div class="${cls}" data-count data-to="${s.freedMb}" data-fmt="mb">0 MB</div>`;
@@ -1649,7 +1649,7 @@ const finalB = () => {
       <div class="ncard rise" style="--d:1">${tile('rules', '#f2a7b5', '#e57f8f')}<div><b>Manter organizada</b><span>Arrumar ${state.folder} toda segunda. Você revisa antes de mover.</span></div><button data-auto aria-pressed="${Boolean(state.auto)}" aria-label="Organizar toda segunda"><span class="sw"></span></button></div>
       <div class="ncard rise" style="--d:2">${tile('trash', '#f39c97', '#cf6273')}<div><b>Lixeira</b><span>${s.removedN} itens ficam lá por 30 dias.</span></div><button class="ghost sm" data-flash="Abrindo a Lixeira…">Ver itens</button></div>
       <div class="ncard rise" style="--d:3">${tile('folder', '#f2a7b5', '#e57f8f')}<div><b>Desktop</b><span>41% bagunçada. É a próxima da fila.</span></div><button class="ghost sm" data-pickgo="Desktop">Analisar</button></div>
-    </div></div>${dockBar('<span class="muted">Dá para desfazer por 30 dias.</span>', `<button class="cta" data-flash="Abrindo no Finder…">Ver na pasta</button><button class="ghost" data-undo>${icon('undo')} Desfazer</button>`)}</div>`;
+    </div></div>${dockBar('<span class="muted">Dá para desfazer por 30 dias.</span>', `<button class="cta" data-flash="Abrindo…">Ver na pasta</button><button class="ghost" data-undo>${icon('undo')} Desfazer</button>`)}</div>`;
 };
 
 /* 3 · celebração */
