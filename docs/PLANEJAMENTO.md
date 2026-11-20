@@ -8,10 +8,6 @@ pastas como `Downloads`, `Documentos` e `Desktop`. Para o projeto integrador de
 de linha de comando capaz de **automatizar tarefas com arquivos** de forma
 segura, auditável e reversível.
 
-O recorte do trabalho é o tópico **4.5. Automatizador de Tarefas com Arquivos**
-do documento `Projeto.md` da disciplina. Os tópicos 4 e 7 do documento foram
-deliberadamente ignorados, conforme orientação do grupo.
-
 ## 2. Problema
 
 Usuários acumulam arquivos em pastas de uso intenso. A organização manual é
