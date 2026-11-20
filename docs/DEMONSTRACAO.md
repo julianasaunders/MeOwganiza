@@ -1,0 +1,44 @@
+# Demonstração e deploy
+
+[← Voltar ao README principal](../README.md)
+
+## Visão geral
+
+<video src="images/demo.mp4" controls muted loop playsinline width="820"></video>
+
+## Página pública
+
+A página do projeto está em [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/). Ela apresenta o projeto e sua demonstração visual.
+
+## Passo a passo em imagens
+
+**1. Escolha a pasta** que será organizada.
+
+![Tela inicial da demonstração, com a seleção da pasta para organizar](images/selecao-da-pasta.png)
+
+**2. Mapa dos arquivos analisados.**
+
+![Mapa da pasta com arquivos agrupados por categoria](images/mapa-de-arquivos.png)
+
+**3–4. Revise a prévia antes e depois da organização.**
+
+![Prévia dos arquivos antes da organização](images/previa-antes.png)
+
+![Prévia de como os arquivos ficarão depois da organização](images/previa-depois.png)
+
+**5. Acompanhe a organização em andamento.**
+
+![Progresso da organização dos arquivos](images/organizacao-em-andamento.png)
+
+**6. Confira o resultado.**
+
+![Resumo da organização concluída](images/organizacao-concluida.png)
+
+## Interface web local
+
+A interface web local pode ser aberta com `python meowganiza.py web`; ela é servida no próprio computador, por padrão em `127.0.0.1:8765`.
+
+## Próximos passos
+
+- [Download e instalação](INSTALACAO.md) — para organizar arquivos reais
+- [Guia de uso](GUIA-DE-USO.md) — reproduza os passos da demonstração no seu computador

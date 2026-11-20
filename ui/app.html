@@ -507,7 +507,7 @@
 
 <script>
 const PREVIEW_TITLE = 'MeOwganiza';
-const OPTIONS = { position: 'top', theme: false, slowMotion: true };
+const OPTIONS = { position: 'top', slowMotion: true };
 
 /* ---------- dados fictícios ---------- */
 const ICON_PATHS = {
@@ -1787,8 +1787,8 @@ const VARIANTS = [
 
 const INFO_FIELDS = [['problem', 'Problema'], ['idea', 'Proposta'], ['winsWhen', 'Ganha quando'], ['cost', 'Custo']];
 const SLOW_MOTION_FACTOR = 5;
-const KEY_ACTIONS = { r: 'replay', i: 'info', t: 'theme', s: 'slow', h: 'hide', p: 'position' };
-const ACTIONS = { replay: mountVariant, info: toggleInfo, theme: toggleTheme, slow: toggleSlowMotion, hide: toggleHidden, position: togglePosition };
+const KEY_ACTIONS = { r: 'replay', i: 'info', s: 'slow', h: 'hide', p: 'position' };
+const ACTIONS = { replay: mountVariant, info: toggleInfo, slow: toggleSlowMotion, hide: toggleHidden, position: togglePosition };
 
 const root = document.documentElement;
 const stage = document.getElementById('pv-stage');
@@ -1822,7 +1822,6 @@ function renderDock() {
       <span class="pv-divider" aria-hidden="true"></span>
       ${actionButton('replay', '↻', 'Repetir animação (R)')}
       ${actionButton('info', 'i', 'Descrição (I)', false)}
-      ${OPTIONS.theme ? actionButton('theme', '◐', 'Tema claro ou escuro (T)', false) : ''}
       ${OPTIONS.slowMotion ? actionButton('slow', '×5', 'Câmera lenta (S)', false) : ''}
       ${actionButton('position', '⇅', 'Mover para o outro lado (P)')}
       ${actionButton('hide', '⌄', 'Esconder controles (H)')}
@@ -1878,7 +1877,7 @@ function renderKeyHint() {
     keys.textContent = 'Clique na página para usar os atalhos do teclado';
     return;
   }
-  const optional = [OPTIONS.theme && '<kbd>T</kbd> tema', OPTIONS.slowMotion && '<kbd>S</kbd> lento'].filter(Boolean);
+  const optional = [OPTIONS.slowMotion && '<kbd>S</kbd> lento'].filter(Boolean);
   keys.innerHTML = [`<kbd>1</kbd> a <kbd>${VARIANTS.length}</kbd> ou <kbd>←</kbd> <kbd>→</kbd> trocar`,
     '<kbd>R</kbd> repetir', '<kbd>I</kbd> descrição', ...optional, '<kbd>P</kbd> posição', '<kbd>H</kbd> esconder'].join(' &nbsp; ');
 }
@@ -1953,12 +1952,6 @@ function toggleHidden() {
 
 function togglePosition() {
   dock.dataset.position = dock.dataset.position === 'top' ? 'bottom' : 'top';
-}
-
-function toggleTheme() {
-  const isDark = root.dataset.theme === 'dark';
-  root.dataset.theme = isDark ? 'light' : 'dark'; // PREENCHER: usar a classe ou atributo de tema do projeto
-  setPressed('theme', !isDark);
 }
 
 function toggleSlowMotion() {
