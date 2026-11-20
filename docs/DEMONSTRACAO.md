@@ -4,7 +4,7 @@
 
 ## Visão geral
 
-[![Demonstração do MeOwganiza](images/demo.gif?v=1)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
+[![Demonstração do MeOwganiza](images/demo-v2.gif)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
 
 ## Página pública
 

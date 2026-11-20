@@ -16,7 +16,7 @@ Por isso o MeOwganiza separa **planejamento** e **execução**: primeiro mostra 
 
 ## 🎬 Demonstração
 
-[![Demonstração do MeOwganiza](docs/images/demo.gif?v=1)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
+[![Demonstração do MeOwganiza](docs/images/demo-v2.gif)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
 
 **🌐 [Demonstração online](https://julianasaunders.github.io/MeOwganiza/)** · **📥 [Download](https://julianasaunders.github.io/MeOwganiza/download.html)** · **📖 [Guia de uso no terminal](docs/GUIA-DE-USO.md)**
 
