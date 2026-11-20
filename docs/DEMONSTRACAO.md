@@ -6,9 +6,9 @@
 
 [![Demonstração do MeOwganiza](images/demo-v2.gif)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
 
-## Página pública
+## Demonstração
 
-A página do projeto está em [julianasaunders.github.io/MeOwganiza](https://julianasaunders.github.io/MeOwganiza/). Ela apresenta o projeto e sua demonstração visual.
+[Vídeo completo da demonstração (MP4)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
 
 ## Passo a passo em imagens
 
