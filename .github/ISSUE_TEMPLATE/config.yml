@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Dúvidas e discussões
-    url: https://github.com/julianasaunders/MeOwganiza/discussions
-    about: Use as discussões para perguntas abertas.
+  - name: Dúvidas e perguntas
+    url: https://github.com/julianasaunders/MeOwganiza/issues?q=label%3Aquestion
+    about: Abra uma issue com a label "question" para perguntas abertas.
   - name: Documentação
     url: https://github.com/julianasaunders/MeOwganiza/wiki
     about: Consulte a wiki antes de abrir uma issue.
