@@ -42,6 +42,6 @@ python meowganiza.py doctor
 
 ## Próximos passos
 
-- [Guia de uso completo](https://github.com/julianasaunders/MeOwganiza/blob/main/docs/GUIA-DE-USO.md)
+- [Guia de uso completo no terminal](https://github.com/julianasaunders/MeOwganiza/blob/main/docs/GUIA-DE-USO.md)
 - [Automação](Automacao)
 - [Conceitos de SO](Conceitos-de-SO)

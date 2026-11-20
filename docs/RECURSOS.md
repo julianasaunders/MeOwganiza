@@ -83,6 +83,6 @@ Este documento reúne o detalhamento que ficou de fora do README principal: esco
 
 ## Veja também
 
-- [Guia de uso](GUIA-DE-USO.md) — exemplos práticos de cada recurso
+- [Guia de uso no terminal](GUIA-DE-USO.md) — exemplos práticos de cada recurso
 - [Arquitetura](ARQUITETURA.md) — como os módulos implementam essas funções
 - [Conceitos de Sistemas Operacionais](CONCEITOS-SO.md) — a teoria por trás do projeto

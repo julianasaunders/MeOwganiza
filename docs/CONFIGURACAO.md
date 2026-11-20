@@ -30,5 +30,5 @@ A aplicação não faz chamadas de rede. Consulte [`SECURITY.md`](../SECURITY.md
 ## Próximos passos
 
 - [Instalação e execução](INSTALACAO.md) — como rodar o projeto
-- [Guia de uso](GUIA-DE-USO.md) — configuração personalizada na prática
+- [Guia de uso no terminal](GUIA-DE-USO.md) — configuração personalizada na prática
 - [Arquitetura](ARQUITETURA.md) — onde a configuração entra no fluxo de dados

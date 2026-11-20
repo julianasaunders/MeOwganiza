@@ -16,9 +16,9 @@ Por isso o MeOwganiza separa **planejamento** e **execução**: primeiro mostra 
 
 ## 🎬 Demonstração
 
-[![Demonstração do MeOwganiza](docs/images/demo.gif)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
+[![Demonstração do MeOwganiza](docs/images/demo.gif?v=1)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
 
-**🌐 [Demonstração online](https://julianasaunders.github.io/MeOwganiza/)** · **📥 [Download](https://julianasaunders.github.io/MeOwganiza/download.html)** · **📖 [Guia de uso](docs/GUIA-DE-USO.md)**
+**🌐 [Demonstração online](https://julianasaunders.github.io/MeOwganiza/)** · **📥 [Download](https://julianasaunders.github.io/MeOwganiza/download.html)** · **📖 [Guia de uso no terminal](docs/GUIA-DE-USO.md)**
 
 > A demonstração online é ilustrativa: ela não acessa pastas do seu computador. Para organizar arquivos reais, use o aplicativo ou a CLI local.
 
@@ -109,7 +109,7 @@ python meowganiza.py organize sandbox_teste --apply  # aplica após revisar
     <tr><td width="230" align="center"><a href="docs/INSTALACAO.md">Instalação e execução</a></td><td width="520">Binários, código-fonte, interface nativa, comandos e agendamento</td></tr>
     <tr><td width="230" align="center"><a href="docs/CONFIGURACAO.md">Configuração e privacidade</a></td><td width="520">Arquivos de config, variáveis de ambiente e dados locais</td></tr>
     <tr><td width="230" align="center"><a href="docs/DEMONSTRACAO.md">Demonstração e deploy</a></td><td width="520">Vídeo, galeria passo a passo e página pública</td></tr>
-    <tr><td width="230" align="center"><a href="docs/GUIA-DE-USO.md">Guia de uso</a></td><td width="520">Cenários práticos e perguntas frequentes</td></tr>
+    <tr><td width="230" align="center"><a href="docs/GUIA-DE-USO.md">Guia de uso no terminal</a></td><td width="520">Cenários práticos e perguntas frequentes</td></tr>
     <tr><td width="230" align="center"><a href="docs/ARQUITETURA.md">Arquitetura</a></td><td width="520">Módulos, fluxo de dados e decisões de projeto</td></tr>
     <tr><td width="230" align="center"><a href="docs/CONCEITOS-SO.md">Conceitos de Sistemas Operacionais</a></td><td width="520">Teoria conectada ao código</td></tr>
     <tr><td width="230" align="center"><a href="docs/TESTES.md">Testes</a></td><td width="520">Estratégia e execução da suíte</td></tr>

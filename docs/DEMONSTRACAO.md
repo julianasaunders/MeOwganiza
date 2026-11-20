@@ -4,7 +4,7 @@
 
 ## Visão geral
 
-[![Demonstração do MeOwganiza](images/demo.gif)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
+[![Demonstração do MeOwganiza](images/demo.gif?v=1)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
 
 ## Página pública
 
@@ -41,4 +41,4 @@ A interface web local pode ser aberta com `python meowganiza.py web`; ela é ser
 ## Próximos passos
 
 - [Download e instalação](INSTALACAO.md) — para organizar arquivos reais
-- [Guia de uso](GUIA-DE-USO.md) — reproduza os passos da demonstração no seu computador
+- [Guia de uso no terminal](GUIA-DE-USO.md) — reproduza os passos da demonstração no seu computador

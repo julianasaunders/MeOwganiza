@@ -1,4 +1,4 @@
-# Guia de uso
+# Guia de uso no terminal
 
 Cenários passo a passo para usar o MeOwganiza com segurança.
 

@@ -105,6 +105,6 @@ Há scripts para executar tarefas e agendá-las nos sistemas suportados. Revise 
 
 ## Próximos passos
 
-- [Guia de uso](GUIA-DE-USO.md) — cenários completos, filtros e renomeação
+- [Guia de uso no terminal](GUIA-DE-USO.md) — cenários completos, filtros e renomeação
 - [Configuração e privacidade](CONFIGURACAO.md) — ajustes e variáveis de ambiente
 - [Testes](TESTES.md) — como rodar a suíte localmente
