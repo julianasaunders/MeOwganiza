@@ -6,9 +6,7 @@
 
 [![Demonstração do MeOwganiza](images/demo-v2.gif)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
 
-## Demonstração
-
-[Vídeo completo da demonstração (MP4)](https://raw.githubusercontent.com/julianasaunders/MeOwganiza/main/docs/images/demo.mp4)
+**🌐 [Demonstração online](https://julianasaunders.github.io/MeOwganiza/)**
 
 ## Passo a passo em imagens
 
